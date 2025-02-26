@@ -128,3 +128,24 @@ class EmailVerificationSuccess extends AuthState {
 class AuthCheckingStatus extends AuthState {
   const AuthCheckingStatus();
 }
+
+class GetChildInfoSuccessState extends AuthState {
+  final Map<String, dynamic> child;
+
+  const GetChildInfoSuccessState({
+    required this.child,
+  });
+
+  @override
+  List<Object?> get props => [child];
+}
+
+class GetChildInfoErrorState extends AuthState {
+      final String? errorMessage;
+
+    const GetChildInfoErrorState(
+          {required this.errorMessage}
+
+    );
+
+}

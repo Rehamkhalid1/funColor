@@ -83,46 +83,80 @@ class AuthCubit extends Cubit<AuthState> {
       result.fold(
         (failure) => emit(AuthError(message: failure.message)),
         (_) async {
-          final firebaseUser = _auth.currentUser;
-          if (firebaseUser != null) {
-            // Reload user to get latest verification status
-            await firebaseUser.reload();
+          try {
+            final firebaseUser = _auth.currentUser;
+            if (firebaseUser != null) {
+              // Reload user to get latest verification status
+              await firebaseUser.reload();
 
-            if (!firebaseUser.emailVerified) {
-              // Send a new verification email and require verification
-              await sendEmailVerification();
-              emit(EmailVerificationRequired(email: firebaseUser.email!));
-              return;
-            }
+              if (!firebaseUser.emailVerified) {
+                // Send a new verification email and require verification
+                await sendEmailVerification();
+                emit(EmailVerificationRequired(email: firebaseUser.email!));
+                return;
+              }
 
-            // Get user data from Firestore
-            final userData = await FirebaseFirestore.instance
-                .collection('users')
-                .doc(firebaseUser.uid)
-                .get();
+              // Get user data from Firestore
+              final userData = await FirebaseFirestore.instance
+                  .collection('users')
+                  .doc(firebaseUser.uid)
+                  .get();
 
-            if (userData.exists) {
-              final user = entities.User(
-                uid: firebaseUser.uid,
-                email: firebaseUser.email ?? '',
-                firstName: userData['firstName'] ?? '',
-                lastName: userData['lastName'] ?? '',
-                username: userData['username'] ?? '',
-                createdAt: (userData['createdAt'] as Timestamp?)?.toDate() ??
-                    DateTime.now(),
-              );
-              emit(AuthSuccess(user: user, isEmailVerified: true));
+              if (userData.exists) {
+                try {
+                  // Get child data after successful login
+                  final childData = await FirebaseFirestore.instance
+                      .collection('users')
+                      .doc(firebaseUser.uid)
+                      .collection('children')
+                      .get();
+
+                  final childInfo = childData.docs.isNotEmpty 
+                      ? {
+                          'name': childData.docs.first.get('name'),
+                          'imageUrl': childData.docs.first.get('imageUrl'),
+                        }
+                      : null;
+
+                  final verifiedUser = entities.User(
+                    uid: firebaseUser.uid,
+                    email: firebaseUser.email ?? '',
+                    firstName: userData['firstName'] ?? '',
+                    lastName: userData['lastName'] ?? '',
+                    username: userData['username'] ?? '',
+                    createdAt: (userData['createdAt'] as Timestamp?)?.toDate() ??
+                        DateTime.now(),
+                    childName: childInfo?['name'],
+                    childImageUrl: childInfo?['imageUrl'],
+                  );
+                  
+                  emit(AuthSuccess(user: verifiedUser, isEmailVerified: true));
+                } catch (e) {
+                  // If there's an error getting child data, still proceed with login
+                  final verifiedUser = entities.User(
+                    uid: firebaseUser.uid,
+                    email: firebaseUser.email ?? '',
+                    firstName: userData['firstName'] ?? '',
+                    lastName: userData['lastName'] ?? '',
+                    username: userData['username'] ?? '',
+                    createdAt: (userData['createdAt'] as Timestamp?)?.toDate() ??
+                        DateTime.now(),
+                  );
+                  emit(AuthSuccess(user: verifiedUser, isEmailVerified: true));
+                }
+              } else {
+                emit(const AuthError(message: 'User data not found'));
+              }
             } else {
-              emit(const AuthError(message: 'User data not found'));
+              emit(const AuthError(message: 'Failed to retrieve user information'));
             }
-          } else {
-            emit(const AuthError(
-                message: 'Failed to retrieve user information'));
+          } catch (e) {
+            emit(AuthError(message: 'Error during login: ${e.toString()}'));
           }
         },
       );
     } catch (e) {
-      emit(AuthError(message: e.toString()));
+      emit(AuthError(message: 'Login failed: ${e.toString()}'));
     }
   }
 
@@ -276,4 +310,6 @@ class AuthCubit extends Cubit<AuthState> {
       messageService.showMessage('Failed to sign out', MessageType.error);
     }
   }
+
+
 }
