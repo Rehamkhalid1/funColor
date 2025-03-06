@@ -43,8 +43,9 @@ class AppImages {
   static const String darkGamBoard = "$_gameBoardImagesPath/darkGamBoard.png";
   static const String yellowshadow = "$_gameBoardImagesPath/yellowshadow.svg";
   static const String childPhoto = "$_gameBoardImagesPath/childPhoto.png";
-  static const String childphotoframe =
-      "$_gameBoardImagesPath/childphotoframe.png";
+  static const String childphotoframe ="$_gameBoardImagesPath/childphotoframe.png";
+  static const String switchbutton ="$_gameBoardImagesPath/switchbutton.png";
+  static const String switchbuttonfalse ="$_gameBoardImagesPath/switchbuttonfalse.png";
 
   ///********************* My Painting *********************/
   static const String paintingGirl = "$_myPaintingImagesPath/paintingGirl.svg";

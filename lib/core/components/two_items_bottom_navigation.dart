@@ -1,3 +1,4 @@
+import 'package:color_funland/core/components/background_sound.dart';
 import 'package:color_funland/core/constants/app_icons.dart';
 import 'package:color_funland/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:color_funland/features/auth/presentation/cubit/auth_state.dart';

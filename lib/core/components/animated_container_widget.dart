@@ -1,3 +1,4 @@
+import 'package:color_funland/core/components/toggle_button.dart';
 import 'package:color_funland/core/constants/app_icons.dart';
 import 'package:color_funland/core/utils/app_colors.dart';
 import 'package:color_funland/core/utils/text_styles.dart';
@@ -94,6 +95,10 @@ Widget menuList(BuildContext context) => Container(
                 Navigator.pushNamed(context, '/addProfileInfo');
               }),
           SizedBox(height: 16.h),
+          toggleItem(
+            title: 'Sound',
+          ),
+          SizedBox(height: 16.h),
           rowWithArrowButton(
               title: 'Change Password',
               onTap: () {
@@ -142,6 +147,22 @@ Widget rowWithArrowButton(
               height: 33.45.h,
               width: 39.w,
             )),
+      ],
+    ),
+  );
+}
+
+Widget toggleItem({required String title}) {
+  return Padding(
+    padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.72.h),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: ts18minnie400,
+        ),
+        CustomToggleButton(),
       ],
     ),
   );
