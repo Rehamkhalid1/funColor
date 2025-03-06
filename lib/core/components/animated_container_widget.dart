@@ -1,7 +1,10 @@
 import 'package:color_funland/core/constants/app_icons.dart';
 import 'package:color_funland/core/utils/app_colors.dart';
 import 'package:color_funland/core/utils/text_styles.dart';
+import 'package:color_funland/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:color_funland/features/auth/presentation/cubit/auth_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AnimatedContainerWidget extends StatefulWidget {
@@ -12,7 +15,7 @@ class AnimatedContainerWidget extends StatefulWidget {
 }
 
 class AnimatedContainerState extends State<AnimatedContainerWidget>
-   with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _animation;
   bool _isContainerVisible = false;
@@ -103,14 +106,20 @@ Widget menuList(BuildContext context) => Container(
                 Navigator.pushNamed(context, '/deleteAccount');
               }),
           SizedBox(height: 16.h),
-          rowWithArrowButton(
-              title: 'Logout',
-              onTap: () {
-                Navigator.pushReplacementNamed(
-                  context,
-                  '/login',
-                );
-              }),
+          BlocConsumer<AuthCubit, AuthState>(
+            listener: (context, state) {
+              if (state is AuthSignedOut) {
+                Navigator.pushNamed(context, '/login');
+              }
+            },
+            builder: (context, state) {
+              return rowWithArrowButton(
+                  title: 'Logout',
+                  onTap: () {
+                    context.read<AuthCubit>().signOut();
+                  });
+            },
+          ),
         ],
       ),
     );

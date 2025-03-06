@@ -43,9 +43,7 @@ class AppBarRow extends StatelessWidget implements PreferredSizeWidget {
           context.read<AuthCubit>().signInUseCase;
         }
        },
-      builder: (context, state) {
-                
-
+      builder: (context, state) {             
           if (state is AuthSuccess) {
                     childname = state.user.childName ?? '';
                     imageUrl = state.user.childImageUrl;
@@ -66,11 +64,10 @@ class AppBarRow extends StatelessWidget implements PreferredSizeWidget {
                   }
                 },
                 builder: (context, state) {
-      
 
                   if (state is GetChildSuccessState) {
                     childname = state.child['name'] ?? '';
-                    imageUrl = state.child['imageUrl'];
+                    imageUrl = state.child['profileImage'];
                   }
                 
                   return Row(

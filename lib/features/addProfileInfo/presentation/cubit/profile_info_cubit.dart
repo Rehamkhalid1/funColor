@@ -393,57 +393,6 @@ class ProfileInfoCubit extends Cubit<ProfileInfoState> {
     }
   }
 
-  // Optional: Method to get a single child's data
-  Future<void> getChildById(String childId) async {
-    try {
-      emit(ProfileInfoLoadingState());
-
-      final User? currentUser = _auth.currentUser;
-      if (currentUser == null) {
-        emit(GetChildErrorState(
-          errorMessage: 'User not authenticated',
-        ));
-
-        return;
-      }
-
-      final DocumentSnapshot childDoc = await _firestore
-          .collection('users')
-          .doc(currentUser.uid)
-          .collection('children')
-          .doc(childId)
-          .get();
-
-      if (!childDoc.exists) {
-          emit(GetChildErrorState(
-          errorMessage: 'Child not found',
-        ));
-   
-        return;
-      }
-
-      final data = childDoc.data() as Map<String, dynamic>;
-      final List<Map<String, dynamic>> children = [
-        {
-          'id': childDoc.id,
-          'name': data['name'],
-          'age': data['age'],
-          'imageUrl': data['imageUrl'],
-          'createdAt': data['createdAt'],
-          'updatedAt': data['updatedAt'],
-        }
-      ];
-
-      emit(GetChildSuccessState(child: children.first));
-      
-    } catch (e) {
-         emit(GetChildErrorState(
-        errorMessage: 'Failed to fetch child: ${e.toString()}',
-        ));
-      
-    }
-  }
-
   Future<void> getCurrentChild() async {
     try {
       emit(ProfileInfoLoadingState());

@@ -20,16 +20,15 @@ class AuthSuccess extends AuthState {
   final User user;
   final bool isEmailVerified;
 
-
   const AuthSuccess({
     required this.user,
     this.isEmailVerified = false,
-   
   });
 
   @override
   List<Object?> get props => [user, isEmailVerified];
 }
+
 class AuthError extends AuthState {
   final String message;
 
