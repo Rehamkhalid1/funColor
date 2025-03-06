@@ -8,6 +8,10 @@ import 'package:color_funland/features/auth/presentation/pages/email_verificatio
 import 'package:color_funland/features/auth/presentation/pages/landing_page.dart';
 import 'package:color_funland/features/auth/presentation/pages/login_page.dart';
 import 'package:color_funland/features/auth/presentation/pages/signup_screen.dart';
+import 'package:color_funland/features/color_match/pages/color_match.dart';
+import 'package:color_funland/features/color_match/pages/color_match_animals.dart';
+import 'package:color_funland/features/color_match/pages/color_match_foods.dart';
+import 'package:color_funland/features/color_match/pages/color_match_shapes.dart';
 import 'package:color_funland/features/color_mixing/pages/color_mixing.dart';
 import 'package:color_funland/features/color_mixing/pages/color_mixing_levels.dart';
 import 'package:color_funland/features/color_mixing/pages/color_mixing_next_activity.dart';
@@ -30,7 +34,7 @@ Map<String, Widget Function(BuildContext)> routes = {
   '/deleteAccount': (context) => const DeleteAccountScreen(),
   '/childProgress': (context) => const ChildProgressScreen(),
   '/email-verification': (context) => const EmailVerificationScreen(),
-  '/gameBoard': (context) => const GameBoardScreen(),
+  '/gameBoard': (context) =>const  GameBoardScreen(),
   '/mypaintingScreen': (context) => const MyPaintingScreen(),
   '/animalsSamplesScreen': (context) => const AnimalsSamplesScreen(),
   '/fishesSamplesScreen': (context) => const FishesSamplesScreen(),
@@ -39,6 +43,10 @@ Map<String, Widget Function(BuildContext)> routes = {
    '/colorMixingSampls' : (context) => const ColorMixingSampls(),
    '/colorMixingLevels' : (context) => const ColorMixingLevels2(),
    '/colorMixingNextActivity' : (context) => const ColorMixingNextActivity(),
+    '/colorMatchScreen' : (context) => const ColorMatchScreen(),
+   '/colorMatchShapes' : (context) => const ColorMatchShapes(),
+   '/colorMatchFoods' : (context) => const ColorMatchFoods(),
+   '/colorMatchAnimals' : (context) => const ColorMatchAnimals(),
 
   ///*********************  Animals   ********************** */
   

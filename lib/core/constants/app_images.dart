@@ -207,6 +207,42 @@ static const String flowerUncolored1 =
   static const String colorLevelYellow = "$_myColorMixingImagePath/colorlevelyellow.svg";
   static const String dvider = "$_myColorMixingImagePath/dvider.svg";
 
+  
+  ///**************************** Color Match *****************************/
+  static const String colorMatchCardBg = "$_myColorMatchImagePath/colormatchbackground.svg";
+  static const String colorMatchShapes = "$_myColorMatchImagePath/colormatchshapes.png";
+  static const String colorMatchFoods = "$_myColorMatchImagePath/colormatchfoods.png";
+  static const String colorMatchAnimals = "$_myColorMatchImagePath/colormatchanimals.png";
+  static const String colorMatchNumbers = "$_myColorMatchImagePath/colormatchnumbers.png";
+  ///**************************** Color Match Shapes *****************************/
+  static const String emptyOrangColorMatchShapes = "$_myColorMatchImagePath/emptyorangcolormatchshapes.svg";
+  static const String emptyBlueColorMatchShapes = "$_myColorMatchImagePath/emptybluecolormatchshapes.svg";
+  static const String emptyPurpleColorMatchShapes = "$_myColorMatchImagePath/emptypurplecolormatchshapes.svg";
+  static const String emptyGreenColorMatchShapes = "$_myColorMatchImagePath/emptygreencolormatchshapes.svg";
+  static const String emptyYellowColorMatchShapes = "$_myColorMatchImagePath/emptyyellowcolormatchshapes.svg";
+  static const String emptyRedColorMatchShapes = "$_myColorMatchImagePath/emptyredcolormatchshapes.svg";
+///**************************** Color Match Foods *****************************/
+  static const String carrot = "$_myColorMatchImagePath/carrot1.svg";
+  static const String eggplant= "$_myColorMatchImagePath/eggplant1.svg";
+  static const String cabbage = "$_myColorMatchImagePath/cabbage1.svg";
+  static const String tomato = "$_myColorMatchImagePath/tomato1.svg";
+  static const String banana = "$_myColorMatchImagePath/banana1.svg";
+  static const String unColoredArea = "$_myColorMatchImagePath/uncoloredarea.png";
+  static const String foodsColorMatchPurple = "$_myColorMatchImagePath/foodscolormatchpurple.svg";
+  static const String foodsColorMatchOrange = "$_myColorMatchImagePath/foodscolormatchorange.svg";
+  static const String foodsColorMatchGreen = "$_myColorMatchImagePath/foodscolormatchgreen.svg";
+  static const String foodsColorMatchYellow = "$_myColorMatchImagePath/foodscolormatchyellow.svg";
+  static const String foodsColorMatchRed = "$_myColorMatchImagePath/foodscolormatchred.svg";
+  ///**************************** Color Match Animals *****************************/
+  static const String animalColorMatchTiger = "$_myColorMatchImagePath/animalcolormatchtiger.svg";
+  static const String animalColorMatchFish = "$_myColorMatchImagePath/animalcolormatchfish.svg";
+  static const String animalColorMatchInsect = "$_myColorMatchImagePath/animalcolormatchinsect.svg";
+  static const String animalColorMatchFrog = "$_myColorMatchImagePath/animalcolormatchfrog.svg";
+  static const String animalColorMatchColoredBird = "$_myColorMatchImagePath/animalcolormatchcoloredbird.svg";
+  static const String animalColorMatchBird = "$_myColorMatchImagePath/animalcolormatchbird.svg";
+  static const String animalcolormatchsnake = "$_myColorMatchImagePath/animalcolormatchsnake.svg";
+  static const String animalColorMatchUnicorn = "$_myColorMatchImagePath/animalcolormatchunicorn.svg";
+
 
 }
 /* logo image */

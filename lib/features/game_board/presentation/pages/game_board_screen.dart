@@ -7,8 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class GameBoardScreen extends StatelessWidget {
+class GameBoardScreen extends StatefulWidget {
   const GameBoardScreen({super.key});
+
+  @override
+  State<GameBoardScreen> createState() => _GameBoardScreenState();
+}
+
+class _GameBoardScreenState extends State<GameBoardScreen> {
+  final GlobalKey<AnimatedContainerState> _containerKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -39,29 +46,29 @@ class GameBoardScreen extends StatelessWidget {
           appBar: AppBarRow(
             gameGroup: "Activity Board",
             inSideGame: false,
-          
+            containerKey: _containerKey,
           ),
           body: Stack(
-              children: [
-                SafeArea(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(51.5.w,31.84.h,57.5.w,31.84.w),
-                        child: const Games(),
-                      ),
-                      TwoItemsBottomNavigation(
-                        insideGame: false,
-                      ),
-                    ],
-                  ),
+            children: [
+              SafeArea(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsets.fromLTRB(51.5.w, 31.84.h, 57.5.w, 31.84.w),
+                      child: const Games(),
+                    ),
+                    TwoItemsBottomNavigation(
+                      insideGame: false,
+                    ),
+                  ],
                 ),
-                AnimatedContainerWidget(key: containerKey),
-              ],
-            ),
+              ),
+              AnimatedContainerWidget(key: _containerKey),
+            ],
           ),
         ),
-     
+      ),
     );
   }
 

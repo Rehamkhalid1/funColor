@@ -55,7 +55,7 @@ class AnimatedContainerState extends State<AnimatedContainerWidget>
       visible: _isContainerVisible,
       child: Positioned(
         top: 5.h, // Position below the AppBar
-        right: 50.w,
+        right: 30.w,
         child: SlideTransition(
           position: _animation,
           child: menuList(context),

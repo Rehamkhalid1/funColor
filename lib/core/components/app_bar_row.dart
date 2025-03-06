@@ -13,7 +13,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-final GlobalKey<AnimatedContainerState> containerKey = GlobalKey();
 
 class AppBarRow extends StatelessWidget implements PreferredSizeWidget {
   const AppBarRow({
@@ -21,11 +20,15 @@ class AppBarRow extends StatelessWidget implements PreferredSizeWidget {
     required this.gameGroup,
     required this.inSideGame,
     this.appBarIcon = "",
+    this.containerKey, // Receive the key
+
   });
 
   final String gameGroup;
   final bool inSideGame;
   final String appBarIcon;
+  final GlobalKey<AnimatedContainerState>? containerKey; // Accept per-screen key
+
 
   @override
   Size get preferredSize => Size.fromHeight(100.h);
@@ -138,7 +141,7 @@ class AppBarRow extends StatelessWidget implements PreferredSizeWidget {
                             highlightColor: Colors.transparent,
                             splashColor: Colors.transparent,
                             onTap: () {
-                              containerKey.currentState?.toggleContainer();
+                              containerKey?.currentState?.toggleContainer();
                             },
                             child: SvgPicture.asset(
                               AppIcons.menu,

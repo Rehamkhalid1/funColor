@@ -1,3 +1,4 @@
+import 'package:color_funland/core/components/animated_container_widget.dart';
 import 'package:color_funland/core/constants/app_icons.dart';
 import 'package:color_funland/core/constants/app_images.dart';
 import 'package:color_funland/core/utils/text_styles.dart';
@@ -26,6 +27,8 @@ class PaintScreen extends StatefulWidget {
 }
 
 class _PaintScreenState extends State<PaintScreen> {
+    final GlobalKey<AnimatedContainerState> _containerKey = GlobalKey();
+
   final PaintState _paintState = PaintState();
   bool _showReferenceImage = false;
 
@@ -43,6 +46,7 @@ class _PaintScreenState extends State<PaintScreen> {
         gameGroup: "Paintings",
         inSideGame: true,
         appBarIcon: AppIcons.paintingsIcon,
+        containerKey: _containerKey,
       ),
       body: SafeArea(
         child: Stack(
@@ -123,7 +127,7 @@ class _PaintScreenState extends State<PaintScreen> {
                 ],
               ),
             ),
-            // AnimatedContainerWidget(key: containerKey),
+             AnimatedContainerWidget(key: _containerKey),
           ],
         ),
       ),
