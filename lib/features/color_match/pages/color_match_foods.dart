@@ -222,7 +222,7 @@ class _ColorMatchFoodsState extends State<ColorMatchFoods> {
 
 class _Item extends StatefulWidget {
   const _Item(
-      {super.key,
+      {
       required this.image,
       required this.unColoredArea,
       required this.containerWidth,

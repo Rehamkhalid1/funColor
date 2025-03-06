@@ -27,11 +27,7 @@ class _ColorMatchAnimalsState extends State<ColorMatchAnimals> {
     AppImages.animalColorMatchUnicorn,
     AppImages.animalcolormatchsnake,
   ];
-  List<String> targetList = [
-    AppImages.animalColorMatchTiger,
-  ];
-
-  Set<String> matchedAnimals = {};
+  List<String> targetList = [AppImages.animalColorMatchTiger];
 
   // خريطة لتحديد الحيوانات التي لها نفس اللون
   final Map<String, List<String>> animalColorGroups = {
@@ -43,10 +39,9 @@ class _ColorMatchAnimalsState extends State<ColorMatchAnimals> {
 
   void checkAnimalMatch(String selectedAnimal) {
     setState(() {
-      if (animalColorGroups[AppImages.animalColorMatchTiger]
-              ?.contains(selectedAnimal) ??
-          false) {
-        matchedAnimals.add(selectedAnimal);
+      if (animalColorGroups[AppImages.animalColorMatchTiger] ?.contains(selectedAnimal) ?? false) {
+        sourceList.remove(selectedAnimal); 
+        targetList.add(selectedAnimal);
       }
     });
   }
@@ -93,12 +88,7 @@ class _ColorMatchAnimalsState extends State<ColorMatchAnimals> {
                     padding: EdgeInsets.symmetric(horizontal: 91.w),
                     child: DragTarget<String>(
                       onAccept: (item) {
-                        setState(() {
-                          if (sourceList.contains(item)) {
-                            sourceList.remove(item); // Remove by value
-                            targetList.add(item); // Add to target list
-                          }
-                        });
+                        checkAnimalMatch(item);
                       },
                       builder: (context, candidateData, rejectedData) {
                         return Container(
@@ -116,9 +106,9 @@ class _ColorMatchAnimalsState extends State<ColorMatchAnimals> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: targetList
                                 .map((item) => Padding(
-                                  padding:  EdgeInsets.only(left: 10.w),
-                                  child: _Card(image: item),
-                                ))
+                                      padding: EdgeInsets.only(left: 10.w),
+                                      child: _Card(image: item),
+                                    ))
                                 .toList(),
                           ),
                         );
@@ -139,7 +129,7 @@ class _ColorMatchAnimalsState extends State<ColorMatchAnimals> {
                               ),
                               childWhenDragging: Opacity(
                                 opacity:
-                                    0.5, // Reduce opacity to indicate dragging
+                                    0.5, 
                                 child: _Card(image: item),
                               ),
                               child: _Card(image: item),
@@ -163,11 +153,9 @@ class _ColorMatchAnimalsState extends State<ColorMatchAnimals> {
 class _Card extends StatelessWidget {
   const _Card({
     required this.image,
-
   });
 
   final String image;
-
 
   @override
   Widget build(BuildContext context) {
@@ -178,8 +166,7 @@ class _Card extends StatelessWidget {
         color: Colors.white,
         elevation: 3,
         child: Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: 13.4.w, vertical: 20.h),
+          padding: EdgeInsets.symmetric(horizontal: 13.4.w, vertical: 20.h),
           child: SvgPicture.asset(image),
         ),
       ),
