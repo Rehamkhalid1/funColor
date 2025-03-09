@@ -15,11 +15,13 @@ class PaintScreen extends StatefulWidget {
   final String uncoloredImage;
   final String coloredImage;
   final String categoryName;
+  final List<Color> colorTools;
   const PaintScreen({
     super.key,
     required this.uncoloredImage,
     required this.coloredImage,
     required this.categoryName,
+    required this.colorTools,
   });
 
   @override
@@ -27,7 +29,7 @@ class PaintScreen extends StatefulWidget {
 }
 
 class _PaintScreenState extends State<PaintScreen> {
-    final GlobalKey<AnimatedContainerState> _containerKey = GlobalKey();
+  final GlobalKey<AnimatedContainerState> _containerKey = GlobalKey();
 
   final PaintState _paintState = PaintState();
   bool _showReferenceImage = false;
@@ -100,6 +102,20 @@ class _PaintScreenState extends State<PaintScreen> {
                                       height: 230.53.h,
                                     ),
                             ),
+                          _showReferenceImage ?  InkWell(
+                              highlightColor: Colors.transparent,
+                              splashColor: Colors.transparent,
+                              onTap: () {
+                                Navigator.pushNamed(context, '/winScreen');
+                              },
+                              child: Image.asset(
+                                AppIcons.donebtn,
+                                height: 86.h,
+                                width: 164.w,
+                              ),
+                            ) : Container(
+                                      height: 230.53.h,
+                                    ),
                           ],
                         ),
                         SizedBox(
@@ -112,6 +128,7 @@ class _PaintScreenState extends State<PaintScreen> {
                           ),
                         ),
                         ColorTools(
+                          paletteColors: widget.colorTools,
                           selectedColor: _paintState.selectedColor,
                           onColorSelected: (color) => setState(() {
                             _paintState.setColor(color);
@@ -127,7 +144,7 @@ class _PaintScreenState extends State<PaintScreen> {
                 ],
               ),
             ),
-             AnimatedContainerWidget(key: _containerKey),
+            AnimatedContainerWidget(key: _containerKey),
           ],
         ),
       ),

@@ -232,6 +232,31 @@ final List<GridItem> colorMixingItem = [
 
 final List<String> colorMixingSamples = [
   '/colorMixingSampls',
+  '/colorMixingSampls2',
+  '/colorMixingSampls3',
+];
+
+List<String> imageSample1 = [
+  AppImages.colorPurple,
+  AppImages.colorRed,
+  AppImages.colorGreen,
+];
+List<String> imageSample2 = [
+  AppImages.colorPurple,
+  AppImages.colorRed,
+  AppImages.colorGreen,
+  AppImages.colorYellow,
+  AppImages.colorOrange,
+];
+List<String> imageSample3 = [
+  AppImages.colorPurple,
+  AppImages.colorRed,
+  AppImages.colorGreen,
+  AppImages.colorYellow,
+  AppImages.colorOrange,
+  AppImages.colorBrown,
+  AppImages.colorBlue,
+  AppImages.colorPink,
 ];
 
 ///****************** Color match Screen **************/

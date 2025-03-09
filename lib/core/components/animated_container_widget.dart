@@ -87,7 +87,7 @@ Widget menuList(BuildContext context) => Container(
       ),
       child: Column(
         children: [
-          rowWithArrowButton(title: 'Adam Progress', onTap: () {}),
+          rowWithArrowButton(title: 'Progress', onTap: () {}),
           SizedBox(height: 16.h),
           rowWithArrowButton(
               title: 'Edit Profile',

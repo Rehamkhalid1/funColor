@@ -3,33 +3,23 @@ import 'package:color_funland/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class ColorTools extends StatefulWidget {
   final Function(Color) onColorSelected;
   final Color selectedColor;
   final Function(double)? onStrokeWidthChanged;
   final double strokeWidth;
+  final List<Color> paletteColors;
 
-  // Available colors
-  static const List<Color> colors = [
-    Colors.white,
-    Colors.black,
-    Colors.yellow,
-    Color(0xFF4CAF50), // Green
-    Color(0xFFFF9800), // Orange
-    Color(0xFF2196F3), // Blue
-    // Color(0xFF882601), // Blue
-    // Color(0xFFFF861A), // Blue
-    // Color(0xFF3498DB), // Blue
 
-  ];
 
   const ColorTools({
     super.key,
     required this.onColorSelected,
     required this.selectedColor,
     this.onStrokeWidthChanged,
-    this.strokeWidth = 15.0,
+    this.strokeWidth = 15.0, 
+    required this.paletteColors,
+    
   });
 
   @override
@@ -48,9 +38,9 @@ class _ColorToolsState extends State<ColorTools> {
   @override
   Widget build(BuildContext context) {
     // Split colors into two columns
-    final int midPoint = (ColorTools.colors.length / 2).ceil();
-    final leftColors = ColorTools.colors.sublist(0, midPoint);
-    final rightColors = ColorTools.colors.sublist(midPoint);
+    final int midPoint = (widget.paletteColors.length / 2).ceil();
+    final leftColors = widget.paletteColors.sublist(0, midPoint);
+    final rightColors = widget.paletteColors.sublist(midPoint);
 
     return Container(
       width: 300.w,
@@ -87,15 +77,16 @@ class _ColorToolsState extends State<ColorTools> {
                   child: Row(
                     children: [
                       SizedBox(
-                        width: 330,
+                        width: 330.w,
                         child: SliderTheme(
                           data: SliderTheme.of(context).copyWith(
                             activeTrackColor: Colors.orange,
-                            showValueIndicator: ShowValueIndicator.onlyForDiscrete ,
+                            showValueIndicator:
+                                ShowValueIndicator.onlyForDiscrete,
                             inactiveTrackColor: Colors.white.withOpacity(0.1),
                             thumbColor: Colors.white,
                             trackHeight: 30,
-                            thumbShape: SliderComponentShape.noOverlay ,
+                            thumbShape: SliderComponentShape.noOverlay,
                             overlayColor: Colors.white.withOpacity(0.1),
                             valueIndicatorColor: Colors.white,
                             valueIndicatorTextStyle: const TextStyle(
@@ -122,20 +113,23 @@ class _ColorToolsState extends State<ColorTools> {
                 ),
                 // Left column
                 Padding(
-                  padding:  EdgeInsets.only(top: 20.h),
+                  padding: EdgeInsets.only(top: 20.h),
                   child: SingleChildScrollView(
                     child: Column(
-                      children: leftColors.map((color) => _buildColorButton(color)).toList(),
+                      children: leftColors
+                          .map((color) => _buildColorButton(color))
+                          .toList(),
                     ),
                   ),
                 ),
                 // // Right column
                 Padding(
-                  padding:  EdgeInsets.only(top: 20.h),
+                  padding: EdgeInsets.only(top: 20.h),
                   child: SingleChildScrollView(
                     child: Column(
-
-                      children: rightColors.map((color) => _buildColorButton(color)).toList(),
+                      children: rightColors
+                          .map((color) => _buildColorButton(color))
+                          .toList(),
                     ),
                   ),
                 ),
@@ -143,15 +137,12 @@ class _ColorToolsState extends State<ColorTools> {
             ),
           ),
 
-           SizedBox(height: 16.h),
+          SizedBox(height: 16.h),
 
           // Brush size slider
           if (widget.onStrokeWidthChanged != null) ...[
-            
             const SizedBox(height: 16),
           ],
-
-
         ],
       ),
     );
