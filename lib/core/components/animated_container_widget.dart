@@ -1,4 +1,5 @@
-import 'package:color_funland/core/components/toggle_button.dart';
+import 'package:color_funland/core/components/toggle_theme.dart';
+import 'package:color_funland/core/components/toggle_sound.dart';
 import 'package:color_funland/core/constants/app_icons.dart';
 import 'package:color_funland/core/utils/app_colors.dart';
 import 'package:color_funland/core/utils/text_styles.dart';
@@ -9,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AnimatedContainerWidget extends StatefulWidget {
-  const AnimatedContainerWidget({super.key});
+  const AnimatedContainerWidget({super.key, });
 
   @override
   AnimatedContainerState createState() => AnimatedContainerState();
@@ -75,7 +76,8 @@ class AnimatedContainerState extends State<AnimatedContainerWidget>
   }
 }
 
-Widget menuList(BuildContext context) => Container(
+Widget menuList(BuildContext context) =>
+    Container(
       width: 400.h,
       padding: EdgeInsets.fromLTRB(24.w, 36.h, 16.w, 36.h),
       decoration: BoxDecoration(
@@ -97,6 +99,13 @@ Widget menuList(BuildContext context) => Container(
           SizedBox(height: 16.h),
           toggleItem(
             title: 'Sound',
+            widget: ToggleSound(),
+          ),
+          SizedBox(height: 16.h),
+          toggleItem(
+            title: 'Theme',
+            widget: ToggleTheme(
+            ),
           ),
           SizedBox(height: 16.h),
           rowWithArrowButton(
@@ -152,7 +161,7 @@ Widget rowWithArrowButton(
   );
 }
 
-Widget toggleItem({required String title}) {
+Widget toggleItem({required String title, required Widget widget}) {
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.72.h),
     child: Row(
@@ -162,7 +171,7 @@ Widget toggleItem({required String title}) {
           title,
           style: ts18minnie400,
         ),
-        CustomToggleButton(),
+        widget,
       ],
     ),
   );

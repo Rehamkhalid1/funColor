@@ -51,28 +51,29 @@ Map<String, Widget Function(BuildContext)> routes = {
   ///*********************  Animals   ********************** */
   
   '/duckColor': (context) => PaintScreen(
-      uncoloredImage: AppImages.duckUncolored,
-      coloredImage: AppImages.duckColored,categoryName: "Animals",
+      uncoloredImage: AppImages.duckuncolored,
+      coloredImage: AppImages.duckcolored,
+      categoryName: "Animals",
       colorTools: AppColors.duckColors,
       ),
   '/elephantColor': (context) => PaintScreen(
-      uncoloredImage: AppImages.elephantUncolored,
-      coloredImage: AppImages.elephantColored,categoryName: "Animals",
+      uncoloredImage: AppImages.elephantuncolored,
+      coloredImage: AppImages.elephantcolored,categoryName: "Animals",
       colorTools: AppColors.elephantColors,
       ),
   '/catColor': (context) => PaintScreen(
-      uncoloredImage: AppImages.catUncolored,
-      coloredImage: AppImages.catColored,categoryName: "Animals",
+      uncoloredImage: AppImages.catuncolored,
+      coloredImage: AppImages.catcolored,categoryName: "Animals",
       colorTools: AppColors.catColors,
       ),
   '/giraffeColor': (context) => PaintScreen(
-      uncoloredImage: AppImages.giraffeUncolored,
-      coloredImage: AppImages.giraffeColored,categoryName: "Animals",
+      uncoloredImage: AppImages.giraffeuncolored,
+      coloredImage: AppImages.giraffecolored,categoryName: "Animals",
       colorTools: AppColors.giraffeColors,
       ),
   '/lionColor': (context) => PaintScreen(
-      uncoloredImage: AppImages.lionUncolored,
-      coloredImage: AppImages.lionColored,categoryName: "Animals",
+      uncoloredImage: AppImages.lionuncolored,
+      coloredImage: AppImages.lioncolored,categoryName: "Animals",
       colorTools: AppColors.lionColors,
       ),
 
@@ -80,51 +81,51 @@ Map<String, Widget Function(BuildContext)> routes = {
   ///*********************  Fishes   ********************** */
   
   '/dolphinColor': (context) => PaintScreen(
-      uncoloredImage: AppImages.dolphinUncolored,
-      coloredImage: AppImages.dolphinColored,categoryName: "Fishes",
+      uncoloredImage: AppImages.dolphinuncolored,
+      coloredImage: AppImages.dolphincolored,categoryName: "Fishes",
       colorTools: AppColors.dolphinColors,
       ),
   '/octupusColor': (context) => PaintScreen(
-      uncoloredImage: AppImages.octopusUncolored,
-      coloredImage: AppImages.octopusColored,categoryName: "Fishes",
+      uncoloredImage: AppImages.octopusuncolored,
+      coloredImage: AppImages.octopuscolored,categoryName: "Fishes",
       colorTools: AppColors.octupusColors,
       ),
   '/fishColor': (context) => PaintScreen(
-      uncoloredImage: AppImages.fishUncolored,
-      coloredImage: AppImages.fishColored,categoryName: "Fishes",
+      uncoloredImage: AppImages.fishuncolored,
+      coloredImage: AppImages.fishcolored,categoryName: "Fishes",
       colorTools: AppColors.fishColors,
       ),
   '/pufferfishColor': (context) => PaintScreen(
-      uncoloredImage: AppImages.pufferfishUncolored,
-      coloredImage: AppImages.pufferfishColored,categoryName: "Fishes",
+      uncoloredImage: AppImages.pufferfishuncolored,
+      coloredImage: AppImages.pufferfishcolored,categoryName: "Fishes",
       colorTools: AppColors.pufferfishColors,),
   '/seahorseColor': (context) => PaintScreen(
-      uncoloredImage: AppImages.seahorseUncolored,
-      coloredImage: AppImages.seahorseColored,categoryName: "Fishes",
+      uncoloredImage: AppImages.seahorseuncolored,
+      coloredImage: AppImages.seahorsecolored,categoryName: "Fishes",
       colorTools: AppColors.seahorseColors,),
 
   ///*********************  Flowers   ********************** */
   
   
   '/flowerColor1': (context) => PaintScreen(
-      uncoloredImage: AppImages.flowerUncolored1,
-      coloredImage: AppImages.flowerColored1,categoryName: "Floweres",
+      uncoloredImage: AppImages.floweruncolored1,
+      coloredImage: AppImages.flowercolored1,categoryName: "Floweres",
       colorTools: AppColors.flower1Colors,),
   '/flowerColor2': (context) => PaintScreen(
-      uncoloredImage: AppImages.flowerUncolored2,
-      coloredImage: AppImages.flowerColored2,categoryName: "Floweres",
+      uncoloredImage: AppImages.floweruncolored2,
+      coloredImage: AppImages.flowercolored2,categoryName: "Floweres",
       colorTools: AppColors.flower2Colors,),
   '/flowerColor3': (context) => PaintScreen(
-      uncoloredImage: AppImages.flowerUncolored3,
-      coloredImage: AppImages.flowerColored3,categoryName: "Floweres",
+      uncoloredImage: AppImages.floweruncolored3,
+      coloredImage: AppImages.flowercolored3,categoryName: "Floweres",
        colorTools: AppColors.flower3Colors,),
   '/flowerColor4': (context) => PaintScreen(
-      uncoloredImage: AppImages.flowerUncolored4,
-      coloredImage: AppImages.flowerColored4,categoryName: "Floweres",
+      uncoloredImage: AppImages.floweruncolored4,
+      coloredImage: AppImages.flowercolored4,categoryName: "Floweres",
        colorTools: AppColors.flower4Colors,),
   '/flowerColor5': (context) => PaintScreen(
-      uncoloredImage: AppImages.flowerUncolored5,
-      coloredImage: AppImages.flowerColored5,categoryName: "Floweres",
+      uncoloredImage: AppImages.floweruncolored5,
+      coloredImage: AppImages.flowercolored5,categoryName: "Floweres",
        colorTools: AppColors.flower5Colors,),
 
 

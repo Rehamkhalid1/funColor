@@ -13,41 +13,45 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-
 class AppBarRow extends StatelessWidget implements PreferredSizeWidget {
   const AppBarRow({
     super.key,
     required this.gameGroup,
     required this.inSideGame,
     this.appBarIcon = "",
-    this.containerKey, // Receive the key
-
+    this.containerKey,// Receive the key
+    this.gameGroupColor,
+    this.dividerColor, 
+    this.menu, 
   });
 
   final String gameGroup;
+  final String? menu;
+  final Color? gameGroupColor;
+  final Color? dividerColor;
   final bool inSideGame;
   final String appBarIcon;
-  final GlobalKey<AnimatedContainerState>? containerKey; // Accept per-screen key
-
+  final GlobalKey<AnimatedContainerState>?
+      containerKey; // Accept per-screen key
 
   @override
   Size get preferredSize => Size.fromHeight(100.h);
 
   @override
   Widget build(BuildContext context) {
-                String childname = '';
-                String? imageUrl;
+    String childname = '';
+    String? imageUrl;
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if( state is AuthSuccess){
+        if (state is AuthSuccess) {
           context.read<AuthCubit>().signInUseCase;
         }
-       },
-      builder: (context, state) {             
-          if (state is AuthSuccess) {
-                    childname = state.user.childName ?? '';
-                    imageUrl = state.user.childImageUrl;
-                  }
+      },
+      builder: (context, state) {
+        if (state is AuthSuccess) {
+          childname = state.user.childName ?? '';
+          imageUrl = state.user.childImageUrl;
+        }
 
         return AppBar(
           backgroundColor: Colors.transparent,
@@ -59,17 +63,16 @@ class AppBarRow extends StatelessWidget implements PreferredSizeWidget {
               child: BlocConsumer<ProfileInfoCubit, ProfileInfoState>(
                 listener: (context, state) {
                   // Fetch child data when profile is saved successfully
-                  if (state is SaveChildInfoSuccessState ) {
+                  if (state is SaveChildInfoSuccessState) {
                     context.read<ProfileInfoCubit>().getCurrentChild();
                   }
                 },
                 builder: (context, state) {
-
                   if (state is GetChildSuccessState) {
                     childname = state.child['name'] ?? '';
                     imageUrl = state.child['profileImage'];
                   }
-                
+
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -82,11 +85,16 @@ class AppBarRow extends StatelessWidget implements PreferredSizeWidget {
                             textAlign: TextAlign.center,
                           ),
                           SizedBox(width: 16.w),
-                          divider,
+                          Container(
+                            width: 4.w,
+                            height: 35.h,
+                            color: dividerColor,
+                          ),
                           SizedBox(width: 16.w),
                           Text(
                             gameGroup,
-                            style: ts36minnie400,
+                            style:
+                                ts36minnie400.copyWith(color: gameGroupColor),
                           ),
                           SizedBox(width: 16.w),
                           if (inSideGame)
@@ -141,7 +149,7 @@ class AppBarRow extends StatelessWidget implements PreferredSizeWidget {
                               containerKey?.currentState?.toggleContainer();
                             },
                             child: SvgPicture.asset(
-                              AppIcons.menu,
+                              menu ?? AppIcons.menu,
                               width: 49.w,
                               height: 49.h,
                             ),
@@ -178,9 +186,3 @@ BoxDecoration _buildContainerDecoration2() {
     ),
   );
 }
-
-Widget divider = Container(
-  width: 4.w,
-  height: 35.h,
-  color: AppColors.cBlackColor,
-);

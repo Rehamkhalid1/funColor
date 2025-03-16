@@ -38,56 +38,58 @@ class AuthError extends AuthState {
   List<Object?> get props => [message];
 }
 
-
 class DeleteAccountSuccess extends AuthState {
- 
   final String message;
 
   const DeleteAccountSuccess({
-
     required this.message,
   });
 
   @override
-  List<Object?> get props => [message,];
+  List<Object?> get props => [
+        message,
+      ];
 }
 
 class DeleteAccountError extends AuthState {
- 
   final String message;
 
   const DeleteAccountError({
-
     required this.message,
   });
 
   @override
-  List<Object?> get props => [message,];
+  List<Object?> get props => [
+        message,
+      ];
 }
+
 class ChangePasswordError extends AuthState {
- 
   final String message;
 
   const ChangePasswordError({
-
     required this.message,
   });
 
   @override
-  List<Object?> get props => [message,];
+  List<Object?> get props => [
+        message,
+      ];
 }
+
 class ChangePasswordSuccess extends AuthState {
- 
   final String message;
 
   const ChangePasswordSuccess({
-
     required this.message,
   });
 
   @override
-  List<Object?> get props => [message,];
+  List<Object?> get props => [
+        message,
+      ];
 }
+
 class AuthSignedOut extends AuthState {
   final String message;
 
@@ -99,7 +101,7 @@ class AuthSignedOut extends AuthState {
 
 class EmailVerificationSent extends AuthState {
   final String email;
-  
+
   const EmailVerificationSent({required this.email});
 
   @override
@@ -108,7 +110,7 @@ class EmailVerificationSent extends AuthState {
 
 class EmailVerificationRequired extends AuthState {
   final String email;
-  
+
   const EmailVerificationRequired({required this.email});
 
   @override
@@ -140,11 +142,7 @@ class GetChildInfoSuccessState extends AuthState {
 }
 
 class GetChildInfoErrorState extends AuthState {
-      final String? errorMessage;
+  final String? errorMessage;
 
-    const GetChildInfoErrorState(
-          {required this.errorMessage}
-
-    );
-
+  const GetChildInfoErrorState({required this.errorMessage});
 }

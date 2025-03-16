@@ -296,4 +296,6 @@ class AuthCubit extends Cubit<AuthState> {
       messageService.showMessage('Failed to sign out', MessageType.error);
     }
   }
+
+ 
 }

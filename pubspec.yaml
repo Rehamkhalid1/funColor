@@ -49,6 +49,8 @@ dependencies:
   fluttertoast: ^8.2.4
   get_it: ^8.0.3
   image_picker: ^1.1.2
+  path_drawing: ^1.0.1
+  xml: ^6.5.0
 
 dev_dependencies:
   flutter_lints: ^5.0.0
