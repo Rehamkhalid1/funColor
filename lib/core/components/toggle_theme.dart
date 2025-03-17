@@ -7,7 +7,7 @@ class ToggleTheme extends StatefulWidget {
   const ToggleTheme({super.key});
 
   // Use a ValueNotifier to notify UI updates
-  static final ValueNotifier<bool> isLight = ValueNotifier(true);
+  static final ValueNotifier<bool> isLight = ValueNotifier(false);
   
   static bool isLightMode() => isLight.value;
 
