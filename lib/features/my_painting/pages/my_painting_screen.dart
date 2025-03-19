@@ -58,11 +58,12 @@ class _MyPaintingScreenState extends State<MyPaintingScreen> {
                                 EdgeInsets.symmetric(vertical: 95.5.h),
                             child: Image.asset(
                               AppImages.myPaintingCardBg,
-                              width: 822.w,
+                              width: MediaQuery.of(context).size.width,
+                              fit: BoxFit.contain,
                             ),
                           ),
                           SizedBox(
-                            height: 500.h,
+                            height:MediaQuery.of(context).size.height,
                             child: PaintingScreenWidget(
                               items: gridItems,
                               crossAxisCount: 4,
