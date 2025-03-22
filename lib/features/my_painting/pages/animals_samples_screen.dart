@@ -1,5 +1,5 @@
 
-import 'package:color_funland/features/my_painting/model.dart';
+import 'package:color_funland/core/constants/model.dart';
 import 'package:color_funland/features/my_painting/widgets/shared_samples_screen.dart';
 import 'package:flutter/material.dart';
 

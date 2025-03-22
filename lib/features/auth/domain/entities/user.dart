@@ -1,3 +1,4 @@
+import 'package:color_funland/features/addProfileInfo/presentation/pages/child_progress_scareen.dart';
 import 'package:equatable/equatable.dart';
 
 class User extends Equatable {
@@ -10,6 +11,14 @@ class User extends Equatable {
   final String? childName;
   final String? childImageUrl;
   final bool isAdmin;
+  final int? paintingGameCounter;
+  final int? paintingLevelCounter;
+  final int? colorMixingGameCounter;
+  final int? colorMixingLevelCounter;
+  final int? colorMatchGameCounter;
+  final int? colorMatchLevelCounter;
+  final int? learningColorsGameCounter;
+  final int? learningColorsLevelCounter;
 
   const User({
     required this.uid,
@@ -21,6 +30,14 @@ class User extends Equatable {
     this.childName,
     this.childImageUrl,
     this.isAdmin = false,
+    this.paintingGameCounter,
+    this.paintingLevelCounter,
+    this.colorMixingGameCounter,
+    this.colorMixingLevelCounter,
+    this.colorMatchGameCounter,
+    this.colorMatchLevelCounter,
+    this.learningColorsGameCounter,
+    this.learningColorsLevelCounter,
   });
 
   @override

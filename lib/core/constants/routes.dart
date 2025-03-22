@@ -18,7 +18,7 @@ import 'package:color_funland/features/color_mixing/pages/color_mixing.dart';
 import 'package:color_funland/features/color_mixing/pages/color_mixing_levels.dart';
 import 'package:color_funland/features/color_mixing/pages/color_mixing_sample.dart';
 import 'package:color_funland/features/game_board/presentation/pages/game_board_screen.dart';
-import 'package:color_funland/features/my_painting/model.dart';
+import 'package:color_funland/core/constants/model.dart';
 import 'package:color_funland/features/my_painting/pages/animals_samples_screen.dart';
 import 'package:color_funland/features/my_painting/pages/fishes_samples_screen.dart';
 import 'package:color_funland/features/my_painting/pages/flowers_samples_screen.dart';

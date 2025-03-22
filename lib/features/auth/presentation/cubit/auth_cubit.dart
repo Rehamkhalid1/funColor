@@ -119,16 +119,13 @@ class AuthCubit extends Cubit<AuthState> {
                   username: userData['username'] ?? '',
                   createdAt: (userData['createdAt'] as Timestamp?)?.toDate() ??
                       DateTime.now(),
-                  childName: childDoc.exists ? childDoc['name'] ?? '' : '',
-                  childImageUrl:
-                      childDoc.exists ? childDoc['profileImage'] ?? '' : '',
                 );
 
                 emit(AuthSuccess(user: verifiedUser, isEmailVerified: true));
-                
-                await SuccessSound.playAfterLogin();
 
+                await SuccessSound.playAfterLogin();
                 BackgroundAudio.listenForSoundUpdates();
+              await  getCurrentChildData();
               } else {
                 emit(const AuthError(message: 'User data not found'));
               }
@@ -297,6 +294,79 @@ class AuthCubit extends Cubit<AuthState> {
     } catch (e) {
       emit(AuthError(message: 'Failed to sign out: ${e.toString()}'));
       messageService.showMessage('Failed to sign out', MessageType.error);
+    }
+  }
+
+  Future<void> getCurrentChildData() async {
+    try {
+      emit(AuthLoading());
+
+      final User? currentUser = _auth.currentUser;
+      if (currentUser == null) {
+        emit(GetChildDataErrorState(
+          errorMessage: 'User not authenticated',
+        ));
+        return;
+      }
+
+      // Get user document to find current child ID
+      final userDoc =
+          await FirebaseFirestore.instance.collection('users').doc(currentUser.uid).get();
+
+      if (!userDoc.exists) {
+        emit(GetChildDataErrorState(
+          errorMessage: 'User document not found',
+        ));
+        return;
+      }
+
+      final userData = userDoc.data();
+      final String? currentChildId = userData?['currentChildId'];
+
+      if (currentChildId == null) {
+        emit(GetChildDataErrorState(
+          errorMessage: 'No current child set',
+        ));
+        return;
+      }
+
+      // Get child document using the ID
+      final childDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(currentUser.uid)
+          .collection('children')
+          .doc(currentChildId)
+          .get();
+
+      if (!childDoc.exists) {
+        emit(GetChildDataErrorState(
+          errorMessage: 'Child not found',
+        ));
+        return;
+      }
+
+      final childData = childDoc.data() as Map<String, dynamic>;
+      emit(GetChildDataSuccessState(
+        child: {
+          'id': childDoc.id,
+          'name': childData['name'],
+          'age': childData['age'],
+          'imageUrl': childData['profileImage'],
+          'paintingGameCounter': childData['paintingGameCounter'],
+          'paintingLevelCounter': childData['paintingLevelCounter'],
+          'colorMixingGameCounter': childData['colorMixingGameCounter'],
+          'colorMixingLevelCounter': childData['colorMixingLevelCounter'],
+          'colorMatchGameCounter': childData['colorMatchGameCounter'],
+          'colorMatchLevelCounter': childData['colorMatchLevelCounter'],
+          'learningColorsGameCounter': childData['learningColorsGameCounter'],
+          'learningColorsLevelCounter': childData['learningColorsLevelCounter'],
+        },
+      ));
+   //   BackgroundAudio.listenForSoundUpdates();
+    } catch (e) {
+      emit(GetChildDataErrorState(
+        errorMessage: e.toString(),
+      ));
     }
   }
 }

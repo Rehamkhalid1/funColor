@@ -146,3 +146,25 @@ class GetChildInfoErrorState extends AuthState {
 
   const GetChildInfoErrorState({required this.errorMessage});
 }
+
+
+class GetChildDataSuccessState extends AuthState {
+  final Map<String, dynamic> child;
+
+  const GetChildDataSuccessState({
+    required this.child,
+  });
+
+  @override
+  List<Object?> get props => [child];
+}
+
+class GetChildDataErrorState extends AuthState {
+      final String? errorMessage;
+
+    const GetChildDataErrorState(
+          {required this.errorMessage}
+
+    );
+
+}

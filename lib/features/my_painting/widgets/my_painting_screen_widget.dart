@@ -1,6 +1,6 @@
 import 'package:color_funland/core/constants/app_images.dart';
 import 'package:color_funland/core/utils/text_styles.dart';
-import 'package:color_funland/features/my_painting/model.dart';
+import 'package:color_funland/core/constants/model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
