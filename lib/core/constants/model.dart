@@ -285,5 +285,5 @@ final List<String> colorMatchSamplesScreens = [
   '/colorMatchShapes',
   '/colorMatchFoods',
   "/colorMatchAnimals",
-  "/coloringScreen",
+  "/colorMatchNumbers",
 ];

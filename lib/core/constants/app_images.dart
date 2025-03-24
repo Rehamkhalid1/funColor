@@ -301,7 +301,29 @@ class AppImages {
       "$_myColorMatchImagePath/animalcolormatchsnake.svg";
   static const String animalColorMatchUnicorn =
       "$_myColorMatchImagePath/animalcolormatchunicorn.svg";
+
+
+  ///**************************** Color Match Animals *****************************/
+  static const String numbersColorMatch =
+      "$_myColorMatchImagePath/numbers.svg";
+  static const String number1colormatch =
+      "$_myColorMatchImagePath/number1colormatch.png";
+  static const String number2colormatch =
+      "$_myColorMatchImagePath/number2colormatch.png";
+  static const String number3colormatch =
+      "$_myColorMatchImagePath/number3colormatch.png";
+  static const String number4colormatch =
+      "$_myColorMatchImagePath/number4colormatch.png";
+  static const String number5colormatch =
+      "$_myColorMatchImagePath/number5colormatch.png";
+  static const String number6colormatch =
+      "$_myColorMatchImagePath/number6colormatch.png";
+  static const String number7colormatch =
+      "$_myColorMatchImagePath/number7colormatch.png";
 }
+
+
+
 /* logo image */
 
 Widget logoImage = SvgPicture.asset(

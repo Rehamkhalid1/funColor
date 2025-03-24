@@ -112,7 +112,7 @@ class _ChildProgressScreenState extends State<ChildProgressScreen> {
                                   padding: EdgeInsets.only(top: 32.h),
                                   child: ProgressItem(
                                     featureImage: AppIcons.colorMixingIcon,
-                                    featurName: 'Color Mising',
+                                    featurName: 'Color Mixing',
                                     totalLevels: 3,
                                     totalGameNumbers: 9,
                                     currentLevel:
@@ -298,6 +298,7 @@ class _ProgressItemState extends State<ProgressItem> {
 class PaintingProgress {
   static int levelsCounter = 1;
   static int gamesCounter = 0;
+   static int lockedIndex = 0;
 
   PaintingProgress(int paintingLevelsCounter, int paintingGamesCounter) {
     levelsCounter = paintingLevelsCounter;
@@ -308,6 +309,8 @@ class PaintingProgress {
 class ColorMixingProgress {
   static int levelsCounter = 1;
   static int gamesCounter = 0;
+     static int lockedIndex = 0;
+
 
   ColorMixingProgress(
       int colorMixingLevelsCounter, int colorMixingGamesCounter) {
@@ -319,6 +322,8 @@ class ColorMixingProgress {
 class ColorMatchProgress {
   static int levelsCounter = 1;
   static int gamesCounter = 0;
+     static int lockedIndex = 0;
+
 
   ColorMatchProgress(int colorMatchLevelsCounter, int colorMatchGamesCounter) {
     levelsCounter = colorMatchLevelsCounter;
@@ -329,6 +334,8 @@ class ColorMatchProgress {
 class LearningColorsProgress {
   static int levelsCounter = 1;
   static int gamesCounter = 0;
+     static int lockedIndex = 0;
+
 
   LearningColorsProgress(
       int learningColorsLevelsCounter, int learningColorsGamesCounter) {
@@ -337,6 +344,3 @@ class LearningColorsProgress {
   }
 }
 
-class ColorMixingOpenLock{
-  static int index = 0;
-}

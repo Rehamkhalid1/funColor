@@ -351,7 +351,7 @@ class AuthCubit extends Cubit<AuthState> {
           'id': childDoc.id,
           'name': childData['name'],
           'age': childData['age'],
-          'imageUrl': childData['profileImage'],
+          'profileImage': childData['profileImage'],
           'paintingGameCounter': childData['paintingGameCounter'],
           'paintingLevelCounter': childData['paintingLevelCounter'],
           'colorMixingGameCounter': childData['colorMixingGameCounter'],

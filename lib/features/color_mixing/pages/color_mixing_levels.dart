@@ -227,7 +227,7 @@ class _ColorMixingSamplsState extends State<ColorMixingLevels1> {
                                                 ColorMixingProgress
                                                     .levelsCounter);
                                   }
-                                  ColorMixingOpenLock.index = 1;
+                                  ColorMixingProgress.lockedIndex = 1;
                                   showWinScreen(
                                     context,
                                     () => Navigator.pushReplacementNamed(
@@ -297,7 +297,7 @@ class _ColorMixingSamplsState extends State<ColorMixingLevels1> {
                                                 ColorMixingProgress
                                                     .levelsCounter);
                                   }
-                                  ColorMixingOpenLock.index = 2;
+                                  ColorMixingProgress.lockedIndex = 2;
 
                                   showWinScreen(
                                     context,

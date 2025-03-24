@@ -94,7 +94,7 @@ class ColorMixingWidget extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
               
-             index > ColorMixingOpenLock.index
+             index > ColorMixingProgress.lockedIndex
                   ? Image.asset(
                       AppImages.locked,
                       width: 66.w,

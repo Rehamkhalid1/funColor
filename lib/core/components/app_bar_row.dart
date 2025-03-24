@@ -46,7 +46,7 @@ class AppBarRow extends StatelessWidget implements PreferredSizeWidget {
       builder: (context, state) {
         if (state is GetChildDataSuccessState) {
           childname = state.child['name'] ?? '';
-          imageUrl = state.child['imageUrl'];
+          imageUrl = state.child['profileImage'];
         }
 
         return AppBar(

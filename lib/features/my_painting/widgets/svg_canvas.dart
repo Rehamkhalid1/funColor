@@ -96,13 +96,13 @@ VectorImage parseSvg(String svgData) {
 // Widget to display the SVG and handle painting
 class SvgCanvas extends StatefulWidget {
   final VectorImage vectorImage;
-  final Color selectedColor;
+  final Color? selectedColor;
   final double scaleFactor;
 
   const SvgCanvas({
     super.key,
     required this.vectorImage,
-    required this.selectedColor,
+     this.selectedColor,
     this.scaleFactor = 1.10, // Default scale factor
   });
 
@@ -115,7 +115,7 @@ class _SvgCanvasState extends State<SvgCanvas> {
     for (var item in widget.vectorImage.items) {
       if (item.path.contains(position)) {
         setState(() {
-          item.fill = widget.selectedColor;
+          item.fill = widget.selectedColor!;
         });
         break;
       }

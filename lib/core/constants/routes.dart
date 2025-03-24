@@ -13,6 +13,7 @@ import 'package:color_funland/features/auth/presentation/pages/signup_screen.dar
 import 'package:color_funland/features/color_match/pages/color_match.dart';
 import 'package:color_funland/features/color_match/pages/color_match_animals.dart';
 import 'package:color_funland/features/color_match/pages/color_match_foods.dart';
+import 'package:color_funland/features/color_match/pages/color_match_numbers.dart';
 import 'package:color_funland/features/color_match/pages/color_match_shapes.dart';
 import 'package:color_funland/features/color_mixing/pages/color_mixing.dart';
 import 'package:color_funland/features/color_mixing/pages/color_mixing_levels.dart';
@@ -46,6 +47,7 @@ Map<String, Widget Function(BuildContext)> routes = {
    '/colorMatchShapes' : (context) => const ColorMatchShapes(),
    '/colorMatchFoods' : (context) => const ColorMatchFoods(),
    '/colorMatchAnimals' : (context) => const ColorMatchAnimals(),
+   '/colorMatchNumbers' : (context) =>  ColorMatchNumbers(),
    '/winScreen' : (context) => const WinScreen(),
 
   ///*********************  Animals   ********************** */
@@ -170,13 +172,7 @@ Map<String, Widget Function(BuildContext)> routes = {
      chosseImageColor1: AppImages.colorLevelPurple,
      chosseImageColor2: AppImages.colorLevelGreen,
      chosseImageColor3: AppImages.colorLevelOrange, levelNumber: 'Level 1',),
- // '/colorMixingLevels1-4' : (context) => const ColorMixingLevels1(firstColor: Color(0xffEA0606),
- //     secondColor: Color(0xff368727),
- //     resultColor: Color(0xffF6CA43),
- //     imageColor: AppImages.colorLevelYellow,
- //     chosseImageColor1: AppImages.colorLevelBrown,
- //     chosseImageColor2: AppImages.colorLevelPurple,
- //     chosseImageColor3: AppImages.colorLevelYellow, levelNumber: 'Level 1',),
+
 
   ///********************************** Level 2 *******************************************************************///
   '/colorMixingSampls2' : (context) =>  ColorMixingSampls(
