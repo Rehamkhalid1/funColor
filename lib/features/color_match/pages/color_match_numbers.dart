@@ -21,10 +21,28 @@ class ColorMatchNumbers extends StatefulWidget {
 
 class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
   final GlobalKey<AnimatedContainerState> _containerKey = GlobalKey();
-  final PaintState _paintState = PaintState();
-  VectorImage? _vectorImage;
   Color _selectedColor = Colors.black;
   String? _selectedImagePath; // Stores the path of the selected image
+
+
+ VectorImage? _vectorImage;
+  VectorImage? _coloredVectorImage;
+
+  final PaintState _paintState = PaintState();
+
+  bool isPaintingComplete = false;
+
+  bool isPaintingCorrect = false;
+
+
+
+  void _checkPaintingCompletion(List<PathSvgItem> paintedRegions,bool isCorrect) {
+    setState(() {
+      isPaintingComplete =
+          paintedRegions.every((region) => region.fill != Colors.transparent);
+      isPaintingCorrect =isCorrect; // Check correctness
+    });
+  }
 
   @override
   void initState() {
@@ -34,12 +52,18 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
 
   // Load and parse the SVG file
   Future<void> _loadSvg() async {
-    final String svgData =
+    final String uncoloredSvgData =
         await rootBundle.loadString(AppImages.numbersColorMatch);
+    final String coloredSvgData =
+        await rootBundle.loadString(AppImages.elephantcolored);
+
     setState(() {
-      _vectorImage = parseSvg(svgData);
+      _vectorImage = parseSvg(uncoloredSvgData);
+      _coloredVectorImage = parseSvg(coloredSvgData);
     });
   }
+
+
 
   // Method to reset the SVG image
   void _resetSvg() async {
@@ -132,6 +156,9 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
                                   ? SvgCanvas(
                                       vectorImage: _vectorImage!,
                                       selectedColor: _selectedColor,
+                                      onPaintUpdate: _checkPaintingCompletion,
+                                    coloredVectorImage:  _coloredVectorImage!,
+                                      scaleFactor: 1.10,
                                     )
                                   : const CircularProgressIndicator(), // Show a loading indicator until SVG is loaded
                             ),

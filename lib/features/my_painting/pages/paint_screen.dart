@@ -32,9 +32,23 @@ class PaintScreen extends StatefulWidget {
 class _PaintScreenState extends State<PaintScreen> {
   final GlobalKey<AnimatedContainerState> _containerKey = GlobalKey();
 
+  VectorImage? _vectorImage;
+  VectorImage? _coloredVectorImage;
+
   final PaintState _paintState = PaintState();
 
-  VectorImage? _vectorImage;
+  bool isPaintingComplete = false;
+
+  bool isPaintingCorrect = false;
+
+  void _checkPaintingCompletion(
+      List<PathSvgItem> paintedRegions, bool isCorrect) {
+    setState(() {
+      isPaintingComplete =
+          paintedRegions.every((region) => region.fill != Colors.transparent);
+      isPaintingCorrect = isCorrect; // Check correctness
+    });
+  }
 
   @override
   void initState() {
@@ -44,20 +58,24 @@ class _PaintScreenState extends State<PaintScreen> {
 
   // Load and parse the SVG file
   Future<void> _loadSvg() async {
-    final String svgData = await rootBundle.loadString('assets/images/mypainting_images/monkeyuncolored.svg');
+    final String uncoloredSvgData =
+        await rootBundle.loadString(widget.uncoloredImage);
+    final String coloredSvgData =
+        await rootBundle.loadString(widget.coloredImage);
+
     setState(() {
-      _vectorImage = parseSvg(svgData);
+      _vectorImage = parseSvg(uncoloredSvgData);
+      _coloredVectorImage = parseSvg(coloredSvgData);
     });
   }
 
   // Method to reset the SVG image
-void _resetSvg() async {
-  final String svgData = await rootBundle.loadString('assets/images/mypainting_images/monkeyuncolored.svg');
-  setState(() {
-    _vectorImage = parseSvg(svgData); // Reload the original SVG
-  });
-}
-
+  void _resetSvg() async {
+    final String svgData = await rootBundle.loadString(widget.uncoloredImage);
+    setState(() {
+      _vectorImage = parseSvg(svgData); // Reload the original SVG
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,18 +111,23 @@ void _resetSvg() async {
                                   widget.coloredImage,
                                   height: 230.53.h,
                                 )),
-                            InkWell(
-                              highlightColor: Colors.transparent,
-                              splashColor: Colors.transparent,
-                              onTap: () {
-                                Navigator.pushNamed(context, '/winScreen');
-                              },
-                              child: Image.asset(
-                                AppIcons.donebtn,
-                                height: 86.h,
-                                width: 164.w,
-                              ),
-                            )
+                            if (isPaintingComplete)
+                              InkWell(
+                                highlightColor: Colors.transparent,
+                                splashColor: Colors.transparent,
+                                onTap: () {
+                                  if (isPaintingCorrect) {
+                                    print("Colored Success");
+                                  } else {
+                                    print("Incorrect Coloring");
+                                  }
+                                },
+                                child: Image.asset(
+                                  AppIcons.donebtn,
+                                  height: 86.h,
+                                  width: 164.w,
+                                ),
+                              )
                           ],
                         ),
                         Expanded(
@@ -113,9 +136,12 @@ void _resetSvg() async {
                                 ? SvgCanvas(
                                     vectorImage: _vectorImage!,
                                     selectedColor: _paintState.selectedColor,
-                                    scaleFactor: .60,
+                                    scaleFactor: 1.10,
+                                    onPaintUpdate: _checkPaintingCompletion,
+                                    coloredVectorImage:
+                                        _coloredVectorImage!, // Pass the colored image
                                   )
-                                : const CircularProgressIndicator(), // Show a loading indicator until SVG is loaded
+                                : const CircularProgressIndicator(),
                           ),
                         ),
                         ColorTools(
@@ -142,7 +168,7 @@ void _resetSvg() async {
               child: InkWell(
                 highlightColor: Colors.transparent,
                 splashColor: Colors.transparent,
-                onTap:_resetSvg,
+                onTap: _resetSvg,
                 child: SvgPicture.asset(
                   AppIcons.reset,
                   width: 60.w,

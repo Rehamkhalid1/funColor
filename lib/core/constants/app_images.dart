@@ -9,6 +9,7 @@ const String _fishesPath = "assets/images/mypainting_images/fishes";
 const String _flowersPath = "assets/images/mypainting_images/flowers";
 const String _myColorMixingImagePath = "assets/images/color_mixing_images";
 const String _myColorMatchImagePath = "assets/images/color_match_images";
+const String _learningColorsImagePath = "assets/images/learning_colors_images";
 
 class AppImages {
 /* Landing Page */
@@ -320,12 +321,39 @@ class AppImages {
       "$_myColorMatchImagePath/number6colormatch.png";
   static const String number7colormatch =
       "$_myColorMatchImagePath/number7colormatch.png";
+
+
+///**************************************** learning Colors *******************************************/
+
+
+  static const String lesson1 = "$_learningColorsImagePath/lesson1.png";
+  static const String lesson2 = "$_learningColorsImagePath/lesson2.png";
+  static const String lesson3 = "$_learningColorsImagePath/lesson3.png";
+  static const String lesson1apple = "$_learningColorsImagePath/lesson1apple.png";
+  static const String lesson1fish = "$_learningColorsImagePath/lesson1fish.png";
+  static const String lesson1pepper = "$_learningColorsImagePath/lesson1pepper.png";
+  static const String lesson1Strawberry = "$_learningColorsImagePath/lesson1Strawberry.png";
+  static const String lesson1turtle = "$_learningColorsImagePath/lesson1turtle.png";
+  static const String lesson1aunt = "$_learningColorsImagePath/lesson1aunt.png";
+  static const String colorspalette = "$_learningColorsImagePath/colorspalette.svg";
+  static const String lessonredpalette = "$_learningColorsImagePath/lessonredpalette.svg";
+  static const String lessongreenpalette = "$_learningColorsImagePath/lessongreenpalette.svg";
+  static const String lessonbluepallete = "$_learningColorsImagePath/lessonbluepallete.svg";
+  static const String playsongbtn = "$_learningColorsImagePath/playsongbtn.svg";
+  static const String nextbtn = "$_learningColorsImagePath/nextbtn.svg";
+  static const String redlesson = "$_learningColorsImagePath/redlesson.svg";
+  static const String greenlesson = "$_learningColorsImagePath/greenlesson.svg";
+  static const String bluelesson = "$_learningColorsImagePath/bluelesson.svg";
+
+
 }
 
 
 
-/* logo image */
 
+
+
+/* logo image */
 Widget logoImage = SvgPicture.asset(
   AppImages.logo,
   height: 128.h,

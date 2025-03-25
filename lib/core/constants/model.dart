@@ -225,7 +225,6 @@ final List<GridItem> colorMixingItem = [
   GridItem(imageUrl: AppImages.number1, imgHeight: 223.56.h, imgWidth: 264.w),
   GridItem(imageUrl: AppImages.number2, imgHeight: 223.56.h, imgWidth: 264.w),
   GridItem(imageUrl: AppImages.number3, imgHeight: 223.56.h, imgWidth: 264.w),
-
 ];
 
 final List<String> colorMixingSamples = [
@@ -240,7 +239,6 @@ List<String> imageSample1 = [
   AppImages.colorYellow,
 ];
 List<String> imageSample2 = [
-
   AppImages.colordarkpurple,
   AppImages.colorGreen,
   AppImages.colorOrange,
@@ -287,3 +285,47 @@ final List<String> colorMatchSamplesScreens = [
   "/colorMatchAnimals",
   "/colorMatchNumbers",
 ];
+
+///****************** Learning Colors Screen **************/
+final List<GridItem> learningColorsItem = [
+  GridItem(
+    imageUrl: AppImages.lesson1,
+    imgHeight: 416.h,
+  ),
+  GridItem(
+    imageUrl: AppImages.lesson2,
+    imgHeight: 416.h,
+  ),
+  GridItem(
+    imageUrl: AppImages.lesson3,
+    imgHeight: 416.h,
+  ),
+];
+
+
+final List<String> learningColorsLessons = [
+  '/learningColorslesson1',
+  '/learningColorslesson2',
+  '/learningColorslesson3',
+];
+
+
+///************************************** lesson 1 *********************************/
+
+List<String> lesson1Images = [
+  AppImages.lessonredpalette,
+  AppImages.lessongreenpalette,
+  AppImages.lessonbluepallete,
+];
+
+
+List<String> redLessonImages = [
+  AppImages.lesson1apple,
+  AppImages.lesson1turtle,
+  AppImages.lesson1Strawberry,
+  AppImages.lesson1aunt,
+  AppImages.lesson1fish,
+  AppImages.lesson1pepper,
+
+];
+
