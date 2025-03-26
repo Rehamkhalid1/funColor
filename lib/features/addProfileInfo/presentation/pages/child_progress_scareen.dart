@@ -50,8 +50,8 @@ class _ChildProgressScreenState extends State<ChildProgressScreen> {
             colorMixingLevelCounter = state.child['colorMixingLevelCounter'] ?? 1;
             colorMatchGameCounter = state.child['colorMatchGameCounter'] ?? 0;
             colorMatchLevelCounter = state.child['colorMatchLevelCounter'] ?? 1;
-            learningColorsLevelCounter =
-                state.child['learningColorsLevelCounter'] ?? 0;
+            learningColorsGameCounter =
+                state.child['learningColorsGameCounter'] ?? 0;
             learningColorsLevelCounter =
                 state.child['learningColorsLevelCounter'] ?? 1;
           }
@@ -65,8 +65,8 @@ class _ChildProgressScreenState extends State<ChildProgressScreen> {
             colorMixingLevelCounter = state.child['colorMixingLevelCounter'] ?? 1;
             colorMatchGameCounter = state.child['colorMatchGameCounter'] ?? 0;
             colorMatchLevelCounter = state.child['colorMatchLevelCounter'] ?? 1;
-            learningColorsLevelCounter =
-                state.child['learningColorsLevelCounter'] ?? 0;
+            learningColorsGameCounter =
+                state.child['learningColorsGameCounter'] ?? 0;
             learningColorsLevelCounter =
                 state.child['learningColorsLevelCounter'] ?? 1;
           }
@@ -103,9 +103,9 @@ class _ChildProgressScreenState extends State<ChildProgressScreen> {
                                     totalLevels: 8,
                                     totalGameNumbers: 80,
                                     currentLevel:
-                                        paintingLevelCounter, //PaintingProgress.levelsCounter,
+                                        paintingLevelCounter, 
                                     finishedGameNumbers:
-                                        paintingGameCounter, // PaintingProgress.gamesCounter,
+                                        paintingGameCounter, 
                                   ),
                                 ),
                                 Padding(
@@ -116,9 +116,9 @@ class _ChildProgressScreenState extends State<ChildProgressScreen> {
                                     totalLevels: 3,
                                     totalGameNumbers: 9,
                                     currentLevel:
-                                        colorMixingLevelCounter, //ColorMixingProgress.levelsCounter,
+                                        colorMixingLevelCounter, 
                                     finishedGameNumbers:
-                                        colorMixingGameCounter, //ColorMixingProgress.gamesCounter,
+                                        colorMixingGameCounter, 
                                   ),
                                 ),
                                 Padding(
@@ -129,9 +129,9 @@ class _ChildProgressScreenState extends State<ChildProgressScreen> {
                                     totalLevels: 4,
                                     totalGameNumbers: 4,
                                     currentLevel:
-                                        colorMatchLevelCounter, //ColorMatchProgress.levelsCounter,
+                                        colorMatchLevelCounter, 
                                     finishedGameNumbers:
-                                        colorMatchGameCounter, //ColorMatchProgress.gamesCounter,
+                                        colorMatchGameCounter, 
                                   ),
                                 ),
                                 Padding(
@@ -142,9 +142,9 @@ class _ChildProgressScreenState extends State<ChildProgressScreen> {
                                     totalLevels: 3,
                                     totalGameNumbers: 9,
                                     currentLevel:
-                                        learningColorsLevelCounter, // LearningColorsProgress.levelsCounter,
+                                        learningColorsLevelCounter, 
                                     finishedGameNumbers:
-                                        learningColorsGameCounter, // LearningColorsProgress.gamesCounter,
+                                        learningColorsGameCounter, 
                                   ),
                                 ),
                               ],

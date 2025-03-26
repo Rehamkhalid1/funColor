@@ -53,13 +53,13 @@ class ColorMixingWidget extends StatelessWidget {
                   imageUrl: items[index].imageUrl,
                   onTap: () {
                     if ( index == 0) {
-                      Navigator.of(context).pushReplacementNamed(pageGroup[0]);
+                      Navigator.of(context).pushNamed(pageGroup[0]);
                     } else if (ColorMixingProgress.gamesCounter >=3 &&
                         index == 1) {
-                      Navigator.of(context).pushReplacementNamed(pageGroup[1]);
+                      Navigator.of(context).pushNamed(pageGroup[1]);
                     } else if (ColorMixingProgress.gamesCounter >= 6 &&
                         index == 2) {
-                      Navigator.of(context).pushReplacementNamed(pageGroup[2]);
+                      Navigator.of(context).pushNamed(pageGroup[2]);
                     }
                   },
                 ),

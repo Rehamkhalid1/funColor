@@ -58,7 +58,7 @@ class _LearningColorsLessonsState extends State<LearningColorsLessons> {
                   height: 24.h,
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 50.42.w),
+                  padding: EdgeInsets.symmetric(horizontal: 30.42.w),
                   child: Row(
                     children: [
                       SvgPicture.asset(
@@ -73,11 +73,11 @@ class _LearningColorsLessonsState extends State<LearningColorsLessons> {
                             image: widget.images[index],
                             onTap: () {
                               if (index == 0) {
-                                Navigator.pushNamed(context, '/redLesson');
+                                Navigator.pushNamed(context, '/redLessonVideo');
                               } else if (index == 1) {
-                                Navigator.pushNamed(context, '/greenLesson');
+                                Navigator.pushNamed(context, '/greenLessonVideo');
                               } else if (index == 2) {
-                                Navigator.pushNamed(context, '/blueLesson');
+                                Navigator.pushNamed(context, '/blueLessonVideo');
                               }
                             },
                           ),

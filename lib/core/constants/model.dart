@@ -329,3 +329,48 @@ List<String> redLessonImages = [
 
 ];
 
+List<String> greenLessonImages = [
+  AppImages.lesson1bird,
+  AppImages.lesson1potato,
+  AppImages.lesson1union,
+  AppImages.lesson1banana,
+  AppImages.lesson1vegetable,
+  AppImages.lesson1crocodile,
+
+];
+
+List<String> blueLessonImages = [
+  AppImages.lesson1frog,
+  AppImages.lesson1bluebird,
+  AppImages.lesson1grapes,
+  AppImages.lesson1whole,
+  AppImages.lesson1fish,
+  AppImages.lesson1lake,
+
+];
+
+
+  final Map<String, List<String>> blueImagesGroub = {
+     AppImages.bluelesson: [
+      AppImages.lesson1bluebird,
+      AppImages.lesson1whole,
+      AppImages.lesson1lake
+    ],
+  };
+
+ final Map<String, List<String>> redImagesGroub = {
+    AppImages.redlesson: [
+      AppImages.lesson1apple,
+      AppImages.lesson1Strawberry,
+      AppImages.lesson1aunt,
+      AppImages.lesson1pepper,
+    ],
+  };
+
+ final Map<String, List<String>> greenImagesGroub = {
+    AppImages.greenlesson: [
+      AppImages.lesson1bird,
+      AppImages.lesson1vegetable,
+      AppImages.lesson1crocodile,
+    ],
+  };

@@ -1,4 +1,3 @@
-import 'package:color_funland/features/addProfileInfo/presentation/pages/child_progress_scareen.dart';
 import 'package:equatable/equatable.dart';
 
 class User extends Equatable {

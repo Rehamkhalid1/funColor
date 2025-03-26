@@ -102,14 +102,7 @@ class AuthCubit extends Cubit<AuthState> {
 
               if (userDoc.exists) {
                 final userData = userDoc.data()!;
-                final String? currentChildId = userData['currentChildId'];
 
-                final childDoc = await FirebaseFirestore.instance
-                    .collection('users')
-                    .doc(firebaseUser.uid)
-                    .collection('children')
-                    .doc(currentChildId)
-                    .get();
 
                 final verifiedUser = entities.User(
                   uid: firebaseUser.uid,

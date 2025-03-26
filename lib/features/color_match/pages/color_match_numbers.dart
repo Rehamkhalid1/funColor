@@ -53,7 +53,7 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
   // Load and parse the SVG file
   Future<void> _loadSvg() async {
     final String uncoloredSvgData =
-        await rootBundle.loadString(AppImages.numbersColorMatch);
+        await rootBundle.loadString('assets/images/color_match_images/Flowerbox.svg');
     final String coloredSvgData =
         await rootBundle.loadString(AppImages.elephantcolored);
 
@@ -68,7 +68,7 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
   // Method to reset the SVG image
   void _resetSvg() async {
     final String svgData =
-        await rootBundle.loadString(AppImages.numbersColorMatch);
+        await rootBundle.loadString('assets/images/color_match_images/Flowerbox.svg');
     setState(() {
       _vectorImage = parseSvg(svgData); // Reload the original SVG
     });

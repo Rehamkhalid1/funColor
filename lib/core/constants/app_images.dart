@@ -335,6 +335,17 @@ class AppImages {
   static const String lesson1Strawberry = "$_learningColorsImagePath/lesson1Strawberry.png";
   static const String lesson1turtle = "$_learningColorsImagePath/lesson1turtle.png";
   static const String lesson1aunt = "$_learningColorsImagePath/lesson1aunt.png";
+  static const String lesson1banana = "$_learningColorsImagePath/lesson1banana.png";
+  static const String lesson1bird = "$_learningColorsImagePath/lesson1bird.png";
+  static const String lesson1crocodile = "$_learningColorsImagePath/lesson1crocodile.png";
+  static const String lesson1potato = "$_learningColorsImagePath/lesson1potato.png";
+  static const String lesson1union = "$_learningColorsImagePath/lesson1union.png";
+  static const String lesson1vegetable = "$_learningColorsImagePath/lesson1vegetable.png";
+  static const String lesson1bluebird = "$_learningColorsImagePath/lesson1bluebird.png";
+  static const String lesson1frog = "$_learningColorsImagePath/lesson1frog.png";
+  static const String lesson1grapes = "$_learningColorsImagePath/lesson1grapes.png";
+  static const String lesson1whole = "$_learningColorsImagePath/lesson1whole.png";
+  static const String lesson1lake = "$_learningColorsImagePath/lesson1lake.png";
   static const String colorspalette = "$_learningColorsImagePath/colorspalette.svg";
   static const String lessonredpalette = "$_learningColorsImagePath/lessonredpalette.svg";
   static const String lessongreenpalette = "$_learningColorsImagePath/lessongreenpalette.svg";

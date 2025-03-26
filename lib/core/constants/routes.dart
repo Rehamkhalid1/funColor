@@ -22,7 +22,8 @@ import 'package:color_funland/features/game_board/presentation/pages/game_board_
 import 'package:color_funland/core/constants/model.dart';
 import 'package:color_funland/features/learning_colors/pages/learning_colors_board.dart';
 import 'package:color_funland/features/learning_colors/pages/learning_colors_lessons.dart';
-import 'package:color_funland/features/learning_colors/pages/red_green_blue_lesson.dart';
+import 'package:color_funland/features/learning_colors/pages/red_green_blue_practice_page.dart';
+import 'package:color_funland/features/learning_colors/pages/red_green_blue_video_page.dart';
 import 'package:color_funland/features/my_painting/pages/animals_samples_screen.dart';
 import 'package:color_funland/features/my_painting/pages/fishes_samples_screen.dart';
 import 'package:color_funland/features/my_painting/pages/flowers_samples_screen.dart';
@@ -294,16 +295,35 @@ Map<String, Widget Function(BuildContext)> routes = {
         images: lesson1Images,
       ),
 
-  '/redLesson': (context) => RedGreenBlueLesson(
+  '/redLessonVideo': (context) => RedGreenBlueVideoPage(
+        lessonImage: AppImages.redlesson,
+        lessonNumber: 1,
+        videoUrl:'https://s3-figma-videos-production-sig.figma.com/video/TEAM/1372081414108277178/198ed78810d3a6fe8b84eddcac9b2bbe927b1af9?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=dB--TqLRGx8BonukR-ruCn0NO1gk3~86ZH4nycby8agxpzkqSVRZNbWMds1xkIUJtaf7io0LvAfIabZB-6-jgNkHiD4-9EZf4NblIsP52EkaULYkWsHxNSNoQcF6UUnSJjZBEq01ZPHH9DODAyuFP~niaH9yyH0ayxpf1zStirCXpsVqi3qlW7zsdN03QeinPW0vG4n0L6IU39~bXDbJXFZoy-9fNsInh2SSxkU7HmgqPi7Y1caryGXBz-XXLXWhS~XtmOwBNP7l6RjcFCAFJrsF-Mz0Zfoi69FWADcXL~BD2JX5FtXaOkPwv1Eg-iaYT2c7V0XU~OGlajir7PcV3w__',
+
+      ),
+  '/greenLessonVideo': (context) => RedGreenBlueVideoPage(
+        lessonImage: AppImages.greenlesson,
+        lessonNumber: 2,
+        videoUrl: 'https://s3-figma-videos-production-sig.figma.com/video/TEAM/1372081414108277178/d78fdfc06007e09ddf72a994252730dcbabd046e?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=jib~~8VY~3zx7YSaEe99dIZn31VDlQ0HyzTc0L7zaRyrorFd7T3ljphHkPbVWnIjcmdEmuI8O-5TaQJngXWp5hHOw3PQRR9tXkdTo-c~B15aFd6oH7U8AC4svQoAdBq-q7sXosgcjvk9wi~WfEwFsr-hOmMDbxMNWJ320dF2oANS7UccCiUSFEB7b8o76C4Xy9WAvLBwVmZiJispTuV-Td6LXGWjE5IvxBuLOGWU6fx~iyQywkutvLP4A-IUP-G7wa~hPIgDBsUK7dwGP0Y8jqq2ykLJOyp8XRdHpKZrtolyb-rVr68avFV2Hz9KSvsPKQppcEwcO5k~NQwPfYGgUA__',
+ 
+      ),
+  '/blueLessonVideo': (context) => RedGreenBlueVideoPage(
+        lessonImage: AppImages.bluelesson,
+        lessonNumber: 3,
+        videoUrl: 'https://s3-figma-videos-production-sig.figma.com/video/TEAM/1372081414108277178/d94512402b8d856782afaf9de26ab4e89fc066d0?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=t~nCIrsmgkrA3bbgCCbX27J7qqmXD6TnvVT~HIHN2WtFkEkHhdJpWo4GcTYxS4xRfGYocCXMquhh8MncCSoGSYL1o9rPnVBFibxXNDbVBLqjBEx-wcStdQ6lHcDyVsJUw-YA-eimBfQHqv1sYrQtcjNwBx46vS8pGfIgt5VLR~RaHl0ZlZZ42tSNr6nFLoROFyppbG06M2E2QRHjDlo7vjWsCAtM57mvev5ETr51Pc132nODy6rBVSiOUnWmUjY2xe3fCRgUbCxn-ZzvjesArI102NvEnF5MBe~1GK3odf2CTZd9L22IYX~FZ6iBe94f9pOCQEdHnVbpZD7KTrPdpw__',
+
+      ),
+
+  '/redLesson': (context) => RedGreenBluePracticePage(
         images: redLessonImages,
         lessonImage: AppImages.redlesson,
       ),
-  '/greenLesson': (context) => RedGreenBlueLesson(
-        images: redLessonImages,
+  '/greenLesson': (context) => RedGreenBluePracticePage(
+        images: greenLessonImages,
         lessonImage: AppImages.greenlesson,
       ),
-  '/blueLesson': (context) => RedGreenBlueLesson(
-        images: redLessonImages,
+  '/blueLesson': (context) => RedGreenBluePracticePage(
+        images: blueLessonImages,
         lessonImage: AppImages.bluelesson,
       ),
 };
