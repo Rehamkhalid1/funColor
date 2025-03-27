@@ -36,12 +36,12 @@ class AppColors {
 
 
   ///******************** painting items colors *****************/
-  static List<Color> duckColors = [ 
+  static List<Color> monkeyColors = [ 
     Colors.white,
     Colors.black,
-    Colors.yellow,
-    Color(0xFF4CAF50),  
-    Color(0xFFFF9800),  
+    Color(0xFFEFEF97),
+    Color(0xFF914207),  
+    Color(0xFFFA8A1F),  
     Color(0xFF2196F3),  
     ];
   static List<Color> elephantColors = [  

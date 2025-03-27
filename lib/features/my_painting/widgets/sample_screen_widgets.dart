@@ -1,6 +1,7 @@
 import 'package:color_funland/core/constants/app_images.dart';
 import 'package:color_funland/core/utils/text_styles.dart';
 import 'package:color_funland/core/constants/model.dart';
+import 'package:color_funland/features/addProfileInfo/presentation/pages/child_progress_scareen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -87,7 +88,7 @@ class SampleScreenWidget extends StatelessWidget {
                 height: 211.62.h,
                 fit: BoxFit.contain,
               ),
-              index > 3
+              index > PaintingProgress.lockedIndex
                   ? Image.asset(
                       AppImages.locked,
                       width: 66.w,

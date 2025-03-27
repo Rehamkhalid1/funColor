@@ -65,7 +65,7 @@ class _RedGreenBlueVideoPageState extends State<RedGreenBlueVideoPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Expanded(
-              flex: 2,
+              flex: 1,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -119,17 +119,12 @@ class _RedGreenBlueVideoPageState extends State<RedGreenBlueVideoPage> {
         ),
       ),
       bottomNavigationBar: LearningColorsBtmNavBar(
+        isVideoCompleted: isVideoCompleted,
         onBackPressed: () {
           Navigator.pop(context);
         },
         onNextPressed: () {
-          if (!isVideoCompleted) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text("Please watch the full video before proceeding!!.",style: TextStyle(color: Colors.white,fontSize: 18.sp),),
-              backgroundColor: getMessageColor(widget.lessonNumber),
-            ));
-            return;
-          }
+          
           switch (widget.lessonNumber) {
             case 1:
               Navigator.pushNamed(context, '/redLesson');
@@ -146,15 +141,6 @@ class _RedGreenBlueVideoPageState extends State<RedGreenBlueVideoPage> {
     );
   }
 
-  Color getMessageColor(int lessonNumber) {
-    if (lessonNumber == 1) {
-      return Colors.red;
-    } else if (lessonNumber == 2) {
-      return Colors.green;
-    } else if (lessonNumber == 3) {
-      return Colors.blue;
-    } else {
-      return Colors.black;
-    }
-  }
+ 
 }
+ 

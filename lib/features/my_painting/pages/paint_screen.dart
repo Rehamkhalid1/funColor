@@ -1,14 +1,18 @@
 import 'package:color_funland/core/components/animated_container_widget.dart';
+import 'package:color_funland/core/components/win_screen.dart';
 import 'package:color_funland/core/constants/app_icons.dart';
-
 import 'package:color_funland/core/components/app_bar_row.dart';
 import 'package:color_funland/core/components/three_items_bottom_navigation.dart';
+import 'package:color_funland/core/constants/app_images.dart';
 import 'package:color_funland/core/utils/text_styles.dart';
+import 'package:color_funland/features/addProfileInfo/presentation/cubit/profile_info_cubit.dart';
+import 'package:color_funland/features/addProfileInfo/presentation/pages/child_progress_scareen.dart';
 import 'package:color_funland/features/my_painting/widgets/color_tools.dart';
 import 'package:color_funland/features/my_painting/widgets/paint_state.dart';
 import 'package:color_funland/features/my_painting/widgets/svg_canvas.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -32,6 +36,23 @@ class PaintScreen extends StatefulWidget {
 class _PaintScreenState extends State<PaintScreen> {
   final GlobalKey<AnimatedContainerState> _containerKey = GlobalKey();
 
+
+  void _increaseCounterGame() {
+    setState(() {
+      if (PaintingProgress.gamesCounter < 80) {
+        PaintingProgress.gamesCounter++;
+      }
+    });
+  }
+
+  void _increaseLevelCounter() {
+    setState(() {
+      if (PaintingProgress.gamesCounter < 80) {
+        PaintingProgress.levelsCounter++;
+      }
+    });
+  }
+
   VectorImage? _vectorImage;
   VectorImage? _coloredVectorImage;
 
@@ -41,14 +62,28 @@ class _PaintScreenState extends State<PaintScreen> {
 
   bool isPaintingCorrect = false;
 
-  void _checkPaintingCompletion(
-      List<PathSvgItem> paintedRegions, bool isCorrect) {
-    setState(() {
-      isPaintingComplete =
-          paintedRegions.every((region) => region.fill != Colors.transparent);
-      isPaintingCorrect = isCorrect; // Check correctness
-    });
-  }
+
+
+void _checkPaintingCompletion(List<PathSvgItem> paintedRegions, bool isCorrect) {
+  int totalRegions = paintedRegions.length;
+  int paintedCount = paintedRegions.where((region) => 
+    region.fill != Colors.transparent && region.fill != Colors.white).length;
+
+  double paintedPercentage = (paintedCount / totalRegions) * 100;
+
+  // print("Total Regions: $totalRegions");
+  // print("Painted Regions: $paintedCount");
+  // print("Painting Completion: $paintedPercentage%");
+
+  setState(() {
+    isPaintingComplete = paintedPercentage >= 60.0; // Show widget when 80% is painted
+    isPaintingCorrect = isCorrect;
+  });
+}
+
+
+
+
 
   @override
   void initState() {
@@ -75,6 +110,13 @@ class _PaintScreenState extends State<PaintScreen> {
     setState(() {
       _vectorImage = parseSvg(svgData); // Reload the original SVG
     });
+  }
+
+  void check(){
+    if(widget.uncoloredImage == AppImages.uncoloredmonkey){
+      print("monkey");
+    }
+    
   }
 
   @override
@@ -116,11 +158,7 @@ class _PaintScreenState extends State<PaintScreen> {
                                 highlightColor: Colors.transparent,
                                 splashColor: Colors.transparent,
                                 onTap: () {
-                                  if (isPaintingCorrect) {
-                                    print("Colored Success");
-                                  } else {
-                                    print("Incorrect Coloring");
-                                  }
+                                 scoringColoredImages();
                                 },
                                 child: Image.asset(
                                   AppIcons.donebtn,
@@ -136,7 +174,7 @@ class _PaintScreenState extends State<PaintScreen> {
                                 ? SvgCanvas(
                                     vectorImage: _vectorImage!,
                                     selectedColor: _paintState.selectedColor,
-                                    scaleFactor: 1.10,
+                                    scaleFactor: 1.0,
                                     onPaintUpdate: _checkPaintingCompletion,
                                     coloredVectorImage:
                                         _coloredVectorImage!, // Pass the colored image
@@ -186,4 +224,23 @@ class _PaintScreenState extends State<PaintScreen> {
       ),
     );
   }
+
+
+
+ void scoringColoredImages(){
+   if(widget.uncoloredImage == AppImages.uncoloredmonkey && isPaintingCorrect){
+     if(PaintingProgress.gamesCounter < 1){
+      _increaseCounterGame();
+       context.read<ProfileInfoCubit>().updatePaintingProgress(
+                paintingGameCounter: PaintingProgress.gamesCounter,
+                paintingLevelCounter: PaintingProgress.levelsCounter);
+     }
+      showWinScreen(
+            context,
+            () => Navigator.pushReplacementNamed(context, "/animalsSamplesScreen"),
+          );
+   }
+ }
+
+
 }

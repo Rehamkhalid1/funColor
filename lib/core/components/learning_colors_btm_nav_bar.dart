@@ -8,11 +8,14 @@ import 'package:flutter_svg/svg.dart';
 class LearningColorsBtmNavBar extends StatefulWidget {
   const LearningColorsBtmNavBar({
     super.key,
-    this.onBackPressed, this.onNextPressed,
+    this.onBackPressed,
+    this.onNextPressed,
+     required this.isVideoCompleted,
   });
 
   final VoidCallback? onBackPressed;
   final VoidCallback? onNextPressed;
+  final bool isVideoCompleted;
 
   @override
   _LearningColorsBtmNavBarState createState() =>
@@ -49,7 +52,7 @@ class _LearningColorsBtmNavBarState extends State<LearningColorsBtmNavBar> {
 
   Padding twoItemsBtmNavBar() {
     return Padding(
-      padding: EdgeInsets.fromLTRB(34.51.w, 0, 34.51.w,0),
+      padding: EdgeInsets.fromLTRB(34.51.w, 0, 34.51.w, 0),
       child: SizedBox(
         height: 86.h,
         child: Row(
@@ -62,16 +65,17 @@ class _LearningColorsBtmNavBarState extends State<LearningColorsBtmNavBar> {
                   height: 81.07.h,
                   width: 79.08.w,
                 )),
-            InkWell(
-              highlightColor: Colors.transparent,
-              splashColor: Colors.transparent,
-              onTap: widget.onNextPressed,
-              child: SvgPicture.asset(
-                AppImages.nextbtn,
-                width: 120.w,
-                height: 80.h,
+            if (widget.isVideoCompleted)
+              InkWell(
+                highlightColor: Colors.transparent,
+                splashColor: Colors.transparent,
+                onTap: widget.onNextPressed,
+                child: SvgPicture.asset(
+                  AppImages.nextbtn,
+                  width: 120.w,
+                  height: 80.h,
+                ),
               ),
-            ),
           ],
         ),
       ),

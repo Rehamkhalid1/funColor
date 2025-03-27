@@ -74,10 +74,10 @@ final List<GridItem> gridItems = [
 ///*************   Animals Section  ************** */
 
 final List<String> animalsPaintingScreen = [
-  '/duckColor',
+  '/monkeyColor',
   '/elephantColor',
-  '/catColor',
   '/giraffeColor',
+  '/catColor',
   '/lionColor',
 ];
 

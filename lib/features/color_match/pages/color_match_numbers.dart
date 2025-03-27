@@ -55,7 +55,7 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
     final String uncoloredSvgData =
         await rootBundle.loadString('assets/images/color_match_images/Flowerbox.svg');
     final String coloredSvgData =
-        await rootBundle.loadString(AppImages.elephantcolored);
+        await rootBundle.loadString('');
 
     setState(() {
       _vectorImage = parseSvg(uncoloredSvgData);

@@ -85,22 +85,24 @@ class AppImages {
 
   ///************************    animals            ********************* */
 
-  static const String duckuncolored =
-      "$_myPaintingImagesPath/duckuncolored.svg";
-  static const String duckcolored = "$_myPaintingImagesPath/duckcolored.svg";
+  static const String uncoloredmonkey =
+      "$_myPaintingImagesPath/uncoloredmonkey.svg";
+  static const String coloredmonkey = "$_myPaintingImagesPath/coloredmonkey.svg";
 
-  static const String elephantuncolored =
-      "$_myPaintingImagesPath/elephantuncolored.svg";
-  static const String elephantcolored =
-      "$_myPaintingImagesPath/elephantcolored.svg";
+  static const String uncoloredelephante =
+      "$_myPaintingImagesPath/uncoloredelephante.svg";
+  static const String coloredelephante =
+      "$_myPaintingImagesPath/coloredelephante.svg";
+
+  static const String uncoloredgiraffe =
+      "$_myPaintingImagesPath/uncoloredgiraffe.svg";
+  static const String coloredgiraffe =
+      "$_myPaintingImagesPath/coloredgiraffe.svg";
+
 
   static const String catuncolored = "$_myPaintingImagesPath/catuncolored.svg";
   static const String catcolored = "$_myPaintingImagesPath/catcolored.svg";
 
-  static const String giraffeuncolored =
-      "$_myPaintingImagesPath/giraffeuncolored.svg";
-  static const String giraffecolored =
-      "$_myPaintingImagesPath/giraffecolored.svg";
 
   static const String lionuncolored =
       "$_myPaintingImagesPath/lionuncolored.svg";

@@ -158,6 +158,7 @@ class _RedGreenBluePracticePageState extends State<RedGreenBluePracticePage> {
         ),
       ),
       bottomNavigationBar: LearningColorsBtmNavBar(
+        isVideoCompleted: true,
         onBackPressed: () {
           Navigator.pop(context);
         },

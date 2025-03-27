@@ -56,29 +56,29 @@ Map<String, Widget Function(BuildContext)> routes = {
 
   ///*********************  Animals   ********************** */
 
-  '/duckColor': (context) => PaintScreen(
-        uncoloredImage: AppImages.duckuncolored,
-        coloredImage: AppImages.duckcolored,
+  '/monkeyColor': (context) => PaintScreen(
+        uncoloredImage: AppImages.uncoloredmonkey,
+        coloredImage: AppImages.coloredmonkey,
         categoryName: "Animals",
-        colorTools: AppColors.duckColors,
+        colorTools: AppColors.monkeyColors,
       ),
   '/elephantColor': (context) => PaintScreen(
-        uncoloredImage: AppImages.elephantuncolored,
-        coloredImage: AppImages.elephantcolored,
+        uncoloredImage: AppImages.uncoloredelephante,
+        coloredImage: AppImages.coloredelephante,
         categoryName: "Animals",
         colorTools: AppColors.elephantColors,
+      ),
+  '/giraffeColor': (context) => PaintScreen(
+        uncoloredImage: AppImages.uncoloredgiraffe,
+        coloredImage: AppImages.coloredgiraffe,
+        categoryName: "Animals",
+        colorTools: AppColors.giraffeColors,
       ),
   '/catColor': (context) => PaintScreen(
         uncoloredImage: AppImages.catuncolored,
         coloredImage: AppImages.catcolored,
         categoryName: "Animals",
         colorTools: AppColors.catColors,
-      ),
-  '/giraffeColor': (context) => PaintScreen(
-        uncoloredImage: AppImages.giraffeuncolored,
-        coloredImage: AppImages.giraffecolored,
-        categoryName: "Animals",
-        colorTools: AppColors.giraffeColors,
       ),
   '/lionColor': (context) => PaintScreen(
         uncoloredImage: AppImages.lionuncolored,

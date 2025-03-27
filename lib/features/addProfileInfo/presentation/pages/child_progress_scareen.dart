@@ -298,7 +298,7 @@ class _ProgressItemState extends State<ProgressItem> {
 class PaintingProgress {
   static int levelsCounter = 1;
   static int gamesCounter = 0;
-   static int lockedIndex = 0;
+   static int lockedIndex = 3;
 
   PaintingProgress(int paintingLevelsCounter, int paintingGamesCounter) {
     levelsCounter = paintingLevelsCounter;
