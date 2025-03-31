@@ -66,9 +66,7 @@ class _RedGreenBluePracticePageState extends State<RedGreenBluePracticePage> {
         bool isGreen =
             greenImagesGroub[AppImages.greenlesson]?.contains(selectedImage) ??
                 false;
-        // Mark the image as checked
         checkedImages[selectedImage] = isGreen;
-        // Add only if it's red and not already in the list
         if (isGreen && !greenTargetList.contains(selectedImage)) {
           greenTargetList.add(selectedImage);
         }
@@ -78,9 +76,7 @@ class _RedGreenBluePracticePageState extends State<RedGreenBluePracticePage> {
         bool isBlue =
             blueImagesGroub[AppImages.bluelesson]?.contains(selectedImage) ??
                 false;
-        // Mark the image as checked
         checkedImages[selectedImage] = isBlue;
-        // Add only if it's red and not already in the list
         if (isBlue && !blueTargetList.contains(selectedImage)) {
           blueTargetList.add(selectedImage);
         }

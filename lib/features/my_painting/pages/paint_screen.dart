@@ -1,4 +1,5 @@
 import 'package:color_funland/core/components/animated_container_widget.dart';
+import 'package:color_funland/core/components/fail_screen.dart';
 import 'package:color_funland/core/components/win_screen.dart';
 import 'package:color_funland/core/constants/app_icons.dart';
 import 'package:color_funland/core/components/app_bar_row.dart';
@@ -36,10 +37,9 @@ class PaintScreen extends StatefulWidget {
 class _PaintScreenState extends State<PaintScreen> {
   final GlobalKey<AnimatedContainerState> _containerKey = GlobalKey();
 
-
   void _increaseCounterGame() {
     setState(() {
-      if (PaintingProgress.gamesCounter < 80) {
+      if (PaintingProgress.gamesCounter < 10) {
         PaintingProgress.gamesCounter++;
       }
     });
@@ -47,7 +47,7 @@ class _PaintScreenState extends State<PaintScreen> {
 
   void _increaseLevelCounter() {
     setState(() {
-      if (PaintingProgress.gamesCounter < 80) {
+      if (PaintingProgress.gamesCounter < 10) {
         PaintingProgress.levelsCounter++;
       }
     });
@@ -62,28 +62,26 @@ class _PaintScreenState extends State<PaintScreen> {
 
   bool isPaintingCorrect = false;
 
+  void _checkPaintingCompletion(
+      List<PathSvgItem> paintedRegions, bool isCorrect) {
+    int totalRegions = paintedRegions.length;
+    int paintedCount = paintedRegions
+        .where((region) =>
+            region.fill != Colors.transparent && region.fill != Colors.white)
+        .length;
 
+    double paintedPercentage = (paintedCount / totalRegions) * 100;
 
-void _checkPaintingCompletion(List<PathSvgItem> paintedRegions, bool isCorrect) {
-  int totalRegions = paintedRegions.length;
-  int paintedCount = paintedRegions.where((region) => 
-    region.fill != Colors.transparent && region.fill != Colors.white).length;
+    print("Total Regions: $totalRegions");
+    print("Painted Regions: $paintedCount");
+    print("Painting Completion: $paintedPercentage%");
 
-  double paintedPercentage = (paintedCount / totalRegions) * 100;
-
-  // print("Total Regions: $totalRegions");
-  // print("Painted Regions: $paintedCount");
-  // print("Painting Completion: $paintedPercentage%");
-
-  setState(() {
-    isPaintingComplete = paintedPercentage >= 60.0; // Show widget when 80% is painted
-    isPaintingCorrect = isCorrect;
-  });
-}
-
-
-
-
+    setState(() {
+      isPaintingComplete =
+          paintedPercentage >= 60.0; // Show widget when 80% is painted
+      isPaintingCorrect = isCorrect;
+    });
+  }
 
   @override
   void initState() {
@@ -110,13 +108,6 @@ void _checkPaintingCompletion(List<PathSvgItem> paintedRegions, bool isCorrect) 
     setState(() {
       _vectorImage = parseSvg(svgData); // Reload the original SVG
     });
-  }
-
-  void check(){
-    if(widget.uncoloredImage == AppImages.uncoloredmonkey){
-      print("monkey");
-    }
-    
   }
 
   @override
@@ -158,7 +149,15 @@ void _checkPaintingCompletion(List<PathSvgItem> paintedRegions, bool isCorrect) 
                                 highlightColor: Colors.transparent,
                                 splashColor: Colors.transparent,
                                 onTap: () {
-                                 scoringColoredImages();
+                                  if (isPaintingCorrect) {
+                                    scoringColoredItems();
+                                    print('success paint');
+                                  } else {
+                                    showFailureScreen(
+                                        context); // Show failure screen as a modal
+
+                                    print('error paint');
+                                  }
                                 },
                                 child: Image.asset(
                                   AppIcons.donebtn,
@@ -225,22 +224,124 @@ void _checkPaintingCompletion(List<PathSvgItem> paintedRegions, bool isCorrect) 
     );
   }
 
-
-
- void scoringColoredImages(){
-   if(widget.uncoloredImage == AppImages.uncoloredmonkey && isPaintingCorrect){
-     if(PaintingProgress.gamesCounter < 1){
-      _increaseCounterGame();
-       context.read<ProfileInfoCubit>().updatePaintingProgress(
-                paintingGameCounter: PaintingProgress.gamesCounter,
-                paintingLevelCounter: PaintingProgress.levelsCounter);
-     }
+  void scoringColoredItems() {
+    if (widget.uncoloredImage == AppImages.uncoloredelephante) {
+      if (PaintingProgress.gamesCounter < 1) {
+        _increaseCounterGame();
+        context.read<ProfileInfoCubit>().updatePaintingProgress(
+            paintingGameCounter: PaintingProgress.gamesCounter,
+            paintingLevelCounter: PaintingProgress.levelsCounter);
+      }
       showWinScreen(
-            context,
-            () => Navigator.pushReplacementNamed(context, "/animalsSamplesScreen"),
-          );
-   }
- }
+        context,
+        () => Navigator.pushReplacementNamed(context, "/animalsSamplesScreen"),
+      );
+    }
+    if (widget.uncoloredImage == AppImages.uncoloredturtle) {
+      if (PaintingProgress.gamesCounter == 1) {
+        _increaseCounterGame();
+        context.read<ProfileInfoCubit>().updatePaintingProgress(
+            paintingGameCounter: PaintingProgress.gamesCounter,
+            paintingLevelCounter: PaintingProgress.levelsCounter);
+        PaintingProgress.lockedanimals = 2;
+      }
+      showWinScreen(
+        context,
+        () => Navigator.pushReplacementNamed(context, "/animalsSamplesScreen"),
+      );
+    }
+    if (widget.uncoloredImage == AppImages.uncoloredpenguin) {
+      if (PaintingProgress.gamesCounter == 2) {
+        _increaseCounterGame();
+        context.read<ProfileInfoCubit>().updatePaintingProgress(
+            paintingGameCounter: PaintingProgress.gamesCounter,
+            paintingLevelCounter: PaintingProgress.levelsCounter);
+        PaintingProgress.lockedanimals = 3;
+      }
+      showWinScreen(
+        context,
+        () => Navigator.pushReplacementNamed(context, "/animalsSamplesScreen"),
+      );
+    }
+    if (widget.uncoloredImage == AppImages.uncoloredelephante2) {
+      if (PaintingProgress.gamesCounter == 3) {
+        _increaseCounterGame();
+        context.read<ProfileInfoCubit>().updatePaintingProgress(
+            paintingGameCounter: PaintingProgress.gamesCounter,
+            paintingLevelCounter: PaintingProgress.levelsCounter);
+        PaintingProgress.lockedanimals = 4;
+      }
+      showWinScreen(
+        context,
+        () => Navigator.pushReplacementNamed(context, "/animalsSamplesScreen"),
+      );
+    }
+    if (widget.uncoloredImage == AppImages.uncoloredmonkey2) {
+      if (PaintingProgress.gamesCounter == 4) {
+        _increaseCounterGame();
+        _increaseLevelCounter();
 
+        context.read<ProfileInfoCubit>().updatePaintingProgress(
+            paintingGameCounter: PaintingProgress.gamesCounter,
+            paintingLevelCounter: PaintingProgress.levelsCounter);
 
+        PaintingProgress.lockedPaintingBoardIndex = 1;
+      }
+      showWinScreen(
+        context,
+        () => Navigator.pushReplacementNamed(context, "/mypaintingScreen"),
+      );
+    }
+    if (widget.uncoloredImage == AppImages.floweruncolored1) {
+      if (PaintingProgress.gamesCounter  == 5) {
+        _increaseCounterGame();
+        context.read<ProfileInfoCubit>().updatePaintingProgress(
+            paintingGameCounter: PaintingProgress.gamesCounter,
+            paintingLevelCounter: PaintingProgress.levelsCounter);
+      }
+      showWinScreen(
+        context,
+        () => Navigator.pushReplacementNamed(context, "/flowersSamplesScreen"),
+      );
+    }
+    if (widget.uncoloredImage == AppImages.floweruncolored2) {
+      if (PaintingProgress.gamesCounter == 6) {
+        _increaseCounterGame();
+        context.read<ProfileInfoCubit>().updatePaintingProgress(
+            paintingGameCounter: PaintingProgress.gamesCounter,
+            paintingLevelCounter: PaintingProgress.levelsCounter);
+        PaintingProgress.lockedflowers = 2;
+      }
+      showWinScreen(
+        context,
+        () => Navigator.pushReplacementNamed(context, "/flowersSamplesScreen"),
+      );
+    }
+    if (widget.uncoloredImage == AppImages.floweruncolored3) {
+      if (PaintingProgress.gamesCounter == 7) {
+        _increaseCounterGame();
+        context.read<ProfileInfoCubit>().updatePaintingProgress(
+            paintingGameCounter: PaintingProgress.gamesCounter,
+            paintingLevelCounter: PaintingProgress.levelsCounter);
+        PaintingProgress.lockedflowers = 3;
+      }
+      showWinScreen(
+        context,
+        () => Navigator.pushReplacementNamed(context, "/flowersSamplesScreen"),
+      );
+    }
+    if (widget.uncoloredImage == AppImages.floweruncolored4) {
+      if (PaintingProgress.gamesCounter == 8) {
+        _increaseCounterGame();
+        context.read<ProfileInfoCubit>().updatePaintingProgress(
+            paintingGameCounter: PaintingProgress.gamesCounter,
+            paintingLevelCounter: PaintingProgress.levelsCounter);
+      }
+      showWinScreen(
+        context,
+        () => Navigator.pushReplacementNamed(context, "/mypaintingScreen"),
+      );
+    }
+  
+  }
 }

@@ -244,7 +244,7 @@ class AuthCubit extends Cubit<AuthState> {
         return;
       }
 
-      //  // Re-authenticate user before deleting account
+    
       //   final credential = EmailAuthProvider.credential(
       //     email: user.email!,
       //     password: currentPassword,

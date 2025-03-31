@@ -1,11 +1,13 @@
 import 'package:color_funland/core/components/animated_container_widget.dart';
 import 'package:color_funland/core/components/app_bar_row.dart';
+import 'package:color_funland/core/components/fail_screen.dart';
 import 'package:color_funland/core/components/three_items_bottom_navigation.dart';
+import 'package:color_funland/core/components/win_screen.dart';
 import 'package:color_funland/core/constants/app_icons.dart';
 import 'package:color_funland/core/constants/app_images.dart';
 import 'package:color_funland/core/utils/text_styles.dart';
+import 'package:color_funland/features/color_match/widgets/svg_canvas_numbers.dart';
 import 'package:color_funland/features/my_painting/widgets/paint_state.dart';
-import 'package:color_funland/features/my_painting/widgets/svg_canvas.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,8 +26,7 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
   Color _selectedColor = Colors.black;
   String? _selectedImagePath; // Stores the path of the selected image
 
-
- VectorImage? _vectorImage;
+  VectorImage? _vectorImage;
   VectorImage? _coloredVectorImage;
 
   final PaintState _paintState = PaintState();
@@ -34,13 +35,24 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
 
   bool isPaintingCorrect = false;
 
+  void _checkPaintingCompletion(
+      List<PathSvgItem> paintedRegions, bool isCorrect) {
+    int totalRegions = paintedRegions.length;
+    int paintedCount = paintedRegions
+        .where((region) =>
+            region.fill != Colors.transparent && region.fill != Colors.white)
+        .length;
 
+    double paintedPercentage = (paintedCount / totalRegions) * 100;
 
-  void _checkPaintingCompletion(List<PathSvgItem> paintedRegions,bool isCorrect) {
+    print("Total Regions: $totalRegions");
+    print("Painted Regions: $paintedCount");
+    print("Painting Completion: $paintedPercentage%");
+
     setState(() {
       isPaintingComplete =
-          paintedRegions.every((region) => region.fill != Colors.transparent);
-      isPaintingCorrect =isCorrect; // Check correctness
+          paintedPercentage >= 50.0; // Show widget when 80% is painted
+      isPaintingCorrect = isCorrect;
     });
   }
 
@@ -53,9 +65,9 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
   // Load and parse the SVG file
   Future<void> _loadSvg() async {
     final String uncoloredSvgData =
-        await rootBundle.loadString('assets/images/color_match_images/Flowerbox.svg');
+        await rootBundle.loadString(AppImages.numbersuncolored2);
     final String coloredSvgData =
-        await rootBundle.loadString('');
+        await rootBundle.loadString(AppImages.numberscolored);
 
     setState(() {
       _vectorImage = parseSvg(uncoloredSvgData);
@@ -63,26 +75,13 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
     });
   }
 
-
-
   // Method to reset the SVG image
   void _resetSvg() async {
     final String svgData =
-        await rootBundle.loadString('assets/images/color_match_images/Flowerbox.svg');
+        await rootBundle.loadString(AppImages.numbersuncolored2);
     setState(() {
       _vectorImage = parseSvg(svgData); // Reload the original SVG
     });
-  }
-
-  // Get dominant color from image asset
-  Future<Color> _getDominantColor(String imagePath) async {
-    final imageProvider = AssetImage(imagePath);
-    final PaletteGenerator paletteGenerator =
-        await PaletteGenerator.fromImageProvider(
-      imageProvider,
-      size: Size(150.w, 150.h),
-    );
-    return paletteGenerator.dominantColor?.color ?? Colors.black;
   }
 
   @override
@@ -104,6 +103,41 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
                 children: [
                   Row(
                     children: [
+                      if (isPaintingComplete)
+                        InkWell(
+                          highlightColor: Colors.transparent,
+                          splashColor: Colors.transparent,
+                          onTap: () {
+                            if (isPaintingCorrect) {
+                              print('success paint');
+                              showWinScreen(
+                                context,
+                                () => Navigator.pushReplacementNamed(
+                                    context, "/colorMatchScreen"),
+                              );
+                            } else {
+                              showFailureScreen(
+                                  context); // Show failure screen as a modal
+
+                              print('error paint');
+                            }
+                          },
+                          child: Image.asset(
+                            AppIcons.donebtn,
+                            height: 65.h,
+                            width: 86.w,
+                          ),
+                        ),
+                      SizedBox(
+                        width: MediaQuery.sizeOf(context).width * .33,
+                      ),
+                      Text(
+                        'Flowers',
+                        style: ts64Magic400,
+                      ),
+                      SizedBox(
+                        width: MediaQuery.sizeOf(context).width * .30,
+                      ),
                       InkWell(
                         highlightColor: Colors.transparent,
                         splashColor: Colors.transparent,
@@ -114,18 +148,11 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
                           height: 60.h,
                         ),
                       ),
-                      SizedBox(
-                        width: MediaQuery.sizeOf(context).width*.33,
-                      ),
-                      Text(
-                        'Flowers',
-                        style: ts64Magic400,
-                      ),
                     ],
                   ),
                   Expanded(
                     child: Padding(
-                      padding:  EdgeInsets.only(top: 20.h),
+                      padding: EdgeInsets.only(top: 20.h),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -153,12 +180,12 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
                           Expanded(
                             child: Center(
                               child: _vectorImage != null
-                                  ? SvgCanvas(
+                                  ? SvgCanvasNumbers(
                                       vectorImage: _vectorImage!,
                                       selectedColor: _selectedColor,
                                       onPaintUpdate: _checkPaintingCompletion,
-                                    coloredVectorImage:  _coloredVectorImage!,
-                                      scaleFactor: 1.10,
+                                      coloredVectorImage: _coloredVectorImage!,
+                                      scaleFactor: 1.0,
                                     )
                                   : const CircularProgressIndicator(), // Show a loading indicator until SVG is loaded
                             ),
@@ -177,6 +204,7 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
                               Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
+                                  numberImage(AppImages.blackcolor),
                                   numberImage(AppImages.number7colormatch),
                                 ],
                               ),
@@ -203,7 +231,8 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
   Widget numberImage(String path) {
     return GestureDetector(
       onTap: () async {
-        final color = await _getDominantColor(path);
+        final svgString = await rootBundle.loadString(path);
+        final color = _extractFillColor(svgString);
         setState(() {
           _selectedColor = color;
           _paintState.setColor(color);
@@ -221,7 +250,7 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
             width: 3,
           ),
         ),
-        child: Image.asset(
+        child: SvgPicture.asset(
           path,
           height: 150.h,
           width: 150.w,
@@ -229,5 +258,28 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
         ),
       ),
     );
+  }
+
+// Extracts the first fill color from the SVG
+  Color _extractFillColor(String svgData) {
+    final regex = RegExp(r'fill="(#?[0-9a-fA-F]{6,8})"');
+    final match = regex.firstMatch(svgData);
+    if (match != null) {
+      return _parseColor(match.group(1)!);
+    }
+    return Colors.black; // Default color if no fill is found
+  }
+
+// Converts hex string to Color object
+  Color _parseColor(String hexColor) {
+    if (hexColor.startsWith('#')) {
+      hexColor = hexColor.substring(1);
+    }
+    if (hexColor.length == 6) {
+      return Color(int.parse('0xFF$hexColor'));
+    } else if (hexColor.length == 8) {
+      return Color(int.parse('0x$hexColor'));
+    }
+    return Colors.black;
   }
 }

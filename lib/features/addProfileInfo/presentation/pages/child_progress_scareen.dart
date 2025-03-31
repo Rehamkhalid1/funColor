@@ -100,8 +100,8 @@ class _ChildProgressScreenState extends State<ChildProgressScreen> {
                                   child: ProgressItem(
                                     featureImage: AppIcons.paintingsIcon,
                                     featurName: 'Paintings',
-                                    totalLevels: 8,
-                                    totalGameNumbers: 80,
+                                    totalLevels: 2,
+                                    totalGameNumbers: 10,
                                     currentLevel:
                                         paintingLevelCounter, 
                                     finishedGameNumbers:
@@ -195,6 +195,9 @@ class ProgressItem extends StatefulWidget {
 
 class _ProgressItemState extends State<ProgressItem> {
   double _value = 0; // Initial slider position
+
+
+
   int _calcPercentage() {
     return (widget.finishedGameNumbers / widget.totalGameNumbers * 100).toInt();
   }
@@ -298,7 +301,9 @@ class _ProgressItemState extends State<ProgressItem> {
 class PaintingProgress {
   static int levelsCounter = 1;
   static int gamesCounter = 0;
-   static int lockedIndex = 3;
+   static int lockedPaintingBoardIndex = 0;
+   static int lockedanimals = 1;
+   static int lockedflowers = 1;
 
   PaintingProgress(int paintingLevelsCounter, int paintingGamesCounter) {
     levelsCounter = paintingLevelsCounter;

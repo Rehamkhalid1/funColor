@@ -45,7 +45,7 @@ Map<String, Widget Function(BuildContext)> routes = {
   '/gameBoard': (context) => const GameBoardScreen(),
   '/mypaintingScreen': (context) => const MyPaintingScreen(),
   '/animalsSamplesScreen': (context) => const AnimalsSamplesScreen(),
-  '/fishesSamplesScreen': (context) => const FishesSamplesScreen(),
+  //'/fishesSamplesScreen': (context) => const FishesSamplesScreen(),
   '/flowersSamplesScreen': (context) => const FlowersSamplesScreen(),
   '/colorMatchScreen': (context) => const ColorMatchScreen(),
   '/colorMatchShapes': (context) => const ColorMatchShapes(),
@@ -56,69 +56,69 @@ Map<String, Widget Function(BuildContext)> routes = {
 
   ///*********************  Animals   ********************** */
 
-  '/monkeyColor': (context) => PaintScreen(
-        uncoloredImage: AppImages.uncoloredmonkey,
-        coloredImage: AppImages.coloredmonkey,
-        categoryName: "Animals",
-        colorTools: AppColors.monkeyColors,
-      ),
   '/elephantColor': (context) => PaintScreen(
         uncoloredImage: AppImages.uncoloredelephante,
         coloredImage: AppImages.coloredelephante,
         categoryName: "Animals",
         colorTools: AppColors.elephantColors,
       ),
-  '/giraffeColor': (context) => PaintScreen(
-        uncoloredImage: AppImages.uncoloredgiraffe,
-        coloredImage: AppImages.coloredgiraffe,
+  '/turtleColor': (context) => PaintScreen(
+        uncoloredImage: AppImages.uncoloredturtle,
+        coloredImage: AppImages.coloredturtle,
         categoryName: "Animals",
-        colorTools: AppColors.giraffeColors,
+        colorTools: AppColors.turtleColors,
       ),
-  '/catColor': (context) => PaintScreen(
-        uncoloredImage: AppImages.catuncolored,
-        coloredImage: AppImages.catcolored,
+  '/penguinColor': (context) => PaintScreen(
+        uncoloredImage: AppImages.uncoloredpenguin,
+        coloredImage: AppImages.coloredpenguin,
         categoryName: "Animals",
-        colorTools: AppColors.catColors,
+        colorTools: AppColors.penguinColors,
       ),
-  '/lionColor': (context) => PaintScreen(
-        uncoloredImage: AppImages.lionuncolored,
-        coloredImage: AppImages.lioncolored,
+  '/elephante2Color': (context) => PaintScreen(
+        uncoloredImage: AppImages.uncoloredelephante2,
+        coloredImage: AppImages.coloredelephante2,
         categoryName: "Animals",
-        colorTools: AppColors.lionColors,
+        colorTools: AppColors.elephante2Colors,
+      ),
+  '/monkey2Color': (context) => PaintScreen(
+        uncoloredImage: AppImages.uncoloredmonkey2,
+        coloredImage: AppImages.coloredmonkey2,
+        categoryName: "Animals",
+        colorTools: AppColors.monkey2Colors,
       ),
 
   ///*********************  Fishes   ********************** */
 
-  '/dolphinColor': (context) => PaintScreen(
-        uncoloredImage: AppImages.dolphinuncolored,
-        coloredImage: AppImages.dolphincolored,
-        categoryName: "Fishes",
-        colorTools: AppColors.dolphinColors,
-      ),
-  '/octupusColor': (context) => PaintScreen(
-        uncoloredImage: AppImages.octopusuncolored,
-        coloredImage: AppImages.octopuscolored,
-        categoryName: "Fishes",
-        colorTools: AppColors.octupusColors,
-      ),
-  '/fishColor': (context) => PaintScreen(
-        uncoloredImage: AppImages.fishuncolored,
-        coloredImage: AppImages.fishcolored,
-        categoryName: "Fishes",
-        colorTools: AppColors.fishColors,
-      ),
-  '/pufferfishColor': (context) => PaintScreen(
-        uncoloredImage: AppImages.pufferfishuncolored,
-        coloredImage: AppImages.pufferfishcolored,
-        categoryName: "Fishes",
-        colorTools: AppColors.pufferfishColors,
-      ),
-  '/seahorseColor': (context) => PaintScreen(
-        uncoloredImage: AppImages.seahorseuncolored,
-        coloredImage: AppImages.seahorsecolored,
-        categoryName: "Fishes",
-        colorTools: AppColors.seahorseColors,
-      ),
+  // '/dolphinColor': (context) => PaintScreen(
+  //       uncoloredImage: AppImages.dolphinuncolored,
+  //       coloredImage: AppImages.dolphincolored,
+  //       categoryName: "Fishes",
+  //       colorTools: AppColors.dolphinColors,
+  //     ),
+  // '/octupusColor': (context) => PaintScreen(
+  //       uncoloredImage: AppImages.octopusuncolored,
+  //       coloredImage: AppImages.octopuscolored,
+  //       categoryName: "Fishes",
+  //       colorTools: AppColors.octupusColors,
+  //     ),
+  // '/fishColor': (context) => PaintScreen(
+  //       uncoloredImage: AppImages.fishuncolored,
+  //       coloredImage: AppImages.fishcolored,
+  //       categoryName: "Fishes",
+  //       colorTools: AppColors.fishColors,
+  //     ),
+  // '/pufferfishColor': (context) => PaintScreen(
+  //       uncoloredImage: AppImages.pufferfishuncolored,
+  //       coloredImage: AppImages.pufferfishcolored,
+  //       categoryName: "Fishes",
+  //       colorTools: AppColors.pufferfishColors,
+  //     ),
+  // '/seahorseColor': (context) => PaintScreen(
+  //       uncoloredImage: AppImages.seahorseuncolored,
+  //       coloredImage: AppImages.seahorsecolored,
+  //       categoryName: "Fishes",
+  //       colorTools: AppColors.seahorseColors,
+  //     ),
 
   ///*********************  Flowers   ********************** */
 
@@ -146,12 +146,7 @@ Map<String, Widget Function(BuildContext)> routes = {
         categoryName: "Floweres",
         colorTools: AppColors.flower4Colors,
       ),
-  '/flowerColor5': (context) => PaintScreen(
-        uncoloredImage: AppImages.floweruncolored5,
-        coloredImage: AppImages.flowercolored5,
-        categoryName: "Floweres",
-        colorTools: AppColors.flower5Colors,
-      ),
+ 
 
   ///****************** color mixing ****************************/
   '/colorMixingScreen': (context) => const ColorMixingScreen(),

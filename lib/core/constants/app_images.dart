@@ -72,41 +72,53 @@ class AppImages {
 
   ///***************  animals frames  **************** */
 
-  static const String duckFram = "$_myPaintingImagesPath/duckFram.png";
-  static const String catFram = "$_myPaintingImagesPath/catFram.png";
-  static const String elephantFram = "$_myPaintingImagesPath/elephantFram.png";
-  static const String girafeFram = "$_myPaintingImagesPath/girafeFram.png";
+  static const String uncoloredelephantfram = "$_myPaintingImagesPath/uncoloredelephantfram.png";
+  static const String uncoloredelephante2fram = "$_myPaintingImagesPath/uncoloredelephante2fram.png";
+  static const String uncoloredmonkey2fram = "$_myPaintingImagesPath/uncoloredmonkey2fram.png";
+  static const String uncoloredpenguinfram = "$_myPaintingImagesPath/uncoloredpenguinfram.png";
+  static const String uncoloredturtle2fram = "$_myPaintingImagesPath/uncoloredturtle2fram.png";
+  static const String coloredelephante2fram = "$_myPaintingImagesPath/coloredelephante2fram.png";
+  static const String coloredmonkey2fram = "$_myPaintingImagesPath/coloredmonkey2fram.png";
+  static const String coloredpenguinfram = "$_myPaintingImagesPath/coloredpenguinfram.png";
+  static const String coloredturtle2fram = "$_myPaintingImagesPath/coloredturtle2fram.png";
+  static const String coloredelephantfram = "$_myPaintingImagesPath/coloredelephantfram.png";
+
+
+
+
+
+
   static const String kangarooFram = "$_myPaintingImagesPath/kangarooFram.png";
-  static const String lionFram = "$_myPaintingImagesPath/lionFram.png";
   static const String tigerFram = "$_myPaintingImagesPath/tigerFram.png";
   static const String turtleFram = "$_myPaintingImagesPath/turtleFram.png";
   static const String beeFram = "$_myPaintingImagesPath/beeFram.png";
   static const String lionBabyFram = "$_myPaintingImagesPath/lionBabyFram.png";
+  static const String oops = "$_myPaintingImagesPath/oops.png";
 
   ///************************    animals            ********************* */
 
-  static const String uncoloredmonkey =
-      "$_myPaintingImagesPath/uncoloredmonkey.svg";
-  static const String coloredmonkey = "$_myPaintingImagesPath/coloredmonkey.svg";
+  static const String uncoloredpenguin =
+      "$_myPaintingImagesPath/uncoloredpenguin.svg";
+  static const String coloredpenguin = "$_myPaintingImagesPath/coloredpenguin.svg";
 
   static const String uncoloredelephante =
       "$_myPaintingImagesPath/uncoloredelephante.svg";
   static const String coloredelephante =
       "$_myPaintingImagesPath/coloredelephante.svg";
 
-  static const String uncoloredgiraffe =
-      "$_myPaintingImagesPath/uncoloredgiraffe.svg";
-  static const String coloredgiraffe =
-      "$_myPaintingImagesPath/coloredgiraffe.svg";
+  static const String uncoloredelephante2 =
+      "$_myPaintingImagesPath/uncoloredelephante2.svg";
+  static const String coloredelephante2 =
+      "$_myPaintingImagesPath/coloredelephante2.svg";
 
 
-  static const String catuncolored = "$_myPaintingImagesPath/catuncolored.svg";
-  static const String catcolored = "$_myPaintingImagesPath/catcolored.svg";
+  static const String uncoloredmonkey2 = "$_myPaintingImagesPath/uncoloredmonkey2.svg";
+  static const String coloredmonkey2 = "$_myPaintingImagesPath/coloredmonkey2.svg";
 
 
-  static const String lionuncolored =
-      "$_myPaintingImagesPath/lionuncolored.svg";
-  static const String lioncolored = "$_myPaintingImagesPath/lioncolored.svg";
+  static const String uncoloredturtle =
+      "$_myPaintingImagesPath/uncoloredturtle.svg";
+  static const String coloredturtle = "$_myPaintingImagesPath/coloredturtle.svg";
 
   static const String tigeruncolored =
       "$_myPaintingImagesPath/tigeruncolored.svg";
@@ -153,9 +165,13 @@ class AppImages {
   static const String seahorsecolored = "$_fishesPath/seahorsecolored.svg";
 
   ///************************   flowers Fram  ********************** */
-  static const String flowerFram1 = "$_flowersPath/flowerFram1.png";
-  static const String flowerFram2 = "$_flowersPath/flowerFram2.png";
-  static const String flowerFram3 = "$_flowersPath/flowerFram3.png";
+  static const String uncoloredflower1fram = "$_flowersPath/uncoloredflower1fram.png";
+  static const String uncoloredflower2fram = "$_flowersPath/uncoloredflower2fram.png";
+  static const String uncoloredflower3fram = "$_flowersPath/uncoloredflower3fram.png";
+  static const String coloredflower1fram = "$_flowersPath/coloredflower1fram.png";
+  static const String coloredflower2fram = "$_flowersPath/coloredflower2fram.png";
+  static const String coloredflower3fram = "$_flowersPath/coloredflower3fram.png";
+  static const String coloredflower4fram = "$_flowersPath/coloredflower4fram.png";
   static const String flowerFram4 = "$_flowersPath/flowerFram4.png";
   static const String flowerFram5 = "$_flowersPath/flowerFram5.png";
   static const String flowerFram6 = "$_flowersPath/flowerFram6.png";
@@ -306,23 +322,27 @@ class AppImages {
       "$_myColorMatchImagePath/animalcolormatchunicorn.svg";
 
 
-  ///**************************** Color Match Animals *****************************/
-  static const String numbersColorMatch =
-      "$_myColorMatchImagePath/numbers.svg";
+  ///**************************** Color Match numbers *****************************/
+  static const String blackcolor =
+      "$_myColorMatchImagePath/blackcolor.svg";
+  static const String numbersuncolored2 =
+      "$_myColorMatchImagePath/numbersuncolored2.svg";
+  static const String numberscolored =
+      "$_myColorMatchImagePath/numberscolored.svg";
   static const String number1colormatch =
-      "$_myColorMatchImagePath/number1colormatch.png";
+      "$_myColorMatchImagePath/number1.svg";
   static const String number2colormatch =
-      "$_myColorMatchImagePath/number2colormatch.png";
+      "$_myColorMatchImagePath/number2.svg";
   static const String number3colormatch =
-      "$_myColorMatchImagePath/number3colormatch.png";
+      "$_myColorMatchImagePath/number3.svg";
   static const String number4colormatch =
-      "$_myColorMatchImagePath/number4colormatch.png";
+      "$_myColorMatchImagePath/number4.svg";
   static const String number5colormatch =
-      "$_myColorMatchImagePath/number5colormatch.png";
+      "$_myColorMatchImagePath/number5.svg";
   static const String number6colormatch =
-      "$_myColorMatchImagePath/number6colormatch.png";
+      "$_myColorMatchImagePath/number6.svg";
   static const String number7colormatch =
-      "$_myColorMatchImagePath/number7colormatch.png";
+      "$_myColorMatchImagePath/number7.svg";
 
 
 ///**************************************** learning Colors *******************************************/

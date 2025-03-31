@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:color_funland/core/constants/app_images.dart';
 import 'package:color_funland/core/constants/app_strings.dart';
+import 'package:color_funland/features/addProfileInfo/presentation/pages/child_progress_scareen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GridItem {
@@ -18,13 +19,12 @@ class GridItem {
     this.onTap,
     this.imgWidth,
     this.imgHeight,
-    this.isSvg = false,
+    this.isSvg = false, 
   });
 }
 
 final List<String> myPaintingSamplesScreen = [
   '/animalsSamplesScreen',
-  '/fishesSamplesScreen',
   '/flowersSamplesScreen',
 ];
 
@@ -35,13 +35,13 @@ final List<GridItem> gridItems = [
     imgWidth: 180.w,
   ),
   GridItem(
-    title: AppStrings.fishes,
-    imageUrl: AppImages.fishes,
+    title: AppStrings.flowers,
+    imageUrl: AppImages.flowers,
     imgWidth: 180.w,
   ),
   GridItem(
-    title: AppStrings.flowers,
-    imageUrl: AppImages.flowers,
+    title: AppStrings.fishes,
+    imageUrl: AppImages.fishes,
     imgWidth: 180.w,
   ),
   GridItem(
@@ -73,66 +73,58 @@ final List<GridItem> gridItems = [
 
 ///*************   Animals Section  ************** */
 
+final List<GridItem> animalsFram = [
+    GridItem(
+      imageUrl: PaintingProgress.gamesCounter == 0 ? AppImages.uncoloredelephantfram : AppImages.coloredelephantfram,
+   
+    ),
+    GridItem(
+      imageUrl: AppImages.uncoloredturtle2fram,
+   
+    ),
+    GridItem(
+      imageUrl: AppImages.uncoloredpenguinfram,
+   
+    ),
+    GridItem(
+      imageUrl: AppImages.uncoloredelephante2fram,
+   
+    ),
+    GridItem(
+      imageUrl: AppImages.uncoloredmonkey2fram,
+   
+    ),
+    GridItem(
+      imageUrl: AppImages.tigerFram,
+   
+    ),
+    GridItem(
+      imageUrl: AppImages.turtleFram,
+   
+    ),
+    GridItem(
+      imageUrl: AppImages.beeFram,
+   
+    ),
+    GridItem(
+      imageUrl: AppImages.lionBabyFram,
+   
+    ),
+    GridItem(
+      imageUrl: AppImages.kangarooFram,
+   
+    ),
+  ];
+  
 final List<String> animalsPaintingScreen = [
-  '/monkeyColor',
   '/elephantColor',
-  '/giraffeColor',
-  '/catColor',
-  '/lionColor',
+  '/turtleColor',
+  '/penguinColor',
+  '/elephante2Color',
+  '/monkey2Color',
 ];
 
-final List<GridItem> animalsFram = [
-  GridItem(
-    imageUrl: AppImages.duckFram,
-    imgWidth: 193.93.w,
-    imgHeight: 186.47.h,
-  ),
-  GridItem(
-    imageUrl: AppImages.elephantFram,
-    imgWidth: 193.93.w,
-    imgHeight: 186.47.h,
-  ),
-  GridItem(
-    imageUrl: AppImages.catFram,
-    imgWidth: 193.93.w,
-    imgHeight: 186.47.h,
-  ),
-  GridItem(
-    imageUrl: AppImages.girafeFram,
-    imgWidth: 193.93.w,
-    imgHeight: 186.47.h,
-  ),
-  GridItem(
-    imageUrl: AppImages.lionFram,
-    imgWidth: 193.93.w,
-    imgHeight: 186.47.h,
-  ),
-  GridItem(
-    imageUrl: AppImages.tigerFram,
-    imgWidth: 193.93.w,
-    imgHeight: 186.47.h,
-  ),
-  GridItem(
-    imageUrl: AppImages.turtleFram,
-    imgWidth: 193.93.w,
-    imgHeight: 186.47.h,
-  ),
-  GridItem(
-    imageUrl: AppImages.beeFram,
-    imgWidth: 193.93.w,
-    imgHeight: 186.47.h,
-  ),
-  GridItem(
-    imageUrl: AppImages.lionBabyFram,
-    imgWidth: 193.93.w,
-    imgHeight: 186.47.h,
-  ),
-  GridItem(
-    imageUrl: AppImages.kangarooFram,
-    imgWidth: 193.93.w,
-    imgHeight: 186.47.h,
-  ),
-];
+
 
 ///*************   Fishes Section  ************** */
 
@@ -184,18 +176,17 @@ final List<String> flowersPaintingScreen = [
   '/flowerColor2',
   '/flowerColor3',
   '/flowerColor4',
-  '/flowerColor5',
 ];
 
 final List<GridItem> flowersFram = [
   GridItem(
-    imageUrl: AppImages.flowerFram1,
+    imageUrl: AppImages.uncoloredflower1fram,
   ),
   GridItem(
-    imageUrl: AppImages.flowerFram2,
+    imageUrl: AppImages.uncoloredflower2fram,
   ),
   GridItem(
-    imageUrl: AppImages.flowerFram3,
+    imageUrl: AppImages.uncoloredflower3fram,
   ),
   GridItem(
     imageUrl: AppImages.flowerFram4,
@@ -374,3 +365,9 @@ List<String> blueLessonImages = [
       AppImages.lesson1crocodile,
     ],
   };
+
+
+class Frames{
+
+  static bool isElephanteColored = false;
+}

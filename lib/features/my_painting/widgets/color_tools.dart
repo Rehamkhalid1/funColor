@@ -103,7 +103,6 @@ class _ColorToolsState extends State<ColorTools> {
 
   Widget _buildColorButton(Color color) {
     final isSelected = widget.selectedColor == color;
-
     return Container(
       width: 89,
       height: 89,

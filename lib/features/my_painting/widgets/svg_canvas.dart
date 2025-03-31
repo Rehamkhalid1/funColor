@@ -36,13 +36,15 @@ class SvgPainter extends CustomPainter {
     canvas.scale(scaleFactor);
     canvas.translate(-size.width / 2, -size.height / 2);
 
-    for (var item in items) {
-      // // 1. Draw the shape with a solid black border
-      // final solidBorderPaint = Paint()
-      //   ..color = Colors.black
-      //   ..style = PaintingStyle.fill; // Fill with black to create a solid border
+  Paint defaultStrokePaint = Paint()
+    ..color = Colors.black  // Default stroke color
+    ..style = PaintingStyle.stroke
+    ..strokeWidth = 1.0;  // Adjust stroke width
 
-      // canvas.drawPath(item.path, solidBorderPaint);
+    for (var item in items) {
+          // Ensure all shapes have an outline
+    canvas.drawPath(item.path, defaultStrokePaint);
+    
 
       // 3. Draw the filled shape **on top of the border**
       final fillPaint = Paint()
@@ -133,20 +135,31 @@ class _SvgCanvasState extends State<SvgCanvas> {
 }
 
 
-    bool _isPaintingCorrect(List<PathSvgItem> paintedRegions) {
-    int correctlyPainted = 0;
-    int totalRegions = paintedRegions.length;
+ bool _isPaintingCorrect(List<PathSvgItem> paintedRegions) {
+  int correctlyPainted = 0;
+  int totalRegions = paintedRegions.length;
+  int coloredTotalRegions = widget.coloredVectorImage.items.length;
 
-    for (int i = 0; i < totalRegions; i++) {
-      if (paintedRegions[i].fill ==
-          widget.coloredVectorImage.items[i].originalColor) {
-        correctlyPainted++;
-      }
+  int minRegions = totalRegions < coloredTotalRegions ? totalRegions : coloredTotalRegions;
+
+  for (int i = 0; i < minRegions; i++) {
+    if (paintedRegions[i].fill == widget.coloredVectorImage.items[i].originalColor) {
+      correctlyPainted++;
     }
-
-    double accuracy = (correctlyPainted / totalRegions) * 100;
-    return accuracy >= 85.0; // Require at least 85% accuracy
   }
+
+  double accuracy = (correctlyPainted / minRegions) * 100;
+
+  bool isCorrect = accuracy >= 54.0;
+
+  // // Print debugging info
+  print("Painting Accuracy: $accuracy%");
+  print("Correctly Painted Regions: $correctlyPainted / $minRegions");
+  print("isPaintingCorrect: $isCorrect");
+
+  return isCorrect;
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -166,3 +179,6 @@ class _SvgCanvasState extends State<SvgCanvas> {
     );
   }
 }
+
+
+
