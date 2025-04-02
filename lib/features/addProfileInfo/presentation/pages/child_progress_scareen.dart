@@ -305,10 +305,19 @@ class PaintingProgress {
    static int lockedanimals = 1;
    static int lockedflowers = 1;
 
-  PaintingProgress(int paintingLevelsCounter, int paintingGamesCounter) {
-    levelsCounter = paintingLevelsCounter;
-    gamesCounter = paintingGamesCounter;
+ static Map<String, bool> paintedItems = {}; // Add this line
+  
+  static void markItemAsPainted(String itemKey) {
+    paintedItems[itemKey] = true;
   }
+
+  static bool isItemPainted(String itemKey) {
+    return paintedItems[itemKey] ?? false;
+  }
+
+  static Map<String, bool> completedPaintings = {};
+
+  
 }
 
 class ColorMixingProgress {

@@ -193,6 +193,19 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+
+
+  Future<void> resetPassword(String email) async {
+  emit(AuthLoading());
+  try {
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+    emit(ForgetPasswordSuccess(message: "Password reset email sent."));
+  } catch (e) {
+    emit(ForgetPasswordError(message: e.toString()));
+  }
+}
+
+
   Future<void> changePassword({
     required String currentPassword,
     required String newPassword,
@@ -275,6 +288,7 @@ class AuthCubit extends Cubit<AuthState> {
       messageService.showMessage('Failed to delete account', MessageType.error);
     }
   }
+
 
   Future<void> signOut() async {
     try {

@@ -16,18 +16,22 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:color_funland/features/my_painting/services/painting_service.dart';
 
 class PaintScreen extends StatefulWidget {
   final String uncoloredImage;
   final String coloredImage;
   final String categoryName;
   final List<Color> colorTools;
+  final String itemKey;
+
   const PaintScreen({
     super.key,
     required this.uncoloredImage,
     required this.coloredImage,
     required this.categoryName,
     required this.colorTools,
+    required this.itemKey,
   });
 
   @override
@@ -224,7 +228,10 @@ class _PaintScreenState extends State<PaintScreen> {
     );
   }
 
-  void scoringColoredItems() {
+  void scoringColoredItems() async {
+    // Mark the item as painted in our service
+    await PaintingService.markItemAsPainted(widget.itemKey);
+
     if (widget.uncoloredImage == AppImages.uncoloredelephante) {
       if (PaintingProgress.gamesCounter < 1) {
         _increaseCounterGame();

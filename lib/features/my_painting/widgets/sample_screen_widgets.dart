@@ -111,6 +111,8 @@ class _SampleScreenWidgetState extends State<SampleScreenWidget> {
     required GridItem item,
     required int index,
   }) {
+      bool isPainted = PaintingProgress.completedPaintings[item.title] ?? false;
+
     return InkWell(
       highlightColor: Colors.transparent, // Disable highlight effect
       splashColor: Colors.transparent, // Disable splash effect
