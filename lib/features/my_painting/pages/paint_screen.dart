@@ -5,6 +5,8 @@ import 'package:color_funland/core/constants/app_icons.dart';
 import 'package:color_funland/core/components/app_bar_row.dart';
 import 'package:color_funland/core/components/three_items_bottom_navigation.dart';
 import 'package:color_funland/core/constants/app_images.dart';
+import 'package:color_funland/core/constants/frame_state_manager.dart';
+import 'package:color_funland/core/constants/model.dart';
 import 'package:color_funland/core/utils/text_styles.dart';
 import 'package:color_funland/features/addProfileInfo/presentation/cubit/profile_info_cubit.dart';
 import 'package:color_funland/features/addProfileInfo/presentation/pages/child_progress_scareen.dart';
@@ -209,7 +211,10 @@ class _PaintScreenState extends State<PaintScreen> {
               child: InkWell(
                 highlightColor: Colors.transparent,
                 splashColor: Colors.transparent,
-                onTap: _resetSvg,
+                onTap:(){
+                  print(animalsFram[0].imageUrl);
+                } ,
+                //_resetSvg,
                 child: SvgPicture.asset(
                   AppIcons.reset,
                   width: 60.w,
@@ -229,9 +234,13 @@ class _PaintScreenState extends State<PaintScreen> {
   }
 
   void scoringColoredItems() async {
-    // Mark the item as painted in our service
     await PaintingService.markItemAsPainted(widget.itemKey);
-
+  FrameStateManager.updateFrameAfterPainting(widget.uncoloredImage);
+  
+  // Add this to ensure parent screens update
+  if (mounted) {
+    setState(() {});
+  }
     if (widget.uncoloredImage == AppImages.uncoloredelephante) {
       if (PaintingProgress.gamesCounter < 1) {
         _increaseCounterGame();

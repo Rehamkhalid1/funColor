@@ -74,45 +74,55 @@ final List<GridItem> gridItems = [
 ///*************   Animals Section  ************** */
 
 final List<GridItem> animalsFram = [
-    GridItem(
-      imageUrl: PaintingProgress.gamesCounter == 0 ? AppImages.uncoloredelephantfram : AppImages.coloredelephantfram,
-   
-    ),
-    GridItem(
-      imageUrl: AppImages.uncoloredturtle2fram,
-   
-    ),
-    GridItem(
-      imageUrl: AppImages.uncoloredpenguinfram,
-   
-    ),
-    GridItem(
-      imageUrl: AppImages.uncoloredelephante2fram,
-   
-    ),
-    GridItem(
-      imageUrl: AppImages.uncoloredmonkey2fram,
-   
-    ),
+   GridItem(
+    imageUrl: PaintingProgress.isPainted(AppImages.uncoloredelephantfram) ? 
+      AppImages.coloredelephantfram : AppImages.uncoloredelephantfram,
+    title: "elephant",
+  ),
+  GridItem(
+    imageUrl: PaintingProgress.isPainted(AppImages.uncoloredturtle2fram) ? 
+      AppImages.coloredturtlefram : AppImages.uncoloredturtle2fram,
+    title: "turtle",
+  ),
+  GridItem(
+    imageUrl: PaintingProgress.isPainted(AppImages.uncoloredpenguinfram) ? 
+      AppImages.coloredpenguinfram : AppImages.uncoloredpenguinfram,
+    title: "penguin",
+  ),
+  GridItem(
+    imageUrl: PaintingProgress.isPainted(AppImages.uncoloredelephante2fram) ? 
+      AppImages.coloredelephante2fram : AppImages.uncoloredelephante2fram,
+    title: "elephante2",
+  ),
+  GridItem(
+    imageUrl: PaintingProgress.isPainted(AppImages.uncoloredmonkey2fram) ? 
+      AppImages.coloredmonkey2fram : AppImages.uncoloredmonkey2fram,
+    title: "monkey2",
+  ),
     GridItem(
       imageUrl: AppImages.tigerFram,
-   
+          title: "tiger",
+
     ),
     GridItem(
       imageUrl: AppImages.turtleFram,
-   
+          title: "turtle",
+
     ),
     GridItem(
       imageUrl: AppImages.beeFram,
-   
+          title: "bee",
+
     ),
     GridItem(
       imageUrl: AppImages.lionBabyFram,
-   
+          title: "lionBaby",
+
     ),
     GridItem(
       imageUrl: AppImages.kangarooFram,
-   
+          title: "kangaroo",
+
     ),
   ];
   
@@ -180,34 +190,48 @@ final List<String> flowersPaintingScreen = [
 
 final List<GridItem> flowersFram = [
   GridItem(
-    imageUrl: AppImages.uncoloredflower1fram,
+    imageUrl: PaintingProgress.isPainted(AppImages.uncoloredflower1fram) ? 
+      AppImages.coloredflower1fram : AppImages.uncoloredflower1fram,
+    title: "flower1",
   ),
   GridItem(
-    imageUrl: AppImages.uncoloredflower2fram,
+    imageUrl: PaintingProgress.isPainted(AppImages.uncoloredflower2fram) ? 
+      AppImages.coloredflower2fram : AppImages.uncoloredflower2fram,
+    title: "flower2",
   ),
   GridItem(
-    imageUrl: AppImages.uncoloredflower3fram,
+    imageUrl: PaintingProgress.isPainted(AppImages.uncoloredflower3fram) ? 
+      AppImages.coloredflower3fram : AppImages.uncoloredflower3fram,
+    title: "flower3",
   ),
   GridItem(
-    imageUrl: AppImages.uncoloredflower4Fram,
+    imageUrl: PaintingProgress.isPainted(AppImages.uncoloredflower4Fram) ? 
+      AppImages.coloredflower4fram : AppImages.uncoloredflower4Fram,
+    title: "flower4",
   ),
   GridItem(
     imageUrl: AppImages.flowerFram5,
+    title: "flower5",
   ),
   GridItem(
     imageUrl: AppImages.flowerFram6,
+    title: "flower6",
   ),
   GridItem(
     imageUrl: AppImages.flowerFram7,
+    title: "flower7",
   ),
   GridItem(
     imageUrl: AppImages.flowerFram8,
+    title: "flower8",
   ),
   GridItem(
     imageUrl: AppImages.flowerFram9,
+    title: "flower9",
   ),
   GridItem(
     imageUrl: AppImages.flowerFram10,
+    title: "flower10",
   ),
 ];
 

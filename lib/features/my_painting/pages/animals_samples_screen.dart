@@ -2,7 +2,10 @@ import 'package:color_funland/core/components/animated_container_widget.dart';
 import 'package:color_funland/core/components/app_bar_row.dart';
 import 'package:color_funland/core/components/three_items_bottom_navigation.dart';
 import 'package:color_funland/core/constants/app_icons.dart';
+import 'package:color_funland/core/constants/frame_state_manager.dart';
 import 'package:color_funland/core/constants/model.dart';
+import 'package:color_funland/features/addProfileInfo/presentation/pages/child_progress_scareen.dart';
+import 'package:color_funland/features/my_painting/services/painting_service.dart';
 import 'package:color_funland/features/my_painting/widgets/sample_screen_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,9 +19,8 @@ class AnimalsSamplesScreen extends StatefulWidget {
 }
 
 class _AnimalsSamplesScreenState extends State<AnimalsSamplesScreen> {
-   final GlobalKey<AnimatedContainerState> _containerKey = GlobalKey();
-
-
+  final GlobalKey<AnimatedContainerState> _containerKey = GlobalKey();
+  
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
@@ -39,15 +41,29 @@ class _AnimalsSamplesScreenState extends State<AnimalsSamplesScreen> {
             children: [
               Padding(
                 padding: EdgeInsets.only(left: 46.w, right: 52.w),
-                child: SampleScreenWidget(
-                  title: 'Animals',
-                  items:animalsFram,
-                  crossAxisCount: 5,
-                  pageGroup:  animalsPaintingScreen,
-                  insidecategory: false,
-                  insideanimals: true,
-                  childAspectRatio: 1 / .90,
-                 
+                child: FutureBuilder(
+                  future: PaintingService.initialize(),
+                  builder: (context, snapshot) {
+                    return SampleScreenWidget(
+                      title: 'Animals',
+                      items: animalsFram.map((item) {
+                        return GridItem(
+                          title: item.title,
+                          imageUrl: PaintingProgress.isPainted(item.imageUrl.contains('uncolored') 
+                              ? item.imageUrl 
+                              : FrameStateManager.getFrameForPainting(item.imageUrl) ?? item.imageUrl)
+                              ? FrameStateManager.getColoredFrame(item.imageUrl) ?? item.imageUrl
+                              : item.imageUrl,
+                          onTap: item.onTap,
+                        );
+                      }).toList(),
+                      crossAxisCount: 5,
+                      pageGroup: animalsPaintingScreen,
+                      insidecategory: false,
+                      insideanimals: true,
+                      childAspectRatio: 1 / .90,
+                    );
+                  },
                 ),
               ),
               AnimatedContainerWidget(key: _containerKey),
@@ -62,5 +78,3 @@ class _AnimalsSamplesScreenState extends State<AnimalsSamplesScreen> {
     );
   }
 }
-
-

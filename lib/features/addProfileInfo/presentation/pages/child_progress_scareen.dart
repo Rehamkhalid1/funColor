@@ -305,17 +305,24 @@ class PaintingProgress {
    static int lockedanimals = 1;
    static int lockedflowers = 1;
 
- static Map<String, bool> paintedItems = {}; // Add this line
-  
+ // Map to track which items have been painted
+  static final Map<String, bool> paintedItems = {};
+  static final Map<String, bool> completedPaintings = {};
+
+  // Check if an item has been painted
+  static bool isPainted(String itemKey) {
+    return paintedItems[itemKey] == true;
+  }
+
+  // Mark an item as painted
   static void markItemAsPainted(String itemKey) {
     paintedItems[itemKey] = true;
   }
 
-  static bool isItemPainted(String itemKey) {
-    return paintedItems[itemKey] ?? false;
+  // Get the correct frame image based on painting status
+  static String getFrameImage(String uncoloredFrame, String coloredFrame) {
+    return isPainted(uncoloredFrame) ? coloredFrame : uncoloredFrame;
   }
-
-  static Map<String, bool> completedPaintings = {};
 
   
 }

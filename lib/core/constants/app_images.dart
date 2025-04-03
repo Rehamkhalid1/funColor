@@ -81,7 +81,7 @@ class AppImages {
   static const String coloredelephante2fram = "$_myPaintingImagesPath/coloredelephante2fram.png";
   static const String coloredmonkey2fram = "$_myPaintingImagesPath/coloredmonkey2fram.png";
   static const String coloredpenguinfram = "$_myPaintingImagesPath/coloredpenguinfram.png";
-  static const String coloredturtle2fram = "$_myPaintingImagesPath/coloredturtle2fram.png";
+  static const String coloredturtlefram = "$_myPaintingImagesPath/coloredturtlefram.png";
   static const String coloredelephantfram = "$_myPaintingImagesPath/coloredelephantfram.png";
 
 
