@@ -62,6 +62,7 @@ Map<String, Widget Function(BuildContext)> routes = {
         categoryName: "Animals",
         colorTools: AppColors.elephantColors,
         itemKey: 'elephant',
+        requiredAccuracy: 75.0,
       ),
   '/turtleColor': (context) => PaintScreen(
         uncoloredImage: AppImages.uncoloredturtle,
@@ -69,6 +70,7 @@ Map<String, Widget Function(BuildContext)> routes = {
         categoryName: "Animals",
         colorTools: AppColors.turtleColors,
         itemKey: 'turtle',
+        requiredAccuracy: 56.0,
       ),
   '/penguinColor': (context) => PaintScreen(
         uncoloredImage: AppImages.uncoloredpenguin,
@@ -76,6 +78,7 @@ Map<String, Widget Function(BuildContext)> routes = {
         categoryName: "Animals",
         colorTools: AppColors.penguinColors,
         itemKey: 'penguin',
+        requiredAccuracy: 61.0,
       ),
   '/elephante2Color': (context) => PaintScreen(
         uncoloredImage: AppImages.uncoloredelephante2,
@@ -83,6 +86,7 @@ Map<String, Widget Function(BuildContext)> routes = {
         categoryName: "Animals",
         colorTools: AppColors.elephante2Colors,
         itemKey: 'elephante2',
+        requiredAccuracy: 61.0,
       ),
   '/monkey2Color': (context) => PaintScreen(
         uncoloredImage: AppImages.uncoloredmonkey2,
@@ -90,6 +94,7 @@ Map<String, Widget Function(BuildContext)> routes = {
         categoryName: "Animals",
         colorTools: AppColors.monkey2Colors,
         itemKey: 'monkey2',
+        requiredAccuracy: 85.0,
       ),
 
   ///*********************  Fishes   ********************** */
@@ -138,13 +143,15 @@ Map<String, Widget Function(BuildContext)> routes = {
         categoryName: "Flowers",
         colorTools: AppColors.flower1Colors,
         itemKey: 'flower1',
+        requiredAccuracy: 71.0,
       ),
   '/flowerColor2': (context) => PaintScreen(
         uncoloredImage: AppImages.floweruncolored2,
         coloredImage: AppImages.flowercolored2,
-        categoryName: "Flowers", 
+        categoryName: "Flowers",
         colorTools: AppColors.flower2Colors,
         itemKey: 'flower2',
+        requiredAccuracy: 95.0,
       ),
   '/flowerColor3': (context) => PaintScreen(
         uncoloredImage: AppImages.floweruncolored3,
@@ -152,6 +159,7 @@ Map<String, Widget Function(BuildContext)> routes = {
         categoryName: "Flowers",
         colorTools: AppColors.flower3Colors,
         itemKey: 'flower3',
+        requiredAccuracy: 65.0,
       ),
   '/flowerColor4': (context) => PaintScreen(
         uncoloredImage: AppImages.floweruncolored4,
@@ -159,8 +167,8 @@ Map<String, Widget Function(BuildContext)> routes = {
         categoryName: "Flowers",
         colorTools: AppColors.flower4Colors,
         itemKey: 'flower4',
+        requiredAccuracy: 97.0,
       ),
- 
 
   ///****************** color mixing ****************************/
   '/colorMixingScreen': (context) => const ColorMixingScreen(),
@@ -307,20 +315,20 @@ Map<String, Widget Function(BuildContext)> routes = {
   '/redLessonVideo': (context) => RedGreenBlueVideoPage(
         lessonImage: AppImages.redlesson,
         lessonNumber: 1,
-        videoUrl:'https://s3-figma-videos-production-sig.figma.com/video/TEAM/1372081414108277178/198ed78810d3a6fe8b84eddcac9b2bbe927b1af9?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=dB--TqLRGx8BonukR-ruCn0NO1gk3~86ZH4nycby8agxpzkqSVRZNbWMds1xkIUJtaf7io0LvAfIabZB-6-jgNkHiD4-9EZf4NblIsP52EkaULYkWsHxNSNoQcF6UUnSJjZBEq01ZPHH9DODAyuFP~niaH9yyH0ayxpf1zStirCXpsVqi3qlW7zsdN03QeinPW0vG4n0L6IU39~bXDbJXFZoy-9fNsInh2SSxkU7HmgqPi7Y1caryGXBz-XXLXWhS~XtmOwBNP7l6RjcFCAFJrsF-Mz0Zfoi69FWADcXL~BD2JX5FtXaOkPwv1Eg-iaYT2c7V0XU~OGlajir7PcV3w__',
-
+        videoUrl:
+            'https://s3-figma-videos-production-sig.figma.com/video/TEAM/1372081414108277178/198ed78810d3a6fe8b84eddcac9b2bbe927b1af9?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=dB--TqLRGx8BonukR-ruCn0NO1gk3~86ZH4nycby8agxpzkqSVRZNbWMds1xkIUJtaf7io0LvAfIabZB-6-jgNkHiD4-9EZf4NblIsP52EkaULYkWsHxNSNoQcF6UUnSJjZBEq01ZPHH9DODAyuFP~niaH9yyH0ayxpf1zStirCXpsVqi3qlW7zsdN03QeinPW0vG4n0L6IU39~bXDbJXFZoy-9fNsInh2SSxkU7HmgqPi7Y1caryGXBz-XXLXWhS~XtmOwBNP7l6RjcFCAFJrsF-Mz0Zfoi69FWADcXL~BD2JX5FtXaOkPwv1Eg-iaYT2c7V0XU~OGlajir7PcV3w__',
       ),
   '/greenLessonVideo': (context) => RedGreenBlueVideoPage(
         lessonImage: AppImages.greenlesson,
         lessonNumber: 2,
-        videoUrl: 'https://s3-figma-videos-production-sig.figma.com/video/TEAM/1372081414108277178/d78fdfc06007e09ddf72a994252730dcbabd046e?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=jib~~8VY~3zx7YSaEe99dIZn31VDlQ0HyzTc0L7zaRyrorFd7T3ljphHkPbVWnIjcmdEmuI8O-5TaQJngXWp5hHOw3PQRR9tXkdTo-c~B15aFd6oH7U8AC4svQoAdBq-q7sXosgcjvk9wi~WfEwFsr-hOmMDbxMNWJ320dF2oANS7UccCiUSFEB7b8o76C4Xy9WAvLBwVmZiJispTuV-Td6LXGWjE5IvxBuLOGWU6fx~iyQywkutvLP4A-IUP-G7wa~hPIgDBsUK7dwGP0Y8jqq2ykLJOyp8XRdHpKZrtolyb-rVr68avFV2Hz9KSvsPKQppcEwcO5k~NQwPfYGgUA__',
- 
+        videoUrl:
+            'https://s3-figma-videos-production-sig.figma.com/video/TEAM/1372081414108277178/d78fdfc06007e09ddf72a994252730dcbabd046e?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=jib~~8VY~3zx7YSaEe99dIZn31VDlQ0HyzTc0L7zaRyrorFd7T3ljphHkPbVWnIjcmdEmuI8O-5TaQJngXWp5hHOw3PQRR9tXkdTo-c~B15aFd6oH7U8AC4svQoAdBq-q7sXosgcjvk9wi~WfEwFsr-hOmMDbxMNWJ320dF2oANS7UccCiUSFEB7b8o76C4Xy9WAvLBwVmZiJispTuV-Td6LXGWjE5IvxBuLOGWU6fx~iyQywkutvLP4A-IUP-G7wa~hPIgDBsUK7dwGP0Y8jqq2ykLJOyp8XRdHpKZrtolyb-rVr68avFV2Hz9KSvsPKQppcEwcO5k~NQwPfYGgUA__',
       ),
   '/blueLessonVideo': (context) => RedGreenBlueVideoPage(
         lessonImage: AppImages.bluelesson,
         lessonNumber: 3,
-        videoUrl: 'https://s3-figma-videos-production-sig.figma.com/video/TEAM/1372081414108277178/d94512402b8d856782afaf9de26ab4e89fc066d0?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=t~nCIrsmgkrA3bbgCCbX27J7qqmXD6TnvVT~HIHN2WtFkEkHhdJpWo4GcTYxS4xRfGYocCXMquhh8MncCSoGSYL1o9rPnVBFibxXNDbVBLqjBEx-wcStdQ6lHcDyVsJUw-YA-eimBfQHqv1sYrQtcjNwBx46vS8pGfIgt5VLR~RaHl0ZlZZ42tSNr6nFLoROFyppbG06M2E2QRHjDlo7vjWsCAtM57mvev5ETr51Pc132nODy6rBVSiOUnWmUjY2xe3fCRgUbCxn-ZzvjesArI102NvEnF5MBe~1GK3odf2CTZd9L22IYX~FZ6iBe94f9pOCQEdHnVbpZD7KTrPdpw__',
-
+        videoUrl:
+            'https://s3-figma-videos-production-sig.figma.com/video/TEAM/1372081414108277178/d94512402b8d856782afaf9de26ab4e89fc066d0?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=t~nCIrsmgkrA3bbgCCbX27J7qqmXD6TnvVT~HIHN2WtFkEkHhdJpWo4GcTYxS4xRfGYocCXMquhh8MncCSoGSYL1o9rPnVBFibxXNDbVBLqjBEx-wcStdQ6lHcDyVsJUw-YA-eimBfQHqv1sYrQtcjNwBx46vS8pGfIgt5VLR~RaHl0ZlZZ42tSNr6nFLoROFyppbG06M2E2QRHjDlo7vjWsCAtM57mvev5ETr51Pc132nODy6rBVSiOUnWmUjY2xe3fCRgUbCxn-ZzvjesArI102NvEnF5MBe~1GK3odf2CTZd9L22IYX~FZ6iBe94f9pOCQEdHnVbpZD7KTrPdpw__',
       ),
 
   '/redLesson': (context) => RedGreenBluePracticePage(

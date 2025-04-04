@@ -102,7 +102,7 @@ class SvgCanvas extends StatefulWidget {
   final Color? selectedColor;
   final double scaleFactor;
   final void Function(List<PathSvgItem>,bool)? onPaintUpdate; // Callback to notify painting updates
-
+  final double requiredAccuracy; 
   const SvgCanvas({
     super.key,
     required this.vectorImage,
@@ -110,6 +110,7 @@ class SvgCanvas extends StatefulWidget {
     this.scaleFactor = 1.10, // Default scale factor
     this.onPaintUpdate,
     required this.coloredVectorImage,
+   required this.requiredAccuracy ,
   });
 
   @override
@@ -134,8 +135,8 @@ class _SvgCanvasState extends State<SvgCanvas> {
   }
 }
 
-
- bool _isPaintingCorrect(List<PathSvgItem> paintedRegions) {
+// Function to check if the painting is correct
+bool _isPaintingCorrect(List<PathSvgItem> paintedRegions) {
   int correctlyPainted = 0;
   int totalRegions = paintedRegions.length;
   int coloredTotalRegions = widget.coloredVectorImage.items.length;
@@ -149,17 +150,11 @@ class _SvgCanvasState extends State<SvgCanvas> {
   }
 
   double accuracy = (correctlyPainted / minRegions) * 100;
+  bool isCorrect = accuracy >= widget.requiredAccuracy;
 
-  bool isCorrect = accuracy >= 54.0;
-
-  // // Print debugging info
-  print("Painting Accuracy: $accuracy%");
-  print("Correctly Painted Regions: $correctlyPainted / $minRegions");
-  print("isPaintingCorrect: $isCorrect");
-
+  print("Painting Accuracy: $accuracy% (Required: ${widget.requiredAccuracy}%)");
   return isCorrect;
 }
-
 
   @override
   Widget build(BuildContext context) {

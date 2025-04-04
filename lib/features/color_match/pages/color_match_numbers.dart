@@ -6,10 +6,13 @@ import 'package:color_funland/core/components/win_screen.dart';
 import 'package:color_funland/core/constants/app_icons.dart';
 import 'package:color_funland/core/constants/app_images.dart';
 import 'package:color_funland/core/utils/text_styles.dart';
+import 'package:color_funland/features/addProfileInfo/presentation/cubit/profile_info_cubit.dart';
+import 'package:color_funland/features/addProfileInfo/presentation/pages/child_progress_scareen.dart';
 import 'package:color_funland/features/color_match/widgets/svg_canvas_numbers.dart';
 import 'package:color_funland/features/my_painting/widgets/paint_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:palette_generator/palette_generator.dart';
@@ -26,6 +29,13 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
   Color _selectedColor = Colors.black;
   String? _selectedImagePath; // Stores the path of the selected image
 
+  void _increaseCounterGame() {
+    setState(() {
+      if (ColorMatchProgress.gamesCounter < 4) {
+        ColorMatchProgress.gamesCounter++;
+      }
+    });
+  }
   VectorImage? _vectorImage;
   VectorImage? _coloredVectorImage;
 
@@ -109,7 +119,13 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
                           splashColor: Colors.transparent,
                           onTap: () {
                             if (isPaintingCorrect) {
-                              print('success paint');
+                           //   print('success paint');
+                           _increaseCounterGame();
+                             context.read<ProfileInfoCubit>().updateColorMatchProgress(
+                          colorMatchGameCounter:
+                              ColorMatchProgress.gamesCounter,
+                          colorMatchLevelCounter:
+                              ColorMatchProgress.levelsCounter);
                               showWinScreen(
                                 context,
                                 () => Navigator.pushReplacementNamed(
@@ -119,7 +135,7 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
                               showFailureScreen(
                                   context); // Show failure screen as a modal
 
-                              print('error paint');
+                              //print('error paint');
                             }
                           },
                           child: Image.asset(

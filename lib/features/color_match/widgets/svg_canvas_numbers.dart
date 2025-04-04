@@ -150,12 +150,12 @@ class _SvgCanvasNumbersState extends State<SvgCanvasNumbers> {
 
   double accuracy = (correctlyPainted / minRegions) * 100;
 
-  bool isCorrect = accuracy >= 12.0;
+  bool isCorrect = accuracy >= 14.0;
 
   // // Print debugging info
-  print("Painting Accuracy: $accuracy%");
-  print("Correctly Painted Regions: $correctlyPainted / $minRegions");
-  print("isPaintingCorrect: $isCorrect");
+  // print("Painting Accuracy: $accuracy%");
+  // print("Correctly Painted Regions: $correctlyPainted / $minRegions");
+  // print("isPaintingCorrect: $isCorrect");
 
   return isCorrect;
 }
