@@ -59,7 +59,7 @@ class PaintingScreenWidget extends StatelessWidget {
                 onTap: () {
                      if ( index == 0) {
                       Navigator.of(context).pushNamed(pageGroup[0]);
-                    } else if (PaintingProgress.gamesCounter >=5 &&  index == 1) {
+                    } else if (PaintingProgress.gamesCounter >=4 &&  index == 1) {
                       Navigator.of(context).pushNamed(pageGroup[1]);
                     } 
                  

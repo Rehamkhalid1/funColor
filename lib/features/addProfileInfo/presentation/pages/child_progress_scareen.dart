@@ -101,7 +101,7 @@ class _ChildProgressScreenState extends State<ChildProgressScreen> {
                                     featureImage: AppIcons.paintingsIcon,
                                     featurName: 'Paintings',
                                     totalLevels: 2,
-                                    totalGameNumbers: 10,
+                                    totalGameNumbers: 8,
                                     currentLevel:
                                         paintingLevelCounter, 
                                     finishedGameNumbers:
@@ -302,8 +302,8 @@ class PaintingProgress {
   static int levelsCounter = 1;
   static int gamesCounter = 0;
    static int lockedPaintingBoardIndex = 0;
-   static int lockedanimals = 1;
-   static int lockedflowers = 1;
+   static int lockedanimals = 0;
+   static int lockedflowers = 0;
 
  // Map to track which items have been painted
   static final Map<String, bool> paintedItems = {};

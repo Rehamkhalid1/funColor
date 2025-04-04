@@ -72,14 +72,6 @@ Map<String, Widget Function(BuildContext)> routes = {
         itemKey: 'turtle',
         requiredAccuracy: 56.0,
       ),
-  '/penguinColor': (context) => PaintScreen(
-        uncoloredImage: AppImages.uncoloredpenguin,
-        coloredImage: AppImages.coloredpenguin,
-        categoryName: "Animals",
-        colorTools: AppColors.penguinColors,
-        itemKey: 'penguin',
-        requiredAccuracy: 61.0,
-      ),
   '/elephante2Color': (context) => PaintScreen(
         uncoloredImage: AppImages.uncoloredelephante2,
         coloredImage: AppImages.coloredelephante2,
@@ -96,6 +88,14 @@ Map<String, Widget Function(BuildContext)> routes = {
         itemKey: 'monkey2',
         requiredAccuracy: 85.0,
       ),
+  // '/penguinColor': (context) => PaintScreen(
+  //       uncoloredImage: AppImages.uncoloredpenguin,
+  //       coloredImage: AppImages.coloredpenguin,
+  //       categoryName: "Animals",
+  //       colorTools: AppColors.penguinColors,
+  //       itemKey: 'penguin',
+  //       requiredAccuracy: 61.0,
+  //     ),
 
   ///*********************  Fishes   ********************** */
 

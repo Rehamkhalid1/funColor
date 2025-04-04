@@ -152,7 +152,7 @@ bool _isPaintingCorrect(List<PathSvgItem> paintedRegions) {
   double accuracy = (correctlyPainted / minRegions) * 100;
   bool isCorrect = accuracy >= widget.requiredAccuracy;
 
-  print("Painting Accuracy: $accuracy% (Required: ${widget.requiredAccuracy}%)");
+  // print("Painting Accuracy: $accuracy% (Required: ${widget.requiredAccuracy}%)");
   return isCorrect;
 }
 

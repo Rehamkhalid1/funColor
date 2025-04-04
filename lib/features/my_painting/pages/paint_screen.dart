@@ -46,7 +46,7 @@ class _PaintScreenState extends State<PaintScreen> {
 
   void _increaseCounterGame() {
     setState(() {
-      if (PaintingProgress.gamesCounter < 10) {
+      if (PaintingProgress.gamesCounter < 8) {
         PaintingProgress.gamesCounter++;
       }
     });
@@ -54,7 +54,7 @@ class _PaintScreenState extends State<PaintScreen> {
 
   void _increaseLevelCounter() {
     setState(() {
-      if (PaintingProgress.gamesCounter < 10) {
+      if (PaintingProgress.gamesCounter < 8) {
         PaintingProgress.levelsCounter++;
       }
     });
@@ -79,10 +79,10 @@ class _PaintScreenState extends State<PaintScreen> {
 
     double paintedPercentage = (paintedCount / totalRegions) * 100;
 
-    print("Required accurarcy: ${widget.requiredAccuracy}%");
-    print("Total Regions: $totalRegions");
-    print("Painted Regions: $paintedCount");
-    print("Painting Completion: $paintedPercentage%");
+    // print("Required accurarcy: ${widget.requiredAccuracy}%");
+    // print("Total Regions: $totalRegions");
+    // print("Painted Regions: $paintedCount");
+    // print("Painting Completion: $paintedPercentage%");
 
     setState(() {
       isPaintingComplete = paintedPercentage >= 69.0;
@@ -243,6 +243,8 @@ class _PaintScreenState extends State<PaintScreen> {
         context.read<ProfileInfoCubit>().updatePaintingProgress(
             paintingGameCounter: PaintingProgress.gamesCounter,
             paintingLevelCounter: PaintingProgress.levelsCounter);
+                    PaintingProgress.lockedanimals = 1;
+
       }
       showWinScreen(
         context,
@@ -262,7 +264,8 @@ class _PaintScreenState extends State<PaintScreen> {
         () => Navigator.pushReplacementNamed(context, "/animalsSamplesScreen"),
       );
     }
-    if (widget.uncoloredImage == AppImages.uncoloredpenguin) {
+
+    if (widget.uncoloredImage == AppImages.uncoloredelephante2) {
       if (PaintingProgress.gamesCounter == 2) {
         _increaseCounterGame();
         context.read<ProfileInfoCubit>().updatePaintingProgress(
@@ -275,21 +278,8 @@ class _PaintScreenState extends State<PaintScreen> {
         () => Navigator.pushReplacementNamed(context, "/animalsSamplesScreen"),
       );
     }
-    if (widget.uncoloredImage == AppImages.uncoloredelephante2) {
-      if (PaintingProgress.gamesCounter == 3) {
-        _increaseCounterGame();
-        context.read<ProfileInfoCubit>().updatePaintingProgress(
-            paintingGameCounter: PaintingProgress.gamesCounter,
-            paintingLevelCounter: PaintingProgress.levelsCounter);
-        PaintingProgress.lockedanimals = 4;
-      }
-      showWinScreen(
-        context,
-        () => Navigator.pushReplacementNamed(context, "/animalsSamplesScreen"),
-      );
-    }
     if (widget.uncoloredImage == AppImages.uncoloredmonkey2) {
-      if (PaintingProgress.gamesCounter == 4) {
+      if (PaintingProgress.gamesCounter == 3) {
         _increaseCounterGame();
         _increaseLevelCounter();
 
@@ -305,11 +295,13 @@ class _PaintScreenState extends State<PaintScreen> {
       );
     }
     if (widget.uncoloredImage == AppImages.floweruncolored1) {
-      if (PaintingProgress.gamesCounter == 5) {
+      if (PaintingProgress.gamesCounter == 4) {
         _increaseCounterGame();
         context.read<ProfileInfoCubit>().updatePaintingProgress(
             paintingGameCounter: PaintingProgress.gamesCounter,
             paintingLevelCounter: PaintingProgress.levelsCounter);
+                    PaintingProgress.lockedflowers = 1;
+
       }
       showWinScreen(
         context,
@@ -317,7 +309,7 @@ class _PaintScreenState extends State<PaintScreen> {
       );
     }
     if (widget.uncoloredImage == AppImages.floweruncolored2) {
-      if (PaintingProgress.gamesCounter == 6) {
+      if (PaintingProgress.gamesCounter == 5) {
         _increaseCounterGame();
         context.read<ProfileInfoCubit>().updatePaintingProgress(
             paintingGameCounter: PaintingProgress.gamesCounter,
@@ -330,7 +322,7 @@ class _PaintScreenState extends State<PaintScreen> {
       );
     }
     if (widget.uncoloredImage == AppImages.floweruncolored3) {
-      if (PaintingProgress.gamesCounter == 7) {
+      if (PaintingProgress.gamesCounter == 6) {
         _increaseCounterGame();
         context.read<ProfileInfoCubit>().updatePaintingProgress(
             paintingGameCounter: PaintingProgress.gamesCounter,
@@ -343,7 +335,7 @@ class _PaintScreenState extends State<PaintScreen> {
       );
     }
     if (widget.uncoloredImage == AppImages.floweruncolored4) {
-      if (PaintingProgress.gamesCounter == 8) {
+      if (PaintingProgress.gamesCounter == 7) {
         _increaseCounterGame();
         context.read<ProfileInfoCubit>().updatePaintingProgress(
             paintingGameCounter: PaintingProgress.gamesCounter,

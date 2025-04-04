@@ -87,22 +87,20 @@ class _SampleScreenWidgetState extends State<SampleScreenWidget> {
         Navigator.of(context).pushNamed(widget.pageGroup[2]);
       } else if (PaintingProgress.gamesCounter >= 3 && index == 3) {
         Navigator.of(context).pushNamed(widget.pageGroup[3]);
-      } else if (PaintingProgress.gamesCounter >= 4 && index == 4) {
-        Navigator.of(context).pushNamed(widget.pageGroup[4]);
-      }
+      } 
     });
   }
 
   void controlPaintingFlowersGames(int index, BuildContext context) {
-    if (PaintingProgress.gamesCounter >= 5 && index == 0) {
+    if (PaintingProgress.gamesCounter >= 4 && index == 0) {
       Navigator.of(context).pushNamed(widget.pageGroup[0]);
-    } else if (PaintingProgress.gamesCounter >= 6 && index == 1) {
+    } else if (PaintingProgress.gamesCounter >= 5 && index == 1) {
       Navigator.of(context).pushNamed(widget.pageGroup[1]);
-    } else if (PaintingProgress.gamesCounter >= 7 && index == 2) {
+    } else if (PaintingProgress.gamesCounter >= 6 && index == 2) {
       Navigator.of(context).pushNamed(widget.pageGroup[2]);
-    } else if (PaintingProgress.gamesCounter >= 8 && index == 3) {
+    } else if (PaintingProgress.gamesCounter >= 7 && index == 3) {
       Navigator.of(context).pushNamed(widget.pageGroup[3]);
-    } else if (PaintingProgress.gamesCounter >= 9 && index == 4) {
+    } else if (PaintingProgress.gamesCounter >= 8 && index == 4) {
       Navigator.of(context).pushNamed(widget.pageGroup[4]);
     }
   }

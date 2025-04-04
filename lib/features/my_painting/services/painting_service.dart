@@ -1,12 +1,23 @@
 import 'package:color_funland/features/addProfileInfo/presentation/pages/child_progress_scareen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 
 class PaintingService {
   static const String _paintedItemsKey = 'painted_items';
   static late SharedPreferences _prefs;
 
+
+
   static Future<void> initialize() async {
     _prefs = await SharedPreferences.getInstance();
+
+     // Clear preferences if NOT in debug mode
+     if (kReleaseMode) {
+      await _prefs.clear();
+      // print('SharedPreferences cleared in release mode');
+    }
+
     _loadPaintedItems();
   }
 
@@ -23,3 +34,5 @@ class PaintingService {
     await _prefs.setStringList(_paintedItemsKey, paintedItems);
   }
 }
+
+

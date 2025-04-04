@@ -85,11 +85,6 @@ final List<GridItem> animalsFram = [
     title: "turtle",
   ),
   GridItem(
-    imageUrl: PaintingProgress.isPainted(AppImages.uncoloredpenguinfram) ? 
-      AppImages.coloredpenguinfram : AppImages.uncoloredpenguinfram,
-    title: "penguin",
-  ),
-  GridItem(
     imageUrl: PaintingProgress.isPainted(AppImages.uncoloredelephante2fram) ? 
       AppImages.coloredelephante2fram : AppImages.uncoloredelephante2fram,
     title: "elephante2",
@@ -98,6 +93,10 @@ final List<GridItem> animalsFram = [
     imageUrl: PaintingProgress.isPainted(AppImages.uncoloredmonkey2fram) ? 
       AppImages.coloredmonkey2fram : AppImages.uncoloredmonkey2fram,
     title: "monkey2",
+  ),
+  GridItem(
+    imageUrl: AppImages.uncoloredpenguinfram,
+    title: "penguin",
   ),
     GridItem(
       imageUrl: AppImages.tigerFram,
@@ -129,7 +128,6 @@ final List<GridItem> animalsFram = [
 final List<String> animalsPaintingScreen = [
   '/elephantColor',
   '/turtleColor',
-  '/penguinColor',
   '/elephante2Color',
   '/monkey2Color',
 ];
