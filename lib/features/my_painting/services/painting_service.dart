@@ -10,28 +10,28 @@ class PaintingService {
 
 
   static Future<void> initialize() async {
-    _prefs = await SharedPreferences.getInstance();
+    // _prefs = await SharedPreferences.getInstance();
 
-     // Clear preferences if NOT in debug mode
-     if (kReleaseMode) {
-      await _prefs.clear();
-      // print('SharedPreferences cleared in release mode');
-    }
+    //  // Clear preferences if NOT in debug mode
+    //  if (kReleaseMode) {
+    //   await _prefs.clear();
+    //   // print('SharedPreferences cleared in release mode');
+    // }
 
-    _loadPaintedItems();
+    // _loadPaintedItems();
   }
 
-  static void _loadPaintedItems() {
-    final paintedItemsJson = _prefs.getStringList(_paintedItemsKey) ?? [];
-    for (final itemKey in paintedItemsJson) {
-      PaintingProgress.paintedItems[itemKey] = true;
-    }
-  }
+  // static void _loadPaintedItems() {
+  //   final paintedItemsJson = _prefs.getStringList(_paintedItemsKey) ?? [];
+  //   for (final itemKey in paintedItemsJson) {
+  //     PaintingProgress.paintedItems[itemKey] = true;
+  //   }
+  // }
 
   static Future<void> markItemAsPainted(String itemKey) async {
     PaintingProgress.markItemAsPainted(itemKey);
-    final paintedItems = PaintingProgress.paintedItems.keys.toList();
-    await _prefs.setStringList(_paintedItemsKey, paintedItems);
+    // final paintedItems = PaintingProgress.paintedItems.keys.toList();
+    // await _prefs.setStringList(_paintedItemsKey, paintedItems);
   }
 }
 

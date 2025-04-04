@@ -304,24 +304,14 @@ class PaintingProgress {
    static int lockedPaintingBoardIndex = 0;
    static int lockedanimals = 0;
    static int lockedflowers = 0;
+static final Set<String> paintedItems = {}; // Track in memory only
 
- // Map to track which items have been painted
-  static final Map<String, bool> paintedItems = {};
-  static final Map<String, bool> completedPaintings = {};
-
-  // Check if an item has been painted
-  static bool isPainted(String itemKey) {
-    return paintedItems[itemKey] == true;
-  }
-
-  // Mark an item as painted
   static void markItemAsPainted(String itemKey) {
-    paintedItems[itemKey] = true;
+    paintedItems.add(itemKey); // No persistence
   }
 
-  // Get the correct frame image based on painting status
-  static String getFrameImage(String uncoloredFrame, String coloredFrame) {
-    return isPainted(uncoloredFrame) ? coloredFrame : uncoloredFrame;
+  static bool isPainted(String itemKey) {
+    return paintedItems.contains(itemKey);
   }
 
   

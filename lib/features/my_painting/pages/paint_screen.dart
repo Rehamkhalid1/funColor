@@ -230,7 +230,7 @@ class _PaintScreenState extends State<PaintScreen> {
       return;
     }
 
-    await PaintingService.markItemAsPainted(widget.itemKey);
+     PaintingService.markItemAsPainted(widget.itemKey); // Memory-only
     FrameStateManager.updateFrameAfterPainting(widget.uncoloredImage);
 
     // Add this to ensure parent screens update

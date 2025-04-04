@@ -62,7 +62,8 @@ Map<String, Widget Function(BuildContext)> routes = {
         categoryName: "Animals",
         colorTools: AppColors.elephantColors,
         itemKey: 'elephant',
-        requiredAccuracy: 75.0,
+       // requiredAccuracy: 75.0,
+        requiredAccuracy: 72.0,
       ),
   '/turtleColor': (context) => PaintScreen(
         uncoloredImage: AppImages.uncoloredturtle,
@@ -70,7 +71,8 @@ Map<String, Widget Function(BuildContext)> routes = {
         categoryName: "Animals",
         colorTools: AppColors.turtleColors,
         itemKey: 'turtle',
-        requiredAccuracy: 56.0,
+      //  requiredAccuracy: 56.0,
+        requiredAccuracy: 53.0,
       ),
   '/elephante2Color': (context) => PaintScreen(
         uncoloredImage: AppImages.uncoloredelephante2,
@@ -78,7 +80,8 @@ Map<String, Widget Function(BuildContext)> routes = {
         categoryName: "Animals",
         colorTools: AppColors.elephante2Colors,
         itemKey: 'elephante2',
-        requiredAccuracy: 61.0,
+        //requiredAccuracy: 61.0,
+        requiredAccuracy: 58.0,
       ),
   '/monkey2Color': (context) => PaintScreen(
         uncoloredImage: AppImages.uncoloredmonkey2,
@@ -86,7 +89,8 @@ Map<String, Widget Function(BuildContext)> routes = {
         categoryName: "Animals",
         colorTools: AppColors.monkey2Colors,
         itemKey: 'monkey2',
-        requiredAccuracy: 85.0,
+       // requiredAccuracy: 85.0,
+        requiredAccuracy: 80.0,
       ),
   // '/penguinColor': (context) => PaintScreen(
   //       uncoloredImage: AppImages.uncoloredpenguin,
@@ -143,7 +147,8 @@ Map<String, Widget Function(BuildContext)> routes = {
         categoryName: "Flowers",
         colorTools: AppColors.flower1Colors,
         itemKey: 'flower1',
-        requiredAccuracy: 71.0,
+       // requiredAccuracy: 71.0,
+        requiredAccuracy: 68.0,
       ),
   '/flowerColor2': (context) => PaintScreen(
         uncoloredImage: AppImages.floweruncolored2,
@@ -151,7 +156,8 @@ Map<String, Widget Function(BuildContext)> routes = {
         categoryName: "Flowers",
         colorTools: AppColors.flower2Colors,
         itemKey: 'flower2',
-        requiredAccuracy: 95.0,
+       // requiredAccuracy: 95.0,
+        requiredAccuracy: 92.0,
       ),
   '/flowerColor3': (context) => PaintScreen(
         uncoloredImage: AppImages.floweruncolored3,
@@ -159,7 +165,8 @@ Map<String, Widget Function(BuildContext)> routes = {
         categoryName: "Flowers",
         colorTools: AppColors.flower3Colors,
         itemKey: 'flower3',
-        requiredAccuracy: 65.0,
+      //  requiredAccuracy: 65.0,
+        requiredAccuracy: 62.0,
       ),
   '/flowerColor4': (context) => PaintScreen(
         uncoloredImage: AppImages.floweruncolored4,
@@ -167,7 +174,8 @@ Map<String, Widget Function(BuildContext)> routes = {
         categoryName: "Flowers",
         colorTools: AppColors.flower4Colors,
         itemKey: 'flower4',
-        requiredAccuracy: 97.0,
+       // requiredAccuracy: 97.0,
+        requiredAccuracy: 94.0,
       ),
 
   ///****************** color mixing ****************************/

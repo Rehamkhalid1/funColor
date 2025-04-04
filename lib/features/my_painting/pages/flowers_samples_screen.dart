@@ -49,10 +49,10 @@ class _FlowersSamplesScreenState extends State<FlowersSamplesScreen> {
                       items: flowersFram.map((item) {
                         return GridItem(
                           title: item.title,
-                          imageUrl: PaintingProgress.isPainted(item.imageUrl.contains('uncolored') 
-                              ? item.imageUrl 
-                              : FrameStateManager.getFrameForPainting(item.imageUrl) ?? item.imageUrl)
-                              ? FrameStateManager.getColoredFrame(item.imageUrl) ?? item.imageUrl
+                          imageUrl: PaintingProgress.isPainted(item.imageUrl)
+                              ? FrameStateManager.getColoredFrame(
+                                      item.imageUrl) ??
+                                  item.imageUrl
                               : item.imageUrl,
                           onTap: item.onTap,
                         );

@@ -43,11 +43,8 @@ class FrameStateManager {
   static void updateFrameAfterPainting(String paintingImage) {
     String? frameImage = getFrameForPainting(paintingImage);
     if (frameImage != null) {
-      String? coloredFrame = getColoredFrame(frameImage);
-      if (coloredFrame != null) {
-        // We'll use the painting's key to track the frame status
-        PaintingProgress.markItemAsPainted(frameImage);
-      }
+      // Only update in-memory, no SharedPreferences
+      PaintingProgress.markItemAsPainted(frameImage);
     }
   }
 }
