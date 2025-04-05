@@ -168,6 +168,24 @@ class GetChildDataErrorState extends AuthState {
     );
 
 }
+class DeleteChildSuccessState extends AuthState {
+      final String? message;
+
+  const DeleteChildSuccessState({
+    required this.message,
+  });
+
+}
+
+class DeleteChildDataErrorState extends AuthState {
+      final String? message;
+
+    const DeleteChildDataErrorState(
+          {required this.message}
+
+    );
+
+}
 
 class ForgetPasswordError extends AuthState {
   final String message;

@@ -103,7 +103,6 @@ class AuthCubit extends Cubit<AuthState> {
               if (userDoc.exists) {
                 final userData = userDoc.data()!;
 
-
                 final verifiedUser = entities.User(
                   uid: firebaseUser.uid,
                   email: firebaseUser.email ?? '',
@@ -118,7 +117,7 @@ class AuthCubit extends Cubit<AuthState> {
 
                 await SuccessSound.playAfterLogin();
                 BackgroundAudio.listenForSoundUpdates();
-              await  getCurrentChildData();
+                await getCurrentChildData();
               } else {
                 emit(const AuthError(message: 'User data not found'));
               }
@@ -193,18 +192,15 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-
-
   Future<void> resetPassword(String email) async {
-  emit(AuthLoading());
-  try {
-    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-    emit(ForgetPasswordSuccess(message: "Password reset email sent."));
-  } catch (e) {
-    emit(ForgetPasswordError(message: e.toString()));
+    emit(AuthLoading());
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      emit(ForgetPasswordSuccess(message: "Password reset email sent."));
+    } catch (e) {
+      emit(ForgetPasswordError(message: e.toString()));
+    }
   }
-}
-
 
   Future<void> changePassword({
     required String currentPassword,
@@ -257,7 +253,6 @@ class AuthCubit extends Cubit<AuthState> {
         return;
       }
 
-    
       //   final credential = EmailAuthProvider.credential(
       //     email: user.email!,
       //     password: currentPassword,
@@ -269,6 +264,8 @@ class AuthCubit extends Cubit<AuthState> {
       //     emit(const AuthError(message: 'Current password is incorrect'));
       //     return;
       //   }
+
+    await deleteChild();
 
       // Delete user data from Firestore
       await FirebaseFirestore.instance
@@ -289,7 +286,6 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-
   Future<void> signOut() async {
     try {
       emit(const AuthLoading());
@@ -301,6 +297,56 @@ class AuthCubit extends Cubit<AuthState> {
     } catch (e) {
       emit(AuthError(message: 'Failed to sign out: ${e.toString()}'));
       messageService.showMessage('Failed to sign out', MessageType.error);
+    }
+  }
+
+  Future<void> deleteChild() async {
+    try {
+      emit(const AuthLoading());
+
+      final User? currentUser = _auth.currentUser;
+      if (currentUser == null) {
+        emit(GetChildDataErrorState(
+          errorMessage: 'User not authenticated',
+        ));
+        return;
+      }
+
+      // Get user document to find current child ID
+      final userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(currentUser.uid)
+          .get();
+
+      if (!userDoc.exists) {
+        emit(GetChildDataErrorState(
+          errorMessage: 'User document not found',
+        ));
+        return;
+      }
+
+      final userData = userDoc.data();
+      final String? currentChildId = userData?['currentChildId'];
+
+      if (currentChildId == null) {
+        emit(GetChildDataErrorState(
+          errorMessage: 'No current child set',
+        ));
+        return;
+      }
+
+      // Delete child document using the ID
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(currentUser.uid)
+          .collection('children')
+          .doc(currentChildId)
+          .delete();
+
+      emit(const DeleteChildSuccessState(message: 'Child deleted successfully'));
+    } catch (e) {
+      emit(
+          DeleteChildDataErrorState(message: 'Failed to delete child: ${e.toString()}'));
     }
   }
 
@@ -317,8 +363,10 @@ class AuthCubit extends Cubit<AuthState> {
       }
 
       // Get user document to find current child ID
-      final userDoc =
-          await FirebaseFirestore.instance.collection('users').doc(currentUser.uid).get();
+      final userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(currentUser.uid)
+          .get();
 
       if (!userDoc.exists) {
         emit(GetChildDataErrorState(
@@ -369,7 +417,7 @@ class AuthCubit extends Cubit<AuthState> {
           'learningColorsLevelCounter': childData['learningColorsLevelCounter'],
         },
       ));
-   //   BackgroundAudio.listenForSoundUpdates();
+      //   BackgroundAudio.listenForSoundUpdates();
     } catch (e) {
       emit(GetChildDataErrorState(
         errorMessage: e.toString(),

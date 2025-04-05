@@ -4,8 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 class PaintingService {
-  static const String _paintedItemsKey = 'painted_items';
-  static late SharedPreferences _prefs;
+  // static const String _paintedItemsKey = 'painted_items';
+  // static late SharedPreferences _prefs;
 
 
 
