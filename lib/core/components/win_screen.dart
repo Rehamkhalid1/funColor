@@ -39,18 +39,18 @@ class _WinScreenState extends State<WinScreen> with SingleTickerProviderStateMix
     // Create confetti with different starting positions
     confetti = [
       // Top confetti
-      ...List.generate(100, (index) => Confetti.fromTop(random, screenSize)),
+      ...List.generate(200, (index) => Confetti.fromTop(random, screenSize)),
       // Bottom confetti
-      ...List.generate(100, (index) => Confetti.fromBottom(random, screenSize)),
+      ...List.generate(200, (index) => Confetti.fromBottom(random, screenSize)),
       // Left confetti
-      ...List.generate(100, (index) => Confetti.fromLeft(random, screenSize)),
+      ...List.generate(200, (index) => Confetti.fromLeft(random, screenSize)),
       // Right confetti
-      ...List.generate(100, (index) => Confetti.fromRight(random, screenSize)),
+      ...List.generate(200, (index) => Confetti.fromRight(random, screenSize)),
       // Corner confetti
-      ...List.generate(100, (index) => Confetti.fromTopLeft(random, screenSize)),
-      ...List.generate(100, (index) => Confetti.fromTopRight(random, screenSize)),
-      ...List.generate(100, (index) => Confetti.fromBottomLeft(random, screenSize)),
-      ...List.generate(100, (index) => Confetti.fromBottomRight(random, screenSize)),
+      ...List.generate(200, (index) => Confetti.fromTopLeft(random, screenSize)),
+      ...List.generate(200, (index) => Confetti.fromTopRight(random, screenSize)),
+      ...List.generate(200, (index) => Confetti.fromBottomLeft(random, screenSize)),
+      ...List.generate(200, (index) => Confetti.fromBottomRight(random, screenSize)),
     ];
   }
 

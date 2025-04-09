@@ -178,6 +178,7 @@ class AuthCubit extends Cubit<AuthState> {
                     DateTime.now(),
               );
               emit(AuthSuccess(user: user, isEmailVerified: false));
+
             } else {
               emit(const AuthError(message: 'Failed to save user data'));
             }
@@ -265,7 +266,7 @@ class AuthCubit extends Cubit<AuthState> {
       //     return;
       //   }
 
-    await deleteChild();
+      await deleteChild();
 
       // Delete user data from Firestore
       await FirebaseFirestore.instance
@@ -277,6 +278,8 @@ class AuthCubit extends Cubit<AuthState> {
       await user.delete();
 
       emit(const DeleteAccountSuccess(message: 'Account deleted successfully'));
+      await BackgroundAudio.stopAllSounds();
+
       messageService.showMessage(
           'Your account has been deleted', MessageType.info);
     } catch (e) {
@@ -343,10 +346,11 @@ class AuthCubit extends Cubit<AuthState> {
           .doc(currentChildId)
           .delete();
 
-      emit(const DeleteChildSuccessState(message: 'Child deleted successfully'));
-    } catch (e) {
       emit(
-          DeleteChildDataErrorState(message: 'Failed to delete child: ${e.toString()}'));
+          const DeleteChildSuccessState(message: 'Child deleted successfully'));
+    } catch (e) {
+      emit(DeleteChildDataErrorState(
+          message: 'Failed to delete child: ${e.toString()}'));
     }
   }
 

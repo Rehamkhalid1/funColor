@@ -63,9 +63,9 @@ class _SampleScreenWidgetState extends State<SampleScreenWidget> {
                 imageUrl: widget.items[index].imageUrl,
                 onTap: () {
                   if (widget.title == 'Animals') {
-                    controlPaintingAnimalsGames(index, context);
+                    _controlPaintingAnimalsGames(index, context);
                   } else if (widget.title == 'Flowers') {
-                    controlPaintingFlowersGames(index, context);
+                    _controlPaintingFlowersGames(index, context);
                   }
                 },
               ),
@@ -77,7 +77,7 @@ class _SampleScreenWidgetState extends State<SampleScreenWidget> {
     );
   }
 
-  void controlPaintingAnimalsGames(int index, BuildContext context) {
+  void _controlPaintingAnimalsGames(int index, BuildContext context) {
     setState(() {
       if (index == 0) {
         Navigator.of(context).pushNamed(widget.pageGroup[0]);
@@ -91,7 +91,7 @@ class _SampleScreenWidgetState extends State<SampleScreenWidget> {
     });
   }
 
-  void controlPaintingFlowersGames(int index, BuildContext context) {
+  void _controlPaintingFlowersGames(int index, BuildContext context) {
     if (PaintingProgress.gamesCounter >= 4 && index == 0) {
       Navigator.of(context).pushNamed(widget.pageGroup[0]);
     } else if (PaintingProgress.gamesCounter >= 5 && index == 1) {
@@ -126,7 +126,7 @@ class _SampleScreenWidgetState extends State<SampleScreenWidget> {
                 height: 211.62.h,
                 fit: BoxFit.contain,
               ),
-              index > getlockedPaintingName()
+              index > _getlockedPaintingName()
                   ? Image.asset(
                       AppImages.locked,
                       width: 66.w,
@@ -140,7 +140,7 @@ class _SampleScreenWidgetState extends State<SampleScreenWidget> {
     );
   }
 
-  int getlockedPaintingName() {
+  int _getlockedPaintingName() {
     int lockedIndex = 0;
     if (widget.title == 'Animals') {
       lockedIndex = PaintingProgress.lockedanimals;

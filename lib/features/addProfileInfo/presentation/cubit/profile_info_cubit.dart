@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:color_funland/core/components/background_sound.dart';
+import 'package:color_funland/core/components/success_sound.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
@@ -184,6 +186,9 @@ class ProfileInfoCubit extends Cubit<ProfileInfoState> {
 
       emit(SaveChildInfoSuccessState(messag: "Success Save Child Info"));
 
+
+              await SuccessSound.playAfterLogin();
+              BackgroundAudio.listenForSoundUpdates();
       // Fetch the current child data
       await getCurrentChild();
     } catch (e) {

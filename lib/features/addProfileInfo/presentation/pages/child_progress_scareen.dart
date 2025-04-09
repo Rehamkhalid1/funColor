@@ -304,6 +304,7 @@ class PaintingProgress {
    static int lockedPaintingBoardIndex = 0;
    static int lockedanimals = 0;
    static int lockedflowers = 0;
+   
 static final Set<String> paintedItems = {}; // Track in memory only
 
   static void markItemAsPainted(String itemKey) {
