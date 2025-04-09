@@ -85,7 +85,7 @@ class _PaintScreenState extends State<PaintScreen> {
     // print("Painting Completion: $paintedPercentage%");
 
     setState(() {
-      isPaintingComplete = paintedPercentage >= 69.0;
+      isPaintingComplete = paintedPercentage >= 70.0;
       isPaintingCorrect = isCorrect;
     });
   }
@@ -230,7 +230,7 @@ class _PaintScreenState extends State<PaintScreen> {
       return;
     }
 
-     PaintingService.markItemAsPainted(widget.itemKey); // Memory-only
+    PaintingService.markItemAsPainted(widget.itemKey); // Memory-only
     FrameStateManager.updateFrameAfterPainting(widget.uncoloredImage);
 
     // Add this to ensure parent screens update
@@ -240,11 +240,12 @@ class _PaintScreenState extends State<PaintScreen> {
     if (widget.uncoloredImage == AppImages.uncoloredelephante) {
       if (PaintingProgress.gamesCounter < 1) {
         _increaseCounterGame();
+
         context.read<ProfileInfoCubit>().updatePaintingProgress(
             paintingGameCounter: PaintingProgress.gamesCounter,
             paintingLevelCounter: PaintingProgress.levelsCounter);
-                    PaintingProgress.lockedanimals = 1;
 
+        PaintingProgress.lockedanimals = 1;
       }
       showWinScreen(
         context,
@@ -300,8 +301,7 @@ class _PaintScreenState extends State<PaintScreen> {
         context.read<ProfileInfoCubit>().updatePaintingProgress(
             paintingGameCounter: PaintingProgress.gamesCounter,
             paintingLevelCounter: PaintingProgress.levelsCounter);
-                    PaintingProgress.lockedflowers = 1;
-
+        PaintingProgress.lockedflowers = 1;
       }
       showWinScreen(
         context,

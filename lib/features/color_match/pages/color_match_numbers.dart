@@ -15,7 +15,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:palette_generator/palette_generator.dart';
 
 class ColorMatchNumbers extends StatefulWidget {
   const ColorMatchNumbers({super.key});
@@ -55,9 +54,9 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
 
     double paintedPercentage = (paintedCount / totalRegions) * 100;
 
-    print("Total Regions: $totalRegions");
-    print("Painted Regions: $paintedCount");
-    print("Painting Completion: $paintedPercentage%");
+    // print("Total Regions: $totalRegions");
+    // print("Painted Regions: $paintedCount");
+    // print("Painting Completion: $paintedPercentage%");
 
     setState(() {
       isPaintingComplete =
