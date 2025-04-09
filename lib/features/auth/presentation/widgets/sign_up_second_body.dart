@@ -37,24 +37,24 @@ class SignUpSecondBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 20.h),
-            // Username Field
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  AppStrings.username,
-                  style: ts18Purble700,
-                ),
-                SizedBox(height: 17.h),
-                CustomTextField(
-                  controller: usernameController,
-                  validator: (value) =>
-                      value?.isEmpty ?? true ? 'Please enter username' : null,
-                  textInputAction: TextInputAction.next,
-                ),
-              ],
-            ),
-            SizedBox(height: 21.h),
+            // // Username Field
+            // Column(
+            //   crossAxisAlignment: CrossAxisAlignment.start,
+            //   children: [
+            //     Text(
+            //       AppStrings.username,
+            //       style: ts18Purble700,
+            //     ),
+            //     SizedBox(height: 17.h),
+            //     CustomTextField(
+            //       controller: usernameController,
+            //       validator: (value) =>
+            //           value?.isEmpty ?? true ? 'Please enter username' : null,
+            //       textInputAction: TextInputAction.next,
+            //     ),
+            //   ],
+            // ),
+            // SizedBox(height: 21.h),
             Text(
               AppStrings.password,
               style: ts18Purble700,
