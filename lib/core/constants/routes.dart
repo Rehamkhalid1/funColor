@@ -26,7 +26,6 @@ import 'package:color_funland/features/learning_colors/pages/learning_colors_les
 import 'package:color_funland/features/learning_colors/pages/red_green_blue_practice_page.dart';
 import 'package:color_funland/features/learning_colors/pages/red_green_blue_video_page.dart';
 import 'package:color_funland/features/my_painting/pages/animals_samples_screen.dart';
-import 'package:color_funland/features/my_painting/pages/fishes_samples_screen.dart';
 import 'package:color_funland/features/my_painting/pages/flowers_samples_screen.dart';
 import 'package:color_funland/features/my_painting/pages/my_painting_screen.dart';
 import 'package:color_funland/features/my_painting/pages/paint_screen.dart';

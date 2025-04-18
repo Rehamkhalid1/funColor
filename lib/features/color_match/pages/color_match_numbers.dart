@@ -35,6 +35,7 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
       }
     });
   }
+
   VectorImage? _vectorImage;
   VectorImage? _coloredVectorImage;
 
@@ -118,13 +119,18 @@ class _ColorMatchNumbersState extends State<ColorMatchNumbers> {
                           splashColor: Colors.transparent,
                           onTap: () {
                             if (isPaintingCorrect) {
-                           //   print('success paint');
-                           _increaseCounterGame();
-                             context.read<ProfileInfoCubit>().updateColorMatchProgress(
-                          colorMatchGameCounter:
-                              ColorMatchProgress.gamesCounter,
-                          colorMatchLevelCounter:
-                              ColorMatchProgress.levelsCounter);
+                              //   print('success paint');
+                              _increaseCounterGame();
+                              context
+                                  .read<ProfileInfoCubit>()
+                                  .updateColorMatchProgress(
+                                    colorMatchGameCounter:
+                                        ColorMatchProgress.gamesCounter,
+                                    colorMatchLevelCounter:
+                                        ColorMatchProgress.levelsCounter,
+                                    colorMatchLockedIndex:
+                                        ColorMatchProgress.lockedIndex,
+                                  );
                               showWinScreen(
                                 context,
                                 () => Navigator.pushReplacementNamed(

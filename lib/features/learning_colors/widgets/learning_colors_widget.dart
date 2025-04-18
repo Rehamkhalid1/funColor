@@ -33,6 +33,7 @@ class LearningColorsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return SizedBox(
       height: gridHeight ?? 416.h,
       child: GridView.builder(
@@ -42,8 +43,7 @@ class LearningColorsWidget extends StatelessWidget {
         ),
         physics: NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) => _buildlearningColors(
-          index: index,
-          
+          index: index, 
           item: GridItem(
             title: items[index].title,
             imageUrl: items[index].imageUrl,

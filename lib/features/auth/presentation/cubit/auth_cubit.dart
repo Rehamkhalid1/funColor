@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:color_funland/core/components/background_sound.dart';
 import 'package:color_funland/core/components/success_sound.dart';
+import 'package:color_funland/features/addProfileInfo/presentation/pages/child_progress_scareen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:color_funland/features/auth/domain/entities/user.dart'
@@ -73,6 +74,8 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       emit(const AuthLoading());
 
+      resetAllStaticProgress();
+
       if (email.isEmpty || password.isEmpty) {
         emit(const AuthError(message: 'Email and password cannot be empty'));
         return;
@@ -94,6 +97,9 @@ class AuthCubit extends Cubit<AuthState> {
                 emit(EmailVerificationRequired(email: firebaseUser.email!));
                 return;
               }
+
+              // Clear any existing static progress before loading new data
+              resetAllStaticProgress();
 
               final userDoc = await FirebaseFirestore.instance
                   .collection('users')
@@ -117,6 +123,7 @@ class AuthCubit extends Cubit<AuthState> {
 
                 await SuccessSound.playAfterLogin();
                 BackgroundAudio.listenForSoundUpdates();
+                // Ensure child data is loaded and static variables are updated
                 await getCurrentChildData();
               } else {
                 emit(const AuthError(message: 'User data not found'));
@@ -161,6 +168,9 @@ class AuthCubit extends Cubit<AuthState> {
             // Send verification email immediately after signup
             await sendEmailVerification();
 
+             // Clear any existing static progress before loading new data
+             resetAllStaticProgress();
+
             // Get user data from Firestore to ensure it was saved
             final userData = await FirebaseFirestore.instance
                 .collection('users')
@@ -179,6 +189,8 @@ class AuthCubit extends Cubit<AuthState> {
               );
               emit(AuthSuccess(user: user, isEmailVerified: false));
 
+              // Ensure child data is loaded and static variables are updated
+              await getCurrentChildData();
             } else {
               emit(const AuthError(message: 'Failed to save user data'));
             }
@@ -292,7 +304,13 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> signOut() async {
     try {
       emit(const AuthLoading());
+      
+      // Clear static variables BEFORE signing out
+
+      resetAllStaticProgress();
+
       await _auth.signOut();
+
       emit(const AuthSignedOut(message: "Signed Out Successfully"));
 
       // ✅ Stop background music on logout
@@ -346,8 +364,11 @@ class AuthCubit extends Cubit<AuthState> {
           .doc(currentChildId)
           .delete();
 
+      resetAllStaticProgress();
+      
       emit(
           const DeleteChildSuccessState(message: 'Child deleted successfully'));
+
     } catch (e) {
       emit(DeleteChildDataErrorState(
           message: 'Failed to delete child: ${e.toString()}'));
@@ -405,6 +426,10 @@ class AuthCubit extends Cubit<AuthState> {
       }
 
       final childData = childDoc.data() as Map<String, dynamic>;
+
+      // Update static variables from child data
+      _updateStaticVariablesFromChildData(childData);
+
       emit(GetChildDataSuccessState(
         child: {
           'id': childDoc.id,
@@ -413,12 +438,19 @@ class AuthCubit extends Cubit<AuthState> {
           'profileImage': childData['profileImage'],
           'paintingGameCounter': childData['paintingGameCounter'],
           'paintingLevelCounter': childData['paintingLevelCounter'],
+          'paintingLockedAnimals': childData['paintingLockedAnimals'],
+          'paintingLockedFlowers': childData['paintingLockedFlowers'],
+          'paintingLockedBoardIndex': childData['paintingLockedBoardIndex'],
+          'paintedItems': childData['paintedItems'],
           'colorMixingGameCounter': childData['colorMixingGameCounter'],
           'colorMixingLevelCounter': childData['colorMixingLevelCounter'],
+          'colorMixingLockedIndex': childData['colorMixingLockedIndex'],
           'colorMatchGameCounter': childData['colorMatchGameCounter'],
           'colorMatchLevelCounter': childData['colorMatchLevelCounter'],
+          'colorMatchLockedIndex': childData['colorMatchLockedIndex'],
           'learningColorsGameCounter': childData['learningColorsGameCounter'],
           'learningColorsLevelCounter': childData['learningColorsLevelCounter'],
+          'learningColorsLockedIndex': childData['learningColorsLockedIndex'],
         },
       ));
       //   BackgroundAudio.listenForSoundUpdates();
@@ -427,5 +459,58 @@ class AuthCubit extends Cubit<AuthState> {
         errorMessage: e.toString(),
       ));
     }
+  }
+
+  // In auth_cubit.dart, add this method in the AuthCubit class
+  void _updateStaticVariablesFromChildData(Map<String, dynamic> childData) {
+    // Update painting progress
+    PaintingProgress.gamesCounter = childData['paintingGameCounter'] ?? 0;
+    PaintingProgress.levelsCounter = childData['paintingLevelCounter'] ?? 1;
+    PaintingProgress.lockedanimals = childData['paintingLockedAnimals'] ?? 0;
+    PaintingProgress.lockedflowers = childData['paintingLockedFlowers'] ?? 0;
+    PaintingProgress.lockedPaintingBoardIndex =
+        childData['paintingLockedBoardIndex'] ?? 0;
+    PaintingProgress.paintedItems =
+        Set<String>.from(childData['paintedItems'] ?? {});
+
+    // Update color mixing progress
+    ColorMixingProgress.gamesCounter = childData['colorMixingGameCounter'] ?? 0;
+    ColorMixingProgress.levelsCounter =
+        childData['colorMixingLevelCounter'] ?? 1;
+    ColorMixingProgress.lockedIndex = childData['colorMixingLockedIndex'] ?? 0;
+
+    // Update color match progress
+    ColorMatchProgress.gamesCounter = childData['colorMatchGameCounter'] ?? 0;
+    ColorMatchProgress.levelsCounter = childData['colorMatchLevelCounter'] ?? 1;
+    ColorMatchProgress.lockedIndex = childData['colorMatchLockedIndex'] ?? 0;
+
+    // Update learning colors progress
+    LearningColorsProgress.gamesCounter =
+        childData['learningColorsGameCounter'] ?? 0;
+    LearningColorsProgress.levelsCounter =
+        childData['learningColorsLevelCounter'] ?? 1;
+    LearningColorsProgress.lockedIndex =
+        childData['learningColorsLockedIndex'] ?? 0;
+  }
+
+  void resetAllStaticProgress() {
+    PaintingProgress.gamesCounter = 0;
+    PaintingProgress.levelsCounter = 1;
+    PaintingProgress.lockedanimals = 0;
+    PaintingProgress.lockedflowers = 0;
+    PaintingProgress.lockedPaintingBoardIndex = 0;
+    PaintingProgress.paintedItems.clear();
+
+    ColorMixingProgress.gamesCounter = 0;
+    ColorMixingProgress.levelsCounter = 1;
+    ColorMixingProgress.lockedIndex = 0;
+
+    ColorMatchProgress.gamesCounter = 0;
+    ColorMatchProgress.levelsCounter = 1;
+    ColorMatchProgress.lockedIndex = 0;
+
+    LearningColorsProgress.gamesCounter = 0;
+    LearningColorsProgress.levelsCounter = 1;
+    LearningColorsProgress.lockedIndex = 0;
   }
 }

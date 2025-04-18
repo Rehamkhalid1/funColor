@@ -74,6 +74,8 @@ class _AddProfileInfoScreenState extends State<AddProfileInfoScreen> {
                         listener: (context, state) {
                           if (state is AuthSuccess) {
                             context.read<AuthCubit>().getCurrentChildData();
+                            
+                            
                           }
                         },
                         builder: (context, state) {
@@ -221,12 +223,22 @@ class _AddProfileInfoScreenState extends State<AddProfileInfoScreen> {
                                                     imageUrl: imageUrl,
                                                     paintingGameCounter: PaintingProgress.gamesCounter,
                                                     paintingLevelCounter: PaintingProgress.levelsCounter,
+                                                    paintingLockedAnimals: PaintingProgress.lockedanimals,
+                                                    paintingLockedFlowers: PaintingProgress.lockedflowers,
+                                                    paintingLockedBoardIndex: PaintingProgress.lockedPaintingBoardIndex,
+                                                    paintedItems: PaintingProgress.paintedItems,
+                                                                                                       
                                                     colorMatchGameCounter: ColorMatchProgress.gamesCounter,
                                                     colorMatchLevelCounter:  ColorMatchProgress.levelsCounter,
-                                                    colorMixingGameCounter:  ColorMatchProgress.gamesCounter,
-                                                    colorMixingLevelCounter:  ColorMatchProgress.levelsCounter,
+                                                    colorMatchLockedIndex: ColorMatchProgress.lockedIndex,
+
+                                                    colorMixingGameCounter:  ColorMixingProgress.gamesCounter,
+                                                    colorMixingLevelCounter:  ColorMixingProgress.levelsCounter,
+                                                    colorMixingLockedIndex:  ColorMixingProgress.lockedIndex,
+
                                                     learningColorsGameCounter: LearningColorsProgress.gamesCounter,
                                                     learningColorsLevelCounter: LearningColorsProgress.levelsCounter,
+                                                    learningColorsLockedIndex: LearningColorsProgress.lockedIndex,
                                                   );
                                             },
                                     );

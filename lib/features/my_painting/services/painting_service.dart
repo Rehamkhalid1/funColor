@@ -28,8 +28,11 @@ class PaintingService {
   //   }
   // }
 
+
   static Future<void> markItemAsPainted(String itemKey) async {
-    PaintingProgress.markItemAsPainted(itemKey);
+      final PaintingProgress _paintingProgress = PaintingProgress();
+
+    _paintingProgress.markItemAsPainted(itemKey);
     // final paintedItems = PaintingProgress.paintedItems.keys.toList();
     // await _prefs.setStringList(_paintedItemsKey, paintedItems);
   }

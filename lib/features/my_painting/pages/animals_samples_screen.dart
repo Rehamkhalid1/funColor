@@ -20,6 +20,9 @@ class AnimalsSamplesScreen extends StatefulWidget {
 
 class _AnimalsSamplesScreenState extends State<AnimalsSamplesScreen> {
   final GlobalKey<AnimatedContainerState> _containerKey = GlobalKey();
+  final FrameStateManager _frameStateManager = FrameStateManager();
+  final PaintingProgress _paintingProgress = PaintingProgress();
+
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +52,8 @@ class _AnimalsSamplesScreenState extends State<AnimalsSamplesScreen> {
                       items: animalsFram.map((item) {
                         return GridItem(
                           title: item.title,
-                          imageUrl: PaintingProgress.isPainted(item.imageUrl)
-                              ? FrameStateManager.getColoredFrame(
+                          imageUrl: _paintingProgress.isPainted(item.imageUrl)
+                              ? _frameStateManager.getColoredFrame(
                                       item.imageUrl) ??
                                   item.imageUrl
                               : item.imageUrl,

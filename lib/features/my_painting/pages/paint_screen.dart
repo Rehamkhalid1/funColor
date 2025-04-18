@@ -85,7 +85,7 @@ class _PaintScreenState extends State<PaintScreen> {
     // print("Painting Completion: $paintedPercentage%");
 
     setState(() {
-      isPaintingComplete = paintedPercentage >= 70.0;
+      isPaintingComplete = paintedPercentage >= 69.0;
       isPaintingCorrect = isCorrect;
     });
   }
@@ -157,6 +157,7 @@ class _PaintScreenState extends State<PaintScreen> {
                                 splashColor: Colors.transparent,
                                 onTap: () {
                                   scoringColoredItems();
+                                  
                                 },
                                 child: Image.asset(
                                   AppIcons.donebtn,
@@ -224,6 +225,8 @@ class _PaintScreenState extends State<PaintScreen> {
     );
   }
 
+  final FrameStateManager _frameStateManager = FrameStateManager();
+
   void scoringColoredItems() async {
     if (!isPaintingCorrect) {
       showFailureScreen(context);
@@ -231,7 +234,7 @@ class _PaintScreenState extends State<PaintScreen> {
     }
 
     PaintingService.markItemAsPainted(widget.itemKey); // Memory-only
-    FrameStateManager.updateFrameAfterPainting(widget.uncoloredImage);
+    _frameStateManager.updateFrameAfterPainting(widget.uncoloredImage);
 
     // Add this to ensure parent screens update
     if (mounted) {
@@ -240,12 +243,17 @@ class _PaintScreenState extends State<PaintScreen> {
     if (widget.uncoloredImage == AppImages.uncoloredelephante) {
       if (PaintingProgress.gamesCounter < 1) {
         _increaseCounterGame();
+        PaintingProgress.lockedanimals = 1;
 
         context.read<ProfileInfoCubit>().updatePaintingProgress(
             paintingGameCounter: PaintingProgress.gamesCounter,
-            paintingLevelCounter: PaintingProgress.levelsCounter);
+            paintingLevelCounter: PaintingProgress.levelsCounter,
+            paintingLockedFlowers: PaintingProgress.lockedflowers,
+            paintingLockedAnimals: PaintingProgress.lockedanimals,
+            paintingLockedBoardIndex: PaintingProgress.lockedPaintingBoardIndex,
+            paintedItems: PaintingProgress.paintedItems,            
+            );
 
-        PaintingProgress.lockedanimals = 1;
       }
       showWinScreen(
         context,
@@ -255,10 +263,15 @@ class _PaintScreenState extends State<PaintScreen> {
     if (widget.uncoloredImage == AppImages.uncoloredturtle) {
       if (PaintingProgress.gamesCounter == 1) {
         _increaseCounterGame();
+        PaintingProgress.lockedanimals = 2;
         context.read<ProfileInfoCubit>().updatePaintingProgress(
             paintingGameCounter: PaintingProgress.gamesCounter,
-            paintingLevelCounter: PaintingProgress.levelsCounter);
-        PaintingProgress.lockedanimals = 2;
+            paintingLevelCounter: PaintingProgress.levelsCounter,
+             paintingLockedFlowers: PaintingProgress.lockedflowers,
+            paintingLockedAnimals: PaintingProgress.lockedanimals,
+            paintingLockedBoardIndex: PaintingProgress.lockedPaintingBoardIndex,
+            paintedItems: PaintingProgress.paintedItems,  
+            );
       }
       showWinScreen(
         context,
@@ -269,10 +282,15 @@ class _PaintScreenState extends State<PaintScreen> {
     if (widget.uncoloredImage == AppImages.uncoloredelephante2) {
       if (PaintingProgress.gamesCounter == 2) {
         _increaseCounterGame();
+        PaintingProgress.lockedanimals = 3;
         context.read<ProfileInfoCubit>().updatePaintingProgress(
             paintingGameCounter: PaintingProgress.gamesCounter,
-            paintingLevelCounter: PaintingProgress.levelsCounter);
-        PaintingProgress.lockedanimals = 3;
+            paintingLevelCounter: PaintingProgress.levelsCounter,
+             paintingLockedFlowers: PaintingProgress.lockedflowers,
+            paintingLockedAnimals: PaintingProgress.lockedanimals,
+            paintingLockedBoardIndex: PaintingProgress.lockedPaintingBoardIndex,
+            paintedItems: PaintingProgress.paintedItems,  
+            );
       }
       showWinScreen(
         context,
@@ -284,11 +302,16 @@ class _PaintScreenState extends State<PaintScreen> {
         _increaseCounterGame();
         _increaseLevelCounter();
 
+        PaintingProgress.lockedPaintingBoardIndex = 1;
         context.read<ProfileInfoCubit>().updatePaintingProgress(
             paintingGameCounter: PaintingProgress.gamesCounter,
-            paintingLevelCounter: PaintingProgress.levelsCounter);
+            paintingLevelCounter: PaintingProgress.levelsCounter,
+             paintingLockedFlowers: PaintingProgress.lockedflowers,
+            paintingLockedAnimals: PaintingProgress.lockedanimals,
+            paintingLockedBoardIndex: PaintingProgress.lockedPaintingBoardIndex,
+            paintedItems: PaintingProgress.paintedItems,  
+            );
 
-        PaintingProgress.lockedPaintingBoardIndex = 1;
       }
       showWinScreen(
         context,
@@ -298,10 +321,15 @@ class _PaintScreenState extends State<PaintScreen> {
     if (widget.uncoloredImage == AppImages.floweruncolored1) {
       if (PaintingProgress.gamesCounter == 4) {
         _increaseCounterGame();
+        PaintingProgress.lockedflowers = 1;
         context.read<ProfileInfoCubit>().updatePaintingProgress(
             paintingGameCounter: PaintingProgress.gamesCounter,
-            paintingLevelCounter: PaintingProgress.levelsCounter);
-        PaintingProgress.lockedflowers = 1;
+            paintingLevelCounter: PaintingProgress.levelsCounter,
+             paintingLockedFlowers: PaintingProgress.lockedflowers,
+            paintingLockedAnimals: PaintingProgress.lockedanimals,
+            paintingLockedBoardIndex: PaintingProgress.lockedPaintingBoardIndex,
+            paintedItems: PaintingProgress.paintedItems,  
+            );
       }
       showWinScreen(
         context,
@@ -311,10 +339,15 @@ class _PaintScreenState extends State<PaintScreen> {
     if (widget.uncoloredImage == AppImages.floweruncolored2) {
       if (PaintingProgress.gamesCounter == 5) {
         _increaseCounterGame();
+        PaintingProgress.lockedflowers = 2;
         context.read<ProfileInfoCubit>().updatePaintingProgress(
             paintingGameCounter: PaintingProgress.gamesCounter,
-            paintingLevelCounter: PaintingProgress.levelsCounter);
-        PaintingProgress.lockedflowers = 2;
+            paintingLevelCounter: PaintingProgress.levelsCounter,
+             paintingLockedFlowers: PaintingProgress.lockedflowers,
+            paintingLockedAnimals: PaintingProgress.lockedanimals,
+            paintingLockedBoardIndex: PaintingProgress.lockedPaintingBoardIndex,
+            paintedItems: PaintingProgress.paintedItems,  
+            );
       }
       showWinScreen(
         context,
@@ -324,10 +357,15 @@ class _PaintScreenState extends State<PaintScreen> {
     if (widget.uncoloredImage == AppImages.floweruncolored3) {
       if (PaintingProgress.gamesCounter == 6) {
         _increaseCounterGame();
+        PaintingProgress.lockedflowers = 3;
         context.read<ProfileInfoCubit>().updatePaintingProgress(
             paintingGameCounter: PaintingProgress.gamesCounter,
-            paintingLevelCounter: PaintingProgress.levelsCounter);
-        PaintingProgress.lockedflowers = 3;
+            paintingLevelCounter: PaintingProgress.levelsCounter,
+             paintingLockedFlowers: PaintingProgress.lockedflowers,
+            paintingLockedAnimals: PaintingProgress.lockedanimals,
+            paintingLockedBoardIndex: PaintingProgress.lockedPaintingBoardIndex,
+            paintedItems: PaintingProgress.paintedItems,  
+            );
       }
       showWinScreen(
         context,
@@ -339,7 +377,12 @@ class _PaintScreenState extends State<PaintScreen> {
         _increaseCounterGame();
         context.read<ProfileInfoCubit>().updatePaintingProgress(
             paintingGameCounter: PaintingProgress.gamesCounter,
-            paintingLevelCounter: PaintingProgress.levelsCounter);
+            paintingLevelCounter: PaintingProgress.levelsCounter,
+            paintingLockedFlowers: PaintingProgress.lockedflowers,
+            paintingLockedAnimals: PaintingProgress.lockedanimals,
+            paintingLockedBoardIndex: PaintingProgress.lockedPaintingBoardIndex,
+            paintedItems: PaintingProgress.paintedItems,  
+            );
       }
       showWinScreen(
         context,

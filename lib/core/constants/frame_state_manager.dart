@@ -2,7 +2,7 @@ import 'package:color_funland/core/constants/app_images.dart';
 import 'package:color_funland/features/addProfileInfo/presentation/pages/child_progress_scareen.dart';
 
 class FrameStateManager {
-  static final Map<String, String> _uncoloredToColoredMap = {
+  final Map<String, String> _uncoloredToColoredMap = {
     AppImages.uncoloredelephantfram: AppImages.coloredelephantfram,
     AppImages.uncoloredturtle2fram: AppImages.coloredturtlefram,
     AppImages.uncoloredpenguinfram: AppImages.coloredpenguinfram,
@@ -14,8 +14,7 @@ class FrameStateManager {
     AppImages.uncoloredflower4Fram: AppImages.coloredflower4fram,
   };
 
-  // Map painting images to their corresponding frames
-  static final Map<String, String> _paintingToFrameMap = {
+  final Map<String, String> _paintingToFrameMap = {
     AppImages.uncoloredelephante: AppImages.uncoloredelephantfram,
     AppImages.uncoloredturtle: AppImages.uncoloredturtle2fram,
     AppImages.uncoloredpenguin: AppImages.uncoloredpenguinfram,
@@ -27,24 +26,27 @@ class FrameStateManager {
     AppImages.floweruncolored4: AppImages.uncoloredflower4Fram,
   };
 
-  static String? getColoredFrame(String uncoloredFrame) {
-    return _uncoloredToColoredMap[uncoloredFrame];
+  final PaintingProgress _paintingProgress = PaintingProgress();
+
+  String? getColoredFrame(String uncoloredFrame) {
+    if (_paintingProgress.isPainted(uncoloredFrame)) {
+      return _uncoloredToColoredMap[uncoloredFrame];
+    }
+    return null;
   }
 
-  static String? getFrameForPainting(String paintingImage) {
+  String? getFrameForPainting(String paintingImage) {
     return _paintingToFrameMap[paintingImage];
   }
 
-  static bool isFrameColored(String frameImage) {
-    return !frameImage.contains('uncolored');
+  bool isFrameColored(String frameImage) {
+    return _paintingProgress.isPainted(frameImage);
   }
 
-  // Update frame status when painting is completed
-  static void updateFrameAfterPainting(String paintingImage) {
+  void updateFrameAfterPainting(String paintingImage) {
     String? frameImage = getFrameForPainting(paintingImage);
     if (frameImage != null) {
-      // Only update in-memory, no SharedPreferences
-      PaintingProgress.markItemAsPainted(frameImage);
+      _paintingProgress.markItemAsPainted(frameImage);
     }
   }
 }

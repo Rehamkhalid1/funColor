@@ -178,12 +178,13 @@ class _ColorMixingSamplsState extends State<ColorMixingLevels1> {
                                     context
                                         .read<ProfileInfoCubit>()
                                         .updateColorMixingProgress(
-                                            colorMixingGameCounter:
-                                                ColorMixingProgress
-                                                    .gamesCounter,
-                                            colorMixingLevelCounter:
-                                                ColorMixingProgress
-                                                    .levelsCounter);
+                                          colorMixingGameCounter:
+                                              ColorMixingProgress.gamesCounter,
+                                          colorMixingLevelCounter:
+                                              ColorMixingProgress.levelsCounter,
+                                          colorMixingLockedIndex:
+                                              ColorMixingProgress.lockedIndex,
+                                        );
                                   }
                                   Future.delayed(
                                     Duration(seconds: 1),
@@ -198,12 +199,13 @@ class _ColorMixingSamplsState extends State<ColorMixingLevels1> {
                                     context
                                         .read<ProfileInfoCubit>()
                                         .updateColorMixingProgress(
-                                            colorMixingGameCounter:
-                                                ColorMixingProgress
-                                                    .gamesCounter,
-                                            colorMixingLevelCounter:
-                                                ColorMixingProgress
-                                                    .levelsCounter);
+                                          colorMixingGameCounter:
+                                              ColorMixingProgress.gamesCounter,
+                                          colorMixingLevelCounter:
+                                              ColorMixingProgress.levelsCounter,
+                                          colorMixingLockedIndex:
+                                              ColorMixingProgress.lockedIndex,
+                                        );
                                   }
 
                                   Future.delayed(
@@ -217,17 +219,18 @@ class _ColorMixingSamplsState extends State<ColorMixingLevels1> {
                                   if (ColorMixingProgress.gamesCounter < 3) {
                                     _increaseCounterGame();
                                     _increaseLevelCounter();
+                                    ColorMixingProgress.lockedIndex = 1;
                                     context
                                         .read<ProfileInfoCubit>()
                                         .updateColorMixingProgress(
-                                            colorMixingGameCounter:
-                                                ColorMixingProgress
-                                                    .gamesCounter,
-                                            colorMixingLevelCounter:
-                                                ColorMixingProgress
-                                                    .levelsCounter);
+                                          colorMixingGameCounter:
+                                              ColorMixingProgress.gamesCounter,
+                                          colorMixingLevelCounter:
+                                              ColorMixingProgress.levelsCounter,
+                                          colorMixingLockedIndex:
+                                              ColorMixingProgress.lockedIndex,
+                                        );
                                   }
-                                  ColorMixingProgress.lockedIndex = 1;
                                   showWinScreen(
                                     context,
                                     () => Navigator.pushReplacementNamed(
@@ -245,12 +248,13 @@ class _ColorMixingSamplsState extends State<ColorMixingLevels1> {
                                     context
                                         .read<ProfileInfoCubit>()
                                         .updateColorMixingProgress(
-                                            colorMixingGameCounter:
-                                                ColorMixingProgress
-                                                    .gamesCounter,
-                                            colorMixingLevelCounter:
-                                                ColorMixingProgress
-                                                    .levelsCounter);
+                                          colorMixingGameCounter:
+                                              ColorMixingProgress.gamesCounter,
+                                          colorMixingLevelCounter:
+                                              ColorMixingProgress.levelsCounter,
+                                          colorMixingLockedIndex:
+                                              ColorMixingProgress.lockedIndex,
+                                        );
                                   }
 
                                   Future.delayed(
@@ -267,12 +271,13 @@ class _ColorMixingSamplsState extends State<ColorMixingLevels1> {
                                     context
                                         .read<ProfileInfoCubit>()
                                         .updateColorMixingProgress(
-                                            colorMixingGameCounter:
-                                                ColorMixingProgress
-                                                    .gamesCounter,
-                                            colorMixingLevelCounter:
-                                                ColorMixingProgress
-                                                    .levelsCounter);
+                                          colorMixingGameCounter:
+                                              ColorMixingProgress.gamesCounter,
+                                          colorMixingLevelCounter:
+                                              ColorMixingProgress.levelsCounter,
+                                          colorMixingLockedIndex:
+                                              ColorMixingProgress.lockedIndex,
+                                        );
                                   }
 
                                   Future.delayed(
@@ -287,17 +292,18 @@ class _ColorMixingSamplsState extends State<ColorMixingLevels1> {
                                       ColorMixingProgress.gamesCounter < 6) {
                                     _increaseCounterGame();
                                     _increaseLevelCounter();
+                                    ColorMixingProgress.lockedIndex = 2;
                                     context
                                         .read<ProfileInfoCubit>()
                                         .updateColorMixingProgress(
-                                            colorMixingGameCounter:
-                                                ColorMixingProgress
-                                                    .gamesCounter,
-                                            colorMixingLevelCounter:
-                                                ColorMixingProgress
-                                                    .levelsCounter);
+                                          colorMixingGameCounter:
+                                              ColorMixingProgress.gamesCounter,
+                                          colorMixingLevelCounter:
+                                              ColorMixingProgress.levelsCounter,
+                                          colorMixingLockedIndex:
+                                              ColorMixingProgress.lockedIndex,
+                                        );
                                   }
-                                  ColorMixingProgress.lockedIndex = 2;
 
                                   showWinScreen(
                                     context,
@@ -315,12 +321,13 @@ class _ColorMixingSamplsState extends State<ColorMixingLevels1> {
                                     context
                                         .read<ProfileInfoCubit>()
                                         .updateColorMixingProgress(
-                                            colorMixingGameCounter:
-                                                ColorMixingProgress
-                                                    .gamesCounter,
-                                            colorMixingLevelCounter:
-                                                ColorMixingProgress
-                                                    .levelsCounter);
+                                          colorMixingGameCounter:
+                                              ColorMixingProgress.gamesCounter,
+                                          colorMixingLevelCounter:
+                                              ColorMixingProgress.levelsCounter,
+                                          colorMixingLockedIndex:
+                                              ColorMixingProgress.lockedIndex,
+                                        );
                                   }
 
                                   Future.delayed(
@@ -337,12 +344,13 @@ class _ColorMixingSamplsState extends State<ColorMixingLevels1> {
                                     context
                                         .read<ProfileInfoCubit>()
                                         .updateColorMixingProgress(
-                                            colorMixingGameCounter:
-                                                ColorMixingProgress
-                                                    .gamesCounter,
-                                            colorMixingLevelCounter:
-                                                ColorMixingProgress
-                                                    .levelsCounter);
+                                          colorMixingGameCounter:
+                                              ColorMixingProgress.gamesCounter,
+                                          colorMixingLevelCounter:
+                                              ColorMixingProgress.levelsCounter,
+                                          colorMixingLockedIndex:
+                                              ColorMixingProgress.lockedIndex,
+                                        );
                                   }
 
                                   Future.delayed(
@@ -359,12 +367,13 @@ class _ColorMixingSamplsState extends State<ColorMixingLevels1> {
                                     context
                                         .read<ProfileInfoCubit>()
                                         .updateColorMixingProgress(
-                                            colorMixingGameCounter:
-                                                ColorMixingProgress
-                                                    .gamesCounter,
-                                            colorMixingLevelCounter:
-                                                ColorMixingProgress
-                                                    .levelsCounter);
+                                          colorMixingGameCounter:
+                                              ColorMixingProgress.gamesCounter,
+                                          colorMixingLevelCounter:
+                                              ColorMixingProgress.levelsCounter,
+                                          colorMixingLockedIndex:
+                                              ColorMixingProgress.lockedIndex,
+                                        );
                                   }
 
                                   showWinScreen(

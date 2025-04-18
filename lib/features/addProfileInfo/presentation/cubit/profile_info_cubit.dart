@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:color_funland/core/components/background_sound.dart';
 import 'package:color_funland/core/components/success_sound.dart';
+import 'package:color_funland/features/addProfileInfo/presentation/pages/child_progress_scareen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
@@ -107,17 +108,28 @@ class ProfileInfoCubit extends Cubit<ProfileInfoState> {
   }
 
   Future<void> saveChildData({
-   required String childName,
-   required String childAge,
-   required String? imageUrl,
-   required int paintingGameCounter,
-   required int paintingLevelCounter,
-   required int colorMixingGameCounter,
-   required int colorMixingLevelCounter,
-   required int colorMatchGameCounter,
-   required int colorMatchLevelCounter,
-   required int learningColorsGameCounter,
-   required int learningColorsLevelCounter,
+    required String childName,
+    required String childAge,
+    required String? imageUrl,
+
+    required int paintingGameCounter,
+    required int paintingLevelCounter,
+    required int paintingLockedAnimals, 
+    required int paintingLockedFlowers, 
+    required int paintingLockedBoardIndex, 
+    required Set<String> paintedItems, 
+
+    required int colorMixingGameCounter,
+    required int colorMixingLevelCounter,
+    required int colorMixingLockedIndex,
+
+    required int colorMatchGameCounter,
+    required int colorMatchLevelCounter,
+    required int colorMatchLockedIndex,
+
+    required int learningColorsGameCounter,
+    required int learningColorsLevelCounter,
+    required int learningColorsLockedIndex,
   }) async {
     try {
       emit(ProfileInfoLoadingState());
@@ -167,12 +179,22 @@ class ProfileInfoCubit extends Cubit<ProfileInfoState> {
         'profileImage': imageUrl,
         'paintingGameCounter': paintingGameCounter,
         'paintingLevelCounter': paintingLevelCounter,
+        'paintingLockedAnimals': paintingLockedAnimals, 
+        'paintingLockedFlowers': paintingLockedFlowers, 
+        'paintingLockedBoardIndex': paintingLockedBoardIndex, 
+        'paintedItems': paintedItems,
+
         'colorMixingGameCounter': colorMixingGameCounter,
         'colorMixingLevelCounter': colorMixingLevelCounter,
+        'colorMixingLockedIndex': colorMixingLockedIndex,
+
         'colorMatchGameCounter': colorMatchGameCounter,
         'colorMatchLevelCounter': colorMatchLevelCounter,
+        'colorMatchLockedIndex': colorMatchLockedIndex,
+
         'learningColorsGameCounter': learningColorsGameCounter,
         'learningColorsLevelCounter': learningColorsLevelCounter,
+        'learningColorsLockedIndex': learningColorsLockedIndex,
         'createdAt': FieldValue.serverTimestamp(),
         'updatedAt': FieldValue.serverTimestamp(),
       });
@@ -186,9 +208,8 @@ class ProfileInfoCubit extends Cubit<ProfileInfoState> {
 
       emit(SaveChildInfoSuccessState(messag: "Success Save Child Info"));
 
-
-              await SuccessSound.playAfterLogin();
-              BackgroundAudio.listenForSoundUpdates();
+      await SuccessSound.playAfterLogin();
+      BackgroundAudio.listenForSoundUpdates();
       // Fetch the current child data
       await getCurrentChild();
     } catch (e) {
@@ -473,12 +494,22 @@ class ProfileInfoCubit extends Cubit<ProfileInfoState> {
           'profileImage': childData['profileImage'],
           'paintingGameCounter': childData['paintingGameCounter'],
           'paintingLevelCounter': childData['paintingLevelCounter'],
+          'paintingLockedAnimals': childData['paintingLockedAnimals'],
+          'paintingLockedFlowers': childData['paintingLockedFlowers'],
+          'paintingLockedBoardIndex': childData['paintingLockedBoardIndex'],
+          'paintedItems': childData['paintedItems'],
+
           'colorMixingGameCounter': childData['colorMixingGameCounter'],
           'colorMixingLevelCounter': childData['colorMixingLevelCounter'],
+          'colorMixingLockedIndex': childData['colorMixingLockedIndex'],
+
           'colorMatchGameCounter': childData['colorMatchGameCounter'],
           'colorMatchLevelCounter': childData['colorMatchLevelCounter'],
+          'colorMatchLockedIndex': childData['colorMatchLockedIndex'],
+
           'learningColorsGameCounter': childData['learningColorsGameCounter'],
           'learningColorsLevelCounter': childData['learningColorsLevelCounter'],
+          'learningColorsLockedIndex': childData['learningColorsLockedIndex'],
         },
       ));
       // BackgroundAudio.listenForSoundUpdates();
@@ -492,9 +523,21 @@ class ProfileInfoCubit extends Cubit<ProfileInfoState> {
   Future<void> updatePaintingProgress({
     required int paintingGameCounter,
     required int paintingLevelCounter,
+    required int paintingLockedAnimals,
+    required int paintingLockedFlowers,
+    required int paintingLockedBoardIndex,
+    required Set<String> paintedItems,
   }) async {
     try {
       emit(ProfileInfoLoadingState());
+
+       // Update static variables
+    PaintingProgress.gamesCounter = paintingGameCounter;
+    PaintingProgress.levelsCounter = paintingLevelCounter;
+    PaintingProgress.lockedanimals = paintingLockedAnimals;
+    PaintingProgress.lockedflowers = paintingLockedFlowers;
+    PaintingProgress.lockedPaintingBoardIndex = paintingLockedBoardIndex;
+    PaintingProgress.paintedItems = paintedItems;
 
       final User? currentUser = _auth.currentUser;
       if (currentUser == null) {
@@ -527,6 +570,10 @@ class ProfileInfoCubit extends Cubit<ProfileInfoState> {
       final Map<String, dynamic> updateData = {
         'paintingGameCounter': paintingGameCounter,
         'paintingLevelCounter': paintingLevelCounter,
+        'paintingLockedAnimals': paintingLockedAnimals,
+        'paintingLockedFlowers': paintingLockedFlowers,
+        'paintingLockedBoardIndex': paintingLockedBoardIndex,
+        'paintedItems':  PaintingProgress.paintedItems.toList(),
         'updatedAt': FieldValue.serverTimestamp(),
       };
 
@@ -552,9 +599,14 @@ class ProfileInfoCubit extends Cubit<ProfileInfoState> {
   Future<void> updateColorMixingProgress({
     required int colorMixingGameCounter,
     required int colorMixingLevelCounter,
+    required int colorMixingLockedIndex,
   }) async {
     try {
       emit(ProfileInfoLoadingState());
+       // Update static variables
+    ColorMixingProgress.gamesCounter = colorMixingGameCounter;
+    ColorMixingProgress.levelsCounter = colorMixingLevelCounter;
+    ColorMixingProgress.lockedIndex = colorMixingLockedIndex;
 
       final User? currentUser = _auth.currentUser;
       if (currentUser == null) {
@@ -587,6 +639,7 @@ class ProfileInfoCubit extends Cubit<ProfileInfoState> {
       final Map<String, dynamic> updateData = {
         'colorMixingGameCounter': colorMixingGameCounter,
         'colorMixingLevelCounter': colorMixingLevelCounter,
+        'colorMixingLockedIndex': colorMixingLockedIndex,
         'updatedAt': FieldValue.serverTimestamp(),
       };
 
@@ -611,9 +664,15 @@ class ProfileInfoCubit extends Cubit<ProfileInfoState> {
   Future<void> updateColorMatchProgress({
     required int colorMatchGameCounter,
     required int colorMatchLevelCounter,
+    required int colorMatchLockedIndex,
   }) async {
     try {
       emit(ProfileInfoLoadingState());
+
+    ColorMatchProgress.gamesCounter = colorMatchGameCounter;
+    ColorMatchProgress.levelsCounter = colorMatchLevelCounter;
+    ColorMatchProgress.lockedIndex = colorMatchLockedIndex;
+
 
       final User? currentUser = _auth.currentUser;
       if (currentUser == null) {
@@ -647,6 +706,7 @@ class ProfileInfoCubit extends Cubit<ProfileInfoState> {
       final Map<String, dynamic> updateData = {
         'colorMatchGameCounter': colorMatchGameCounter,
         'colorMatchLevelCounter': colorMatchLevelCounter,
+        'colorMatchLockedIndex': colorMatchLockedIndex,
         'updatedAt': FieldValue.serverTimestamp(),
       };
 
@@ -672,9 +732,15 @@ class ProfileInfoCubit extends Cubit<ProfileInfoState> {
   Future<void> updateLearningColorsProgress({
     required int learningColorsGameCounter,
     required int learningColorsLevelCounter,
+    required int learningColorsLockedIndex,
   }) async {
     try {
       emit(ProfileInfoLoadingState());
+       // Update static variables
+
+    LearningColorsProgress.gamesCounter = learningColorsGameCounter;
+    LearningColorsProgress.levelsCounter = learningColorsLevelCounter;
+    LearningColorsProgress.lockedIndex = learningColorsLockedIndex;
 
       final User? currentUser = _auth.currentUser;
       if (currentUser == null) {
@@ -708,6 +774,7 @@ class ProfileInfoCubit extends Cubit<ProfileInfoState> {
       final Map<String, dynamic> updateData = {
         'learningColorsGameCounter': learningColorsGameCounter,
         'learningColorsLevelCounter': learningColorsLevelCounter,
+        'learningColorsLockedIndex': learningColorsLockedIndex,
         'updatedAt': FieldValue.serverTimestamp(),
       };
 

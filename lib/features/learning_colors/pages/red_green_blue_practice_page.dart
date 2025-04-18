@@ -166,10 +166,13 @@ class _RedGreenBluePracticePageState extends State<RedGreenBluePracticePage> {
               if (LearningColorsProgress.gamesCounter < 1) {
                 _increaseCounterGame();
                 context.read<ProfileInfoCubit>().updateLearningColorsProgress(
-                    learningColorsGameCounter:
-                        LearningColorsProgress.gamesCounter,
-                    learningColorsLevelCounter:
-                        LearningColorsProgress.levelsCounter);
+                      learningColorsGameCounter:
+                          LearningColorsProgress.gamesCounter,
+                      learningColorsLevelCounter:
+                          LearningColorsProgress.levelsCounter,
+                      learningColorsLockedIndex:
+                          LearningColorsProgress.lockedIndex,
+                    );
               }
               showWinScreen(
                 context,
@@ -184,10 +187,13 @@ class _RedGreenBluePracticePageState extends State<RedGreenBluePracticePage> {
               if (LearningColorsProgress.gamesCounter < 2) {
                 _increaseCounterGame();
                 context.read<ProfileInfoCubit>().updateLearningColorsProgress(
-                    learningColorsGameCounter:
-                        LearningColorsProgress.gamesCounter,
-                    learningColorsLevelCounter:
-                        LearningColorsProgress.levelsCounter);
+                      learningColorsGameCounter:
+                          LearningColorsProgress.gamesCounter,
+                      learningColorsLevelCounter:
+                          LearningColorsProgress.levelsCounter,
+                      learningColorsLockedIndex:
+                          LearningColorsProgress.lockedIndex,
+                    );
               }
               showWinScreen(
                 context,
@@ -204,10 +210,13 @@ class _RedGreenBluePracticePageState extends State<RedGreenBluePracticePage> {
                 _increaseLevelCounter();
                 LearningColorsProgress.lockedIndex = 1;
                 context.read<ProfileInfoCubit>().updateLearningColorsProgress(
-                    learningColorsGameCounter:
-                        LearningColorsProgress.gamesCounter,
-                    learningColorsLevelCounter:
-                        LearningColorsProgress.levelsCounter);
+                      learningColorsGameCounter:
+                          LearningColorsProgress.gamesCounter,
+                      learningColorsLevelCounter:
+                          LearningColorsProgress.levelsCounter,
+                      learningColorsLockedIndex:
+                          LearningColorsProgress.lockedIndex,
+                    );
               }
               showWinScreen(
                 context,

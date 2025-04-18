@@ -1,4 +1,5 @@
 
+import 'package:color_funland/block_observer.dart';
 import 'package:color_funland/color_funland_app.dart';
 import 'package:color_funland/core/services/message_service.dart';
 import 'package:color_funland/features/addProfileInfo/presentation/cubit/profile_info_cubit.dart';
@@ -20,6 +21,8 @@ void main() async {
     await PaintingService.initialize();
 
   await di.init();
+    Bloc.observer = MyBlocObserver();
+
 
   runApp(
     MultiBlocProvider(

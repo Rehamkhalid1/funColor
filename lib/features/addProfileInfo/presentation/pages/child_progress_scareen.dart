@@ -65,10 +65,8 @@ class _ChildProgressScreenState extends State<ChildProgressScreen> {
             colorMixingLevelCounter = state.child['colorMixingLevelCounter'] ?? 1;
             colorMatchGameCounter = state.child['colorMatchGameCounter'] ?? 0;
             colorMatchLevelCounter = state.child['colorMatchLevelCounter'] ?? 1;
-            learningColorsGameCounter =
-                state.child['learningColorsGameCounter'] ?? 0;
-            learningColorsLevelCounter =
-                state.child['learningColorsLevelCounter'] ?? 1;
+            learningColorsGameCounter = state.child['learningColorsGameCounter'] ?? 0;
+            learningColorsLevelCounter = state.child['learningColorsLevelCounter'] ?? 1;
           }
               return Scaffold(
                 extendBodyBehindAppBar: true,
@@ -305,13 +303,13 @@ class PaintingProgress {
    static int lockedanimals = 0;
    static int lockedflowers = 0;
    
-static final Set<String> paintedItems = {}; // Track in memory only
+static  Set<String> paintedItems = {}; // Track in memory only
 
-  static void markItemAsPainted(String itemKey) {
+   void markItemAsPainted(String itemKey) {
     paintedItems.add(itemKey); // No persistence
   }
 
-  static bool isPainted(String itemKey) {
+   bool isPainted(String itemKey) {
     return paintedItems.contains(itemKey);
   }
 
@@ -321,7 +319,7 @@ static final Set<String> paintedItems = {}; // Track in memory only
 class ColorMixingProgress {
   static int levelsCounter = 1;
   static int gamesCounter = 0;
-     static int lockedIndex = 0;
+  static int lockedIndex = 0;
 
 
   ColorMixingProgress(
@@ -334,7 +332,7 @@ class ColorMixingProgress {
 class ColorMatchProgress {
   static int levelsCounter = 1;
   static int gamesCounter = 0;
-     static int lockedIndex = 0;
+  static int lockedIndex = 0;
 
 
   ColorMatchProgress(int colorMatchLevelsCounter, int colorMatchGamesCounter) {
@@ -346,7 +344,7 @@ class ColorMatchProgress {
 class LearningColorsProgress {
   static int levelsCounter = 1;
   static int gamesCounter = 0;
-     static int lockedIndex = 0;
+  static int lockedIndex = 0;
 
 
   LearningColorsProgress(

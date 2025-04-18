@@ -160,6 +160,7 @@ class _ColorMixingSamplsState extends State<ColorMatchShapes> {
 
   Widget _buildTargetContainer(
       String image, double offsetX, double offsetY, Color targetColor) {
+        
     return Transform.translate(
       offset: Offset(offsetX, offsetY),
       child: DragTarget<Color>(
@@ -186,15 +187,17 @@ class _ColorMixingSamplsState extends State<ColorMatchShapes> {
             colorMatched[_getColorName(targetColor)] = true;
             _counter++;
             if (_counter == 6) {
-             // print('success');
+              // print('success');
               if (ColorMatchProgress.gamesCounter < 1) {
                 _increaseCounterGame();
                 _increaseLevelCounter();
+              ColorMatchProgress.lockedIndex = 1;
                 context.read<ProfileInfoCubit>().updateColorMatchProgress(
                     colorMatchGameCounter: ColorMatchProgress.gamesCounter,
-                    colorMatchLevelCounter: ColorMatchProgress.levelsCounter);
+                    colorMatchLevelCounter: ColorMatchProgress.levelsCounter,
+                    colorMatchLockedIndex: ColorMatchProgress.lockedIndex,
+                    );
               }
-              ColorMatchProgress.lockedIndex = 1;
               showWinScreen(
                 context,
                 () => Navigator.pushReplacementNamed(

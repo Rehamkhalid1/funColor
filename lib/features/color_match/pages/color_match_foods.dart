@@ -222,6 +222,7 @@ class _Item extends StatefulWidget {
 
 class _ItemState extends State<_Item> {
   void _increaseCounterGame() {
+    
     setState(() {
       if (ColorMatchProgress.gamesCounter < 4) {
         ColorMatchProgress.gamesCounter++;
@@ -302,21 +303,25 @@ class _ItemState extends State<_Item> {
                     parentState.usedColors.add(colorImage);
                     parentState._counter++;
                     if (parentState._counter == 5) {
-                      if (ColorMatchProgress.gamesCounter == 1 ) {
-                      _increaseCounterGame();
-                      _increaseLevelCounter();
-                      context.read<ProfileInfoCubit>().updateColorMatchProgress(
-                          colorMatchGameCounter:
-                              ColorMatchProgress.gamesCounter,
-                          colorMatchLevelCounter:
-                              ColorMatchProgress.levelsCounter);
-                    }
-                    ColorMatchProgress.lockedIndex = 2;
-                    showWinScreen(
-                      context,
-                      () => Navigator.pushReplacementNamed(
-                          context, "/colorMatchScreen"),
-                    );
+                      if (ColorMatchProgress.gamesCounter == 1) {
+                        _increaseCounterGame();
+                        _increaseLevelCounter();
+                      ColorMatchProgress.lockedIndex = 2;
+                        context
+                            .read<ProfileInfoCubit>()
+                            .updateColorMatchProgress(
+                                colorMatchGameCounter:
+                                    ColorMatchProgress.gamesCounter,
+                                colorMatchLevelCounter:
+                                    ColorMatchProgress.levelsCounter,
+                                colorMatchLockedIndex:
+                                    ColorMatchProgress.lockedIndex,);
+                      }
+                      showWinScreen(
+                        context,
+                        () => Navigator.pushReplacementNamed(
+                            context, "/colorMatchScreen"),
+                      );
                     }
                   });
                 }

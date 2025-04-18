@@ -1,5 +1,4 @@
 import 'package:color_funland/core/components/circular_indicator.dart';
-import 'package:color_funland/core/components/custom_text_field.dart';
 import 'package:color_funland/core/components/elevated_btn.dart';
 import 'package:color_funland/core/components/password_text_field.dart';
 import 'package:color_funland/core/constants/app_strings.dart';

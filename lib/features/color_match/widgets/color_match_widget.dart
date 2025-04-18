@@ -33,6 +33,7 @@ class ColorMatchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return SizedBox(
       height: gridHeight ?? 392.h,
       child: GridView.builder(

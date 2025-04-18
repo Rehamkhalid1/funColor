@@ -70,11 +70,13 @@ class _ColorMatchAnimalsState extends State<ColorMatchAnimals> {
           if (ColorMatchProgress.gamesCounter == 2) {
             _increaseCounterGame();
             _increaseLevelCounter();
+          ColorMatchProgress.lockedIndex = 3;
             context.read<ProfileInfoCubit>().updateColorMatchProgress(
                 colorMatchGameCounter: ColorMatchProgress.gamesCounter,
-                colorMatchLevelCounter: ColorMatchProgress.levelsCounter);
+                colorMatchLevelCounter: ColorMatchProgress.levelsCounter,
+                colorMatchLockedIndex: ColorMatchProgress.lockedIndex
+                );
           }
-          ColorMatchProgress.lockedIndex = 3;
           showWinScreen(
             context,
             () => Navigator.pushReplacementNamed(context, "/colorMatchScreen"),

@@ -72,25 +72,26 @@ final List<GridItem> gridItems = [
 ];
 
 ///*************   Animals Section  ************** */
+  final PaintingProgress _paintingProgress = PaintingProgress();
 
 final List<GridItem> animalsFram = [
    GridItem(
-    imageUrl: PaintingProgress.isPainted(AppImages.uncoloredelephantfram) ? 
+    imageUrl: _paintingProgress.isPainted(AppImages.uncoloredelephantfram) ? 
       AppImages.coloredelephantfram : AppImages.uncoloredelephantfram,
     title: "elephant",
   ),
   GridItem(
-    imageUrl: PaintingProgress.isPainted(AppImages.uncoloredturtle2fram) ? 
+    imageUrl: _paintingProgress.isPainted(AppImages.uncoloredturtle2fram) ? 
       AppImages.coloredturtlefram : AppImages.uncoloredturtle2fram,
     title: "turtle",
   ),
   GridItem(
-    imageUrl: PaintingProgress.isPainted(AppImages.uncoloredelephante2fram) ? 
+    imageUrl: _paintingProgress.isPainted(AppImages.uncoloredelephante2fram) ? 
       AppImages.coloredelephante2fram : AppImages.uncoloredelephante2fram,
     title: "elephante2",
   ),
   GridItem(
-    imageUrl: PaintingProgress.isPainted(AppImages.uncoloredmonkey2fram) ? 
+    imageUrl: _paintingProgress.isPainted(AppImages.uncoloredmonkey2fram) ? 
       AppImages.coloredmonkey2fram : AppImages.uncoloredmonkey2fram,
     title: "monkey2",
   ),
@@ -186,24 +187,25 @@ final List<String> flowersPaintingScreen = [
   '/flowerColor4',
 ];
 
+
 final List<GridItem> flowersFram = [
   GridItem(
-    imageUrl: PaintingProgress.isPainted(AppImages.uncoloredflower1fram) ? 
+    imageUrl: _paintingProgress.isPainted(AppImages.uncoloredflower1fram) ? 
       AppImages.coloredflower1fram : AppImages.uncoloredflower1fram,
     title: "flower1",
   ),
   GridItem(
-    imageUrl: PaintingProgress.isPainted(AppImages.uncoloredflower2fram) ? 
+    imageUrl: _paintingProgress.isPainted(AppImages.uncoloredflower2fram) ? 
       AppImages.coloredflower2fram : AppImages.uncoloredflower2fram,
     title: "flower2",
   ),
   GridItem(
-    imageUrl: PaintingProgress.isPainted(AppImages.uncoloredflower3fram) ? 
+    imageUrl: _paintingProgress.isPainted(AppImages.uncoloredflower3fram) ? 
       AppImages.coloredflower3fram : AppImages.uncoloredflower3fram,
     title: "flower3",
   ),
   GridItem(
-    imageUrl: PaintingProgress.isPainted(AppImages.uncoloredflower4Fram) ? 
+    imageUrl: _paintingProgress.isPainted(AppImages.uncoloredflower4Fram) ? 
       AppImages.coloredflower4fram : AppImages.uncoloredflower4Fram,
     title: "flower4",
   ),
